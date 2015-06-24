@@ -129,7 +129,7 @@ app.on('ready', function() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    "width": 900,
+    "width": 1000,
     "height": 720,
     "type": "toolbar",
     "title": "Whatsapp",
