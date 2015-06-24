@@ -79,12 +79,12 @@ var template = [
       {
         label: 'Reload',
         accelerator: 'Command+R',
-        click: function() { remote.getCurrentWindow().reload(); }
+        click: function() { win.reload(); }
       },
       {
         label: 'Toggle DevTools',
         accelerator: 'Alt+Command+I',
-        click: function() { remote.getCurrentWindow().toggleDevTools(); }
+        click: function() { win.toggleDevTools(); }
       },
     ]
   },
