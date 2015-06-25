@@ -16,11 +16,17 @@ This is **NOT** an official product. This project does not attempt to reverse en
 * Auto-launch on OS startup.  
 * Windows and Linux builds.  
 
+## Installation
+
+Download and run the Whatsapp.app file from the [latest release](https://github.com/bcalik/Whatsapp-Desktop/releases).
+
 ## Contributions
 
 Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/bcalik/whatsapp-desktop/issues).
 
 ## Build
+
+To build from the source, run the following commands:  
 
 `npm install`  
 `sudo npm run build`  
