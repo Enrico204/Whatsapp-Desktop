@@ -1,16 +1,16 @@
 {
-  "name": "manapot",
-  "version": "0.1.0",
-  "description": "Prevent your Mac from sleeping.",
+  "name": "whatsapp-desktop",
+  "version": "0.1.2",
+  "description": "Unofficial Whatsapp Desktop Client. Build with Electron.",
   "main": "app.js",
   "scripts": {
     "dev": "electron ./app",
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/osx",
     "build": "npm run clean && npm run build:osx",
-    "build:osx": "npm run clean:osx && electron-packager ./app \"Manapot\" --out=dist/osx --platform=darwin --arch=x64 --version=0.28.3 --icon=assets/manapot.icns",
+    "build:osx": "npm run clean:osx && electron-packager ./app \"Whatsapp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.28.3 --icon=assets/osx/whatsapp.icns",
     "pack": "npm run pack:osx",
-    "pack:osx": "npm run build:osx && electron-builder \"dist/osx/Manapot.app\" --platform=osx --out=\"dist/osx\" --config=packager.json"
+    "pack:osx": "npm run build:osx && electron-builder \"dist/osx/Whatsapp.app\" --platform=osx --out=\"dist/osx\" --config=packager.json"
   },
   "devDependencies": {
     "electron-packager": "^4.1.3",

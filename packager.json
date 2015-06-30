@@ -1,7 +1,7 @@
 {
   "osx" : {
-    "title": "Manapot",
-    "icon": "assets/manapot.icns",
+    "title": "Whatsapp",
+    "icon": "assets/osx/whatsapp.icns",
     "icon-size": 80,
     "contents": [
       { "x": 438, "y": 344, "type": "link", "path": "/Applications" },
