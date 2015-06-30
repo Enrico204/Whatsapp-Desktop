@@ -22,7 +22,7 @@ Download and run the Whatsapp.app file from the [latest release](https://github.
 
 ## Contributions
 
-Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/bcalik/whatsapp-desktop/issues).
+Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/bcalik/Whatsapp-Desktop/issues).
 
 ## Build
 
@@ -30,3 +30,7 @@ To build from the source, run the following commands:
 
 `npm install`  
 `sudo npm run build`  
+
+--
+
+> Made with :heart: at [Macellan](http://macellan.net)
