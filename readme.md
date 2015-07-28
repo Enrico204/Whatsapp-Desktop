@@ -18,7 +18,7 @@ This is **NOT** an official product. This project does not attempt to reverse en
 
 ## Installation
 
-Download and run the Whatsapp.app file from the [latest release v0.1.4](https://github.com/bcalik/Whatsapp-Desktop/releases/download/v0.1.5/Whatsapp.app.zip).
+Download and run the Whatsapp.app file from the [latest release v0.1.5](https://github.com/bcalik/Whatsapp-Desktop/releases/download/v0.1.5/Whatsapp.app.zip).
 
 ## Contributions
 
