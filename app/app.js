@@ -9,7 +9,9 @@ var win = null;
 // workaround
 var fs = require('fs');
 var cacheFile = app.getDataPath()+"/Application Cache/Index";
-fs.unlinkSync(cacheFile);
+try{
+  fs.unlinkSync(cacheFile);
+}catch(e){}
 
 // template
 var template = require('./app_menu');

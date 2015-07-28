@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Unofficial Whatsapp Desktop Client. Build with Electron.",
   "main": "app.js",
   "scripts": {
