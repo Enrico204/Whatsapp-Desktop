@@ -6,15 +6,14 @@
   "scripts": {
     "dev": "electron ./app",
     "clean": "rm -rf ./dist",
+    "clean:win": "rm -rf ./dist/win",
     "clean:osx": "rm -rf ./dist/osx",
     "build": "npm run clean && npm run build:osx",
-    "build:osx": "npm run clean:osx && electron-packager ./app \"Whatsapp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.30.0 --icon=assets/osx/whatsapp.icns",
-    "pack": "npm run pack:osx",
-    "pack:osx": "npm run build:osx && electron-builder \"dist/osx/Whatsapp.app\" --platform=osx --out=\"dist/osx\" --config=packager.json"
+    "build:win": "npm run clean:win && electron-packager ./app \"Whatsapp\" --out=dist/win --platform=win32 --arch=x64 --version=0.30.0",
+    "build:osx": "npm run clean:osx && electron-packager ./app \"Whatsapp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.30.0 --icon=assets/osx/whatsapp.icns"
   },
   "devDependencies": {
     "electron-packager": "^5.0.1",
-    "electron-prebuilt": "^0.30.0",
-    "electron-builder": "^2.0.0"
+    "electron-prebuilt": "^0.30.0"
   }
 }
