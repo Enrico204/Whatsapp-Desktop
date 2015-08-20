@@ -1,4 +1,4 @@
-var app = require('app');  // Module to control application life.
+var app = require('app');
 var Menu = require('menu');
 var Tray = require('tray');
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
@@ -17,13 +17,25 @@ try{
 // template
 var template = require('./app_menu');
 
-// Quit when all windows are closed.
 app.on('window-all-closed', function() {
-  app.quit();
+  if (process.platform != 'darwin')
+    app.quit();
+});
+
+app.on('before-quit', function() {
+  win.forceClose = true;
+});
+
+app.on('activate-with-no-open-windows', function() {
+  win.show();
+});
+
+app.on('ready', function() {
+  appInit();
 });
 
 // Initialization.
-app.on('ready', function() {
+function appInit () {
   // Configuration
   appIcon = new Tray(__dirname+'/assets/trayTemplate.png');
   appIcon.on("clicked", function(){
@@ -60,10 +72,15 @@ app.on('ready', function() {
     app.dock.setBadge(unreadCount);
     if (unreadCount > 0)
       app.dock.bounce('informational');
-  })
+  });
 
-  // Open the devtools.
-  // win.openDevTools();
+  win.on('close', function(e){
+    if (win.forceClose) return;
+    if (process.platform == 'darwin') {
+      e.preventDefault();
+      win.hide();
+    }
+  });
 
   // Emitted when the window is closed.
   win.on('closed', function() {
@@ -72,7 +89,7 @@ app.on('ready', function() {
 
   // app.dock.hide();
   win.show();
-});
+}
 
 /**
  * Returns unread count from window title
