@@ -1,6 +1,6 @@
 # WhatsApp Desktop
 
-WhatsApp desktop client for OSX, based on the official WhatsApp web app. Build with [Electron](http://electron.atom.io/).  
+WhatsApp desktop client for OSX and Windows, based on the official WhatsApp web app. Build with [Electron](http://electron.atom.io/).  
 
 This is **NOT** an official product. This project does not attempt to reverse engineer the WhatsApp API or attempt to reimplement any part of the WhatsApp client. Any communication between the user and WhatsApp servers is handled by official WhatsApp Web itself; this is just a native wrapper for WhatsApp Web, like a browser.
 
@@ -15,11 +15,13 @@ This is **NOT** an official product. This project does not attempt to reverse en
 **Planned features:**  
 
 * Auto-launch on OS startup.  
-* Windows and Linux builds.  
+* Linux build.  
 
 ## Installation
 
-Download and run the WhatsApp.app file from the [latest release v0.2.0](https://github.com/bcalik/Whatsapp-Desktop/releases/download/v0.2.0/WhatsApp-OSX.zip).
+Download and run the WhatsApp.app or WhatsApp.exe file from the [latest release](https://github.com/bcalik/Whatsapp-Desktop/releases).  
+
+*Note: Windows version is a test release.*
 
 ## Contributions
 
