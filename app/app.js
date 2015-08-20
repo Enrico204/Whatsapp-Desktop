@@ -52,6 +52,12 @@ app.on('ready', function() {
     require('shell').openExternal(url)
     event.preventDefault();
   });
+  
+  // update OSX badge
+  win.on('page-title-updated', function(event, title) {
+    app.dock.setBadge(getUnreadCount(title));
+    app.dock.bounce('informational');
+  })
 
   // Open the devtools.
   // win.openDevTools();
@@ -64,3 +70,10 @@ app.on('ready', function() {
   // app.dock.hide();
   win.show();
 });
+
+/**
+ * Returns unread count from window title
+ */
+function getUnreadCount(title) {
+  return title.substring(0, title.indexOf(')')).split('(').join('');
+}
