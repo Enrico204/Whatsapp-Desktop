@@ -28,7 +28,7 @@ app.on('ready', function() {
   appIcon.on("clicked", function(){
     win.show();
   });
-  appIcon.setToolTip('Whatsapp');
+  appIcon.setToolTip('WhatsApp');
 
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
@@ -38,7 +38,7 @@ app.on('ready', function() {
     "width": 1000,
     "height": 720,
     "type": "toolbar",
-    "title": "Whatsapp",
+    "title": "WhatsApp",
     "node-integration": false,
   });
 
