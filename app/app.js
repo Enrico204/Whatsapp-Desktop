@@ -56,8 +56,10 @@ app.on('ready', function() {
   
   // update OSX badge
   win.on('page-title-updated', function(event, title) {
-    app.dock.setBadge(getUnreadCount(title));
-    app.dock.bounce('informational');
+    var unreadCount = getUnreadCount(title);
+    app.dock.setBadge(unreadCount);
+    if (unreadCount > 0)
+      app.dock.bounce('informational');
   })
 
   // Open the devtools.
