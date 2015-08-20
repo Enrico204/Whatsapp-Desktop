@@ -1,7 +1,7 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.1.5",
-  "description": "Unofficial Whatsapp Desktop Client. Build with Electron.",
+  "version": "0.2.0",
+  "description": "Unofficial WhatsApp Desktop Client. Build with Electron.",
   "main": "app.js",
   "scripts": {
     "dev": "electron ./app",
@@ -9,8 +9,8 @@
     "clean:win": "rm -rf ./dist/win",
     "clean:osx": "rm -rf ./dist/osx",
     "build": "npm run clean && npm run build:osx",
-    "build:win": "npm run clean:win && electron-packager ./app \"Whatsapp\" --out=dist/win --platform=win32 --arch=x64 --version=0.30.0",
-    "build:osx": "npm run clean:osx && electron-packager ./app \"Whatsapp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.30.0 --icon=assets/osx/whatsapp.icns"
+    "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist/win --platform=win32 --arch=x64 --version=0.30.0",
+    "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.30.0 --icon=assets/osx/whatsapp.icns"
   },
   "devDependencies": {
     "electron-packager": "^5.0.1",

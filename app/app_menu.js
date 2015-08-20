@@ -1,14 +1,14 @@
 module.exports = [
   {
-    label: 'Whatsapp',
+    label: 'WhatsApp',
     submenu: [
       {
-        label: 'About Whatsapp',
+        label: 'About WhatsApp',
         selector: 'orderFrontStandardAboutPanel:'
       },
       { type: 'separator' },
       {
-        label: 'Hide Whatsapp',
+        label: 'Hide WhatsApp',
         accelerator: 'Command+H',
         selector: 'hide:'
       },

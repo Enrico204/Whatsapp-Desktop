@@ -4,7 +4,8 @@ var Tray = require('tray');
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 var mainWindow = null;
 var appIcon = null;
-var win = null;
+
+win = null; // make it global so app_menu.js can see it
 
 // workaround
 var fs = require('fs');
@@ -28,7 +29,7 @@ app.on('ready', function() {
   appIcon.on("clicked", function(){
     win.show();
   });
-  appIcon.setToolTip('Whatsapp');
+  appIcon.setToolTip('WhatsApp');
 
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
@@ -38,7 +39,7 @@ app.on('ready', function() {
     "width": 1000,
     "height": 720,
     "type": "toolbar",
-    "title": "Whatsapp",
+    "title": "WhatsApp",
     "node-integration": false,
   });
 
@@ -52,6 +53,12 @@ app.on('ready', function() {
     require('shell').openExternal(url)
     event.preventDefault();
   });
+  
+  // update OSX badge
+  win.on('page-title-updated', function(event, title) {
+    app.dock.setBadge(getUnreadCount(title));
+    app.dock.bounce('informational');
+  })
 
   // Open the devtools.
   // win.openDevTools();
@@ -64,3 +71,10 @@ app.on('ready', function() {
   // app.dock.hide();
   win.show();
 });
+
+/**
+ * Returns unread count from window title
+ */
+function getUnreadCount(title) {
+  return title.substring(0, title.indexOf(')')).split('(').join('');
+}
