@@ -19,7 +19,7 @@ This is **NOT** an official product. This project does not attempt to reverse en
 
 ## Installation
 
-Download and run the WhatsApp.app file from the [latest release v0.1.5](https://github.com/bcalik/Whatsapp-Desktop/releases/download/v0.1.5/Whatsapp-OSX.zip).
+Download and run the WhatsApp.app file from the [latest release v0.2.0](https://github.com/bcalik/Whatsapp-Desktop/releases/download/v0.2.0/WhatsApp-OSX.zip).
 
 ## Contributions
 
