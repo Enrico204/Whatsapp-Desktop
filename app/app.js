@@ -4,7 +4,8 @@ var Tray = require('tray');
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 var mainWindow = null;
 var appIcon = null;
-var win = null;
+
+win = null; // make it global so app_menu.js can see it
 
 // workaround
 var fs = require('fs');
