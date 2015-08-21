@@ -67,7 +67,7 @@ function appInit () {
   });
 
   // update OSX badge only if you're using OSX.
-  if(app.hasOwnProperty("dock")) {
+  if(process.platform == 'darwin') {
   	win.on('page-title-updated', function(event, title) {
   	  var unreadCount = getUnreadCount(title);
   	  app.dock.setBadge(unreadCount);
