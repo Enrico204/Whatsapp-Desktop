@@ -65,14 +65,16 @@ function appInit () {
     require('shell').openExternal(url)
     event.preventDefault();
   });
-  
-  // update OSX badge
-  win.on('page-title-updated', function(event, title) {
-    var unreadCount = getUnreadCount(title);
-    app.dock.setBadge(unreadCount);
-    if (unreadCount > 0)
-      app.dock.bounce('informational');
-  });
+
+  // update OSX badge only if you're using OSX.
+  if(app.hasOwnProperty("dock")) {
+  	win.on('page-title-updated', function(event, title) {
+  	  var unreadCount = getUnreadCount(title);
+  	  app.dock.setBadge(unreadCount);
+  	  if (unreadCount > 0)
+  	    app.dock.bounce('informational');
+  	});
+  }
 
   win.on('close', function(e){
     if (win.forceClose) return;
