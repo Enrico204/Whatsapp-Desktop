@@ -4,6 +4,11 @@ WhatsApp desktop client for OSX and Windows, based on the official WhatsApp web 
 
 This is **NOT** an official product. This project does not attempt to reverse engineer the WhatsApp API or attempt to reimplement any part of the WhatsApp client. Any communication between the user and WhatsApp servers is handled by official WhatsApp Web itself; this is just a native wrapper for WhatsApp Web, like a browser.
 
+**For questions and support please use the Gitter room:**
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rephole/WhatsApp-Desktop)
+
+
 ## Features
 
 * Native notifications.  
