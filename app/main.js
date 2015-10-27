@@ -71,7 +71,7 @@
                 var count = title.match(/\((\d+)\)/);
 
                 if (count !== null) {
-                    app.dock.setBadge(count);
+                    app.dock.setBadge(count[1]);
 
                     if (count > 0) {
                         app.dock.bounce('informational');

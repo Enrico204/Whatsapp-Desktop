@@ -1,7 +1,7 @@
 {
   "osx": {
     "title": "WhatsApp",
-    "icon": "assets/osx/whatsapp.icns",
+    "icon": "assets/osx/WhatsApp.icns",
     "icon-size": 80,
     "contents": [
       {

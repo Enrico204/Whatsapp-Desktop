@@ -2,5 +2,6 @@
 .DS_Store
 Thumbs.db
 dist
+npm-debug.log
 node_modules/*
 electron-*
