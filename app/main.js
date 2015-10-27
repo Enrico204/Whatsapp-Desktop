@@ -89,7 +89,7 @@
             }.bind(this));
 
             app.on('before-quit', function() {
-                this.window.forceClose = true;
+                if (this.window) this.window.forceClose = true;
             }.bind(this));
         }
     };
