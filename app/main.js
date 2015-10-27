@@ -69,14 +69,16 @@
 
             this.window.on('page-title-updated', onlyOSX(function(event, title) {
                 var count = title.match(/\((\d+)\)/);
+                    count = count ? count[1] : '';
 
-                if (count !== null) {
-                    app.dock.setBadge(count[1]);
+                if(process.platform === 'darwin') {
+                    app.dock.setBadge(count);
 
-                    if (count > 0) {
+                    if (parseInt(count) > 0) {
                         app.dock.bounce('informational');
                     }
                 }
+
             }));
 
             this.window.webContents.on("new-window", function(e, url){
@@ -85,7 +87,7 @@
             });
 
             this.window.on('close', function(e){
-                if (!this.window.forceClose && process.platform === 'darwin') {
+                if (process.platform === 'darwin' && this.window.forceClose === false) {
                     e.preventDefault();
                     this.window.hide();
                 }
