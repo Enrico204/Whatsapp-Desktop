@@ -9,11 +9,11 @@
     "clean:win": "rm -rf ./dist/win",
     "clean:osx": "rm -rf ./dist/osx",
     "build": "npm run clean && npm run build:osx && npm run build:win",
-    "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist/win --platform=win32 --arch=x64 --version=0.32.1",
-    "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.32.1 --icon=assets/osx/WhatsApp.icns"
+    "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist/win --platform=win32 --arch=x64 --version=0.34.1",
+    "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.34.1 --icon=assets/osx/WhatsApp.icns"
   },
   "devDependencies": {
     "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.32.1"
+    "electron-prebuilt": "^0.34.1"
   }
 }
