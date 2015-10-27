@@ -12,7 +12,6 @@
             return Function.bind.apply(callback, this, [].slice.call(arguments, 0));
         }
         return function() {};
-
     };
 
     global.onlyWin = function(callback) {
@@ -31,7 +30,7 @@
             this.openWindow();
 
             app.on('window-all-closed', onlyWin(function() {
-                app.quit()
+                app.quit();
             }));
         },
         createMenu: function() {
@@ -90,7 +89,7 @@
             }.bind(this));
 
             app.on('before-quit', function() {
-                this.window && (this.window.forceClose = true);
+                this.window.forceClose = true;
             }.bind(this));
         }
     };
