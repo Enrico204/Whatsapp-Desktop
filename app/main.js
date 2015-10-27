@@ -3,7 +3,7 @@
 
     var app = require('app');
     var appMenu = require('menu');
-    var appTray = require('tray');
+    var AppTray = require('tray');
     var fileSystem = require('fs');
     var BrowserWindow = require('browser-window');
 
@@ -40,7 +40,7 @@
                 appMenu.setApplicationMenu(this.menu);
         },
         createTray: function() {
-            this.tray = new appTray(__dirname + '/assets/img/trayTemplate.png');
+            this.tray = new AppTray(__dirname + '/assets/img/trayTemplate.png');
 
             this.tray.on('clicked', function() {
                 this.window.show();
