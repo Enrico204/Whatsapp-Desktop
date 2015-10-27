@@ -71,14 +71,10 @@
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
-                if(process.platform === 'darwin') {
-                    app.dock.setBadge(count);
-
-                    if (parseInt(count) > 0) {
-                        app.dock.bounce('informational');
-                    }
+                app.dock.setBadge(count);
+                if (parseInt(count) > 0) {
+                    app.dock.bounce('informational');
                 }
-
             }));
 
             this.window.webContents.on("new-window", function(e, url){
