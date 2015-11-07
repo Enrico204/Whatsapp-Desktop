@@ -261,7 +261,7 @@
           }
         );
 
-        settings.window.loadUrl(__dirname + "/html/settings.html");
+        settings.window.loadUrl("file://" + __dirname + "/html/settings.html");
         settings.window.show();
 
         settings.window.on("close", function () {
