@@ -101,13 +101,13 @@
                     label: 'Bring All to Front',
                     selector: 'arrangeInFront:'
                 },
-								{
-									label: 'Settings',
-									accelerator: 'CmdOrCtrl+,',
-									click: function () {
-										global.settings.init();
-									}
-								}
+                {
+                  label: 'Settings',
+                  accelerator: 'CmdOrCtrl+,',
+                  click: function () {
+                    global.settings.init();
+                  }
+                }
             ]
         }
     ];

@@ -17,10 +17,10 @@ This is **NOT** an official product. This project does not attempt to reverse en
 * Badge with the number of notifications in the dock/taskbar.  
 * Dock icon bounces when a new message is received.
 * A couple of things can be configured:
-	* Display or not the avatars
-	* Display or not the preview of the messages
-	* Set the size for the media thumbs
-	* Set proxy to connect to WhatsApp web
+  * Display or not the avatars
+  * Display or not the preview of the messages
+  * Set the size for the media thumbs
+  * Set proxy to connect to WhatsApp web
 
 **Planned features:**  
 
