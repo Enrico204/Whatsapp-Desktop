@@ -16,5 +16,11 @@
         "type": "file"
       }
     ]
+  },
+  "win": {
+    "tittle": "WhatsApp",
+    "icon": "assets/win/whatsapp.ico",
+    "icon-size": 48,
+    "app-bundle-id": "WhatsApp"
   }
 }

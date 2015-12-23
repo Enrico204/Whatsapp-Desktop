@@ -1,0 +1,28 @@
+html{
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+header {
+  -webkit-app-region: drag;
+  display: block;
+  border-bottom: 1px solid #ccc
+}
+
+header h4 {
+  margin-top: 2px;
+}
+
+main {
+  margin: 10px auto;
+  padding: 20px;
+}
+
+#save-button{
+  bottom: 0;
+  right: 0;
+}
+
+label:after {
+  width: 200px
+}

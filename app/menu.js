@@ -12,12 +12,12 @@
                 { type: 'separator' },
                 {
                     label: 'Hide WhatsApp',
-                    accelerator: 'Command+H',
+                    accelerator: 'CmdOrCtrl+H',
                     selector: 'hide:'
                 },
                 {
                     label: 'Hide Others',
-                    accelerator: 'Command+Shift+H',
+                    accelerator: 'CmdOrCtrl+Shift+H',
                     selector: 'hideOtherApplications:'
                 },
                 {
@@ -27,7 +27,7 @@
                 { type: 'separator' },
                 {
                     label: 'Quit',
-                    accelerator: 'Command+Q',
+                    accelerator: 'CmdOrCtrl+Q',
                     selector: 'terminate:'
                 }
             ]
@@ -37,33 +37,33 @@
             submenu: [
                 {
                     label: 'Undo',
-                    accelerator: 'Command+Z',
+                    accelerator: 'CmdOrCtrl+Z',
                     selector: 'undo:'
                 },
                 {
                     label: 'Redo',
-                    accelerator: 'Shift+Command+Z',
+                    accelerator: 'Shift+CmdOrCtrl+Z',
                     selector: 'redo:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Cut',
-                    accelerator: 'Command+X',
+                    accelerator: 'CmdOrCtrl+X',
                     selector: 'cut:'
                 },
                 {
                     label: 'Copy',
-                    accelerator: 'Command+C',
+                    accelerator: 'CmdOrCtrl+C',
                     selector: 'copy:'
                 },
                 {
                     label: 'Paste',
-                    accelerator: 'Command+V',
+                    accelerator: 'CmdOrCtrl+V',
                     selector: 'paste:'
                 },
                 {
                     label: 'Select All',
-                    accelerator: 'Command+A',
+                    accelerator: 'CmdOrCtrl+A',
                     selector: 'selectAll:'
                 }
             ]
@@ -73,13 +73,13 @@
             submenu: [
                 {
                     label: 'Reload',
-                    accelerator: 'Command+R',
+                    accelerator: 'CmdOrCtrl+R',
                     click: function() { global.whatsApp.window.reload(); }
                 },
                 {
                     label: 'Toggle DevTools',
-                    accelerator: 'Alt+Command+I',
-                    click: function() { global.whatsApp.window.toggleDevTools() }
+                    accelerator: 'Alt+CmdOrCtrl+I',
+                    click: function() { global.whatsApp.window.toggleDevTools(); }
                 }
             ]
         },
@@ -88,18 +88,25 @@
             submenu: [
                 {
                     label: 'Minimize',
-                    accelerator: 'Command+M',
+                    accelerator: 'CmdOrCtrl+M',
                     selector: 'performMiniaturize:'
                 },
                 {
                     label: 'Close',
-                    accelerator: 'Command+W',
+                    accelerator: 'CmdOrCtrl+W',
                     selector: 'hide:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Bring All to Front',
                     selector: 'arrangeInFront:'
+                },
+                {
+                  label: 'Settings',
+                  accelerator: 'CmdOrCtrl+,',
+                  click: function () {
+                    global.settings.init();
+                  }
                 }
             ]
         }
