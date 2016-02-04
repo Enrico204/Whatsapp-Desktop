@@ -42,7 +42,7 @@ Contributions are welcome! For feature requests and bug reports please submit an
 To build from the source, run the following commands:  
 
 `npm install`  
-`sudo npm run build`  
+`npm run build`  
 
 --
 
