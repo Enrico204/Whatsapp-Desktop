@@ -9,6 +9,8 @@
     var NativeImage = require('native-image');
     var BrowserWindow = require('browser-window');
 
+    var join = require('path').join;
+
     global.onlyOSX = function(callback) {
         if (process.platform === 'darwin') {
             return Function.bind.apply(callback, this, [].slice.call(arguments, 0));
@@ -140,7 +142,8 @@
                 "min-height": 600,
                 "type": "toolbar",
                 "node-integration": false,
-                "title": "WhatsApp"
+                "title": "WhatsApp",
+                "preload": join(__dirname, 'js', 'injected.js')
             });
 
             whatsApp.window.loadUrl('https://web.whatsapp.com', {
