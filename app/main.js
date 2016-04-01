@@ -18,12 +18,20 @@
         return function() {};
     };
 
+    global.onlyLinux = function(callback) {
+        if (process.platform === 'linux') {
+            return Function.bind.apply(callback, this, [].slice.call(arguments, 0));
+        }
+        return function() {};
+    };
+
     global.onlyWin = function(callback) {
         if (process.platform === 'win32' || process.platform === 'win64') {
             return Function.bind.apply(callback, this, [].slice.call(arguments, 0));
         }
         return function() {};
     };
+
 
     global.config = {
         defaultSettings: {
@@ -39,7 +47,7 @@
         },
 
         loadConfiguration: function() {
-            var settingsFile = app.getDataPath() +"/settings.json";
+            var settingsFile = app.getPath('userData') +"/settings.json";
             try {
                 var data = fileSystem.readFileSync(settingsFile);
                 config.currentSettings = JSON.parse(data);
@@ -81,7 +89,7 @@
         },
 
         saveConfiguration: function() {
-            fileSystem.writeFileSync(app.getDataPath() + "/settings.json", JSON.stringify(config.currentSettings) , 'utf-8');
+            fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings) , 'utf-8');
         },
 
         get: function (key) {
@@ -138,15 +146,18 @@
                 "x": config.get("posX"),
                 "width": config.get("width"),
                 "height": config.get("height"),
-                "min-width": 600,
-                "min-height": 600,
-                "type": "toolbar",
-                "node-integration": false,
+                "minWdth": 600,
+                "minHeight": 600,
+                "icon": __dirname + 'assets/icon/icon.png',
+                //"type": "toolbar",
                 "title": "WhatsApp",
-                "preload": join(__dirname, 'js', 'injected.js')
+                "webPreferences": {
+                  "nodeIntegration": false,
+                  "preload": join(__dirname, 'js', 'injected.js')
+                }
             });
 
-            whatsApp.window.loadUrl('https://web.whatsapp.com', {
+            whatsApp.window.loadURL('https://web.whatsapp.com', {
                 userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.52 Safari/537.36'
             });
 
@@ -168,6 +179,12 @@
                 app.dock.setBadge(count);
                 // if (parseInt(count) > 0)
                 //     app.dock.bounce('informational');
+            }));
+
+            whatsApp.window.on('page-title-updated', onlyLinux(function(event, title) {
+                var count = title.match(/\((\d+)\)/);
+                    count = count ? count[1] : '';
+
             }));
 
             whatsApp.window.on('page-title-updated', onlyWin(function(event, title) {
@@ -212,6 +229,10 @@
             });
 
             app.on('before-quit', onlyOSX(function() {
+                whatsApp.window.forceClose = true;
+            }));
+
+            app.on('before-quit', onlyLinux(function() {
                 whatsApp.window.forceClose = true;
             }));
 
@@ -271,13 +292,16 @@
                 {
                     "width": 500,
                     "height": 500,
-                    "resizable": false,
+                    "resizable": true,
                     "center": true,
-                    "frame": false
+                    "frame": true,
+                    "webPreferences": {
+                      "nodeIntegration": true,
+                    }
                 }
             );
 
-            settings.window.loadUrl("file://" + __dirname + "/html/settings.html");
+            settings.window.loadURL("file://" + __dirname + "/html/settings.html");
             settings.window.show();
 
             settings.window.on("close", function() {
