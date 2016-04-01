@@ -7,28 +7,28 @@
             submenu: [
                 {
                     label: 'About WhatsApp',
-                    selector: 'orderFrontStandardAboutPanel:'
+                    role: 'orderFrontStandardAboutPanel:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Hide WhatsApp',
                     accelerator: 'CmdOrCtrl+H',
-                    selector: 'hide:'
+                    role: 'hide:'
                 },
                 {
                     label: 'Hide Others',
                     accelerator: 'CmdOrCtrl+Shift+H',
-                    selector: 'hideOtherApplications:'
+                    role: 'hideOtherApplications:'
                 },
                 {
                     label: 'Show All',
-                    selector: 'unhideAllApplications:'
+                    role: 'unhideAllApplications:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Quit',
                     accelerator: 'CmdOrCtrl+Q',
-                    selector: 'terminate:'
+                    role: 'terminate'
                 }
             ]
         },
@@ -38,33 +38,33 @@
                 {
                     label: 'Undo',
                     accelerator: 'CmdOrCtrl+Z',
-                    selector: 'undo:'
+                    role: 'undo:'
                 },
                 {
                     label: 'Redo',
                     accelerator: 'Shift+CmdOrCtrl+Z',
-                    selector: 'redo:'
+                    role: 'redo:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Cut',
                     accelerator: 'CmdOrCtrl+X',
-                    selector: 'cut:'
+                    role: 'cut:'
                 },
                 {
                     label: 'Copy',
                     accelerator: 'CmdOrCtrl+C',
-                    selector: 'copy:'
+                    role: 'copy:'
                 },
                 {
                     label: 'Paste',
                     accelerator: 'CmdOrCtrl+V',
-                    selector: 'paste:'
+                    role: 'paste:'
                 },
                 {
                     label: 'Select All',
                     accelerator: 'CmdOrCtrl+A',
-                    selector: 'selectAll:'
+                    role: 'selectAll:'
                 }
             ]
         },
@@ -89,17 +89,17 @@
                 {
                     label: 'Minimize',
                     accelerator: 'CmdOrCtrl+M',
-                    selector: 'performMiniaturize:'
+                    role: 'performMiniaturize:'
                 },
                 {
                     label: 'Close',
                     accelerator: 'CmdOrCtrl+W',
-                    selector: 'hide:'
+                    role: 'hide:'
                 },
                 { type: 'separator' },
                 {
                     label: 'Bring All to Front',
-                    selector: 'arrangeInFront:'
+                    role: 'arrangeInFront:'
                 },
                 {
                   label: 'Settings',
