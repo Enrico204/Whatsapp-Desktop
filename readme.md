@@ -45,6 +45,13 @@ To build from the source, run the following commands:
 `npm install`  
 `npm run build`  
 
+## How to use in Linux
+
+In order to execute the program in Linux, firt you should give it permission to the App:
+
+sudo chmod u+x WhatsApp
+./WhatsApp 
+
 --
 
 > Made with :heart: at [Macellan](http://macellan.net)
