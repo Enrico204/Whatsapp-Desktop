@@ -49,7 +49,7 @@ To build from the source, run the following commands:
 
 In order to execute the program in Linux, firt you should give it permission to the App:
 
-`sudo chmod u+x WhatsApp`
+`sudo chmod u+x WhatsApp`  
 `./WhatsApp `
 
 --
