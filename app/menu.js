@@ -13,7 +13,7 @@
                 {
                     label: 'Hide WhatsApp',
                     accelerator: 'CmdOrCtrl+H',
-                    role: 'hide:'
+                    selector: 'hide:'
                 },
                 {
                     label: 'Hide Others',
@@ -28,7 +28,7 @@
                 {
                     label: 'Quit',
                     accelerator: 'CmdOrCtrl+Q',
-                    role: 'terminate'
+                    selector: 'terminate:'
                 }
             ]
         },
@@ -89,12 +89,13 @@
                 {
                     label: 'Minimize',
                     accelerator: 'CmdOrCtrl+M',
-                    role: 'performMiniaturize:'
+                    selector: 'performMiniaturize:'
                 },
                 {
                     label: 'Close',
                     accelerator: 'CmdOrCtrl+W',
-                    role: 'hide:'
+                    selector: 'performClose:'
+
                 },
                 { type: 'separator' },
                 {
