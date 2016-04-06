@@ -1,38 +1,40 @@
 # WhatsApp Desktop
 
-WhatsApp desktop client for OSX and Windows, based on the official WhatsApp web app. Build with [Electron](http://electron.atom.io/).  
+WhatsApp desktop client, based on the official WhatsApp web app. Build with [Electron](http://electron.atom.io/).  
 
 This is **NOT** an official product. This project does not attempt to reverse engineer the WhatsApp API or attempt to reimplement any part of the WhatsApp client. Any communication between the user and WhatsApp servers is handled by official WhatsApp Web itself; this is just a native wrapper for WhatsApp Web, like a browser.
 
-**For questions and support please use the Gitter room:**
-
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rephole/WhatsApp-Desktop)
-
-
 ## Features
 
+* Cross platform. (OSX, Windows, Linux)  
 * Native notifications.  
 * System tray icon.  
 * Open links in browser.  
 * Badge with the number of notifications in the dock/taskbar.  
-* Dock icon bounces when a new message is received.
-* Focus on contact search input via CMD+K (WIN+K)
-* A couple of things can be configured:
-  * Display or not the avatars
-  * Display or not the preview of the messages
-  * Set the size for the media thumbs
-  * Set proxy to connect to WhatsApp web
+* Dock icon bounces when a new message is received.  
+* Focus on contact search input via CMD+F (WIN+F).  
+* A couple of things can be configured:  
+  * Display or not the avatars  
+  * Display or not the preview of the messages  
+  * Set the size for the media thumbs  
+  * Set proxy to connect to WhatsApp web  
 
 **Planned features:**  
 
 * Auto-launch on OS startup.  
-* Linux build.  
 
 ## Installation
 
-Download and run the WhatsApp.app or WhatsApp.exe file from the [latest release](https://github.com/bcalik/Whatsapp-Desktop/releases).  
+Download and run the WhatsApp file from the [latest release](https://github.com/bcalik/Whatsapp-Desktop/releases).  
 
-*Note: Windows version is a test release.*
+*Note: Windows and Linux versions are test release.*
+
+## How to use in Linux
+
+In order to execute the program in Linux, first you should give it permission to the App:
+
+`sudo chmod u+x WhatsApp`  
+`./WhatsApp`  
 
 ## Contributions
 
@@ -45,12 +47,10 @@ To build from the source, run the following commands:
 `npm install`  
 `npm run build`  
 
-## How to use in Linux
+## Building Windows build from non-Windows platforms
 
-In order to execute the program in Linux, firt you should give it permission to the App:
-
-`sudo chmod u+x WhatsApp`  
-`./WhatsApp `
+Wine needs to be installed. On OS X, it is installable via Homebrew:  
+`brew install wine`
 
 --
 

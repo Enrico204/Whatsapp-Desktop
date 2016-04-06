@@ -7,16 +7,16 @@
   "scripts": {
     "dev": "electron --debug=5858 ./app",
     "clean": "rm -rf ./dist",
-    "clean:win": "rm -rf ./dist/win",
-    "clean:osx": "rm -rf ./dist/osx",
-    "clean:linux": "rm -rf ./dist/linux",
-    "build": "npm run clean && npm run build:osx && npm run build:win",
-    "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist/win --platform=win32 --arch=x64 --version=0.37.3 --icon=assets/win/whatsapp.ico",
-    "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist/osx --platform=darwin --arch=x64 --version=0.37.3 --icon=assets/osx/WhatsApp.icns",
-    "build:linux": "npm run clean:linux && electron-packager ./app \"WhatsApp\" --out=dist/linux --platform=linux --arch=x64 --version=0.37.3 --icon=assets/win/whatsapp.ico"
+    "clean:win": "rm -rf ./dist/WhatsApp-win32-x64",
+    "clean:osx": "rm -rf ./dist/WhatsApp-darwin-x64",
+    "clean:linux": "rm -rf ./dist/WhatsApp-linux-x64",
+    "build": "npm run clean && npm run build:osx && npm run build:win && npm run build:linux",
+    "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist --platform=win32 --arch=x64 --version=0.37.3 --icon=assets/win/whatsapp.ico",
+    "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist --platform=darwin --arch=x64 --version=0.37.3 --icon=assets/osx/WhatsApp.icns",
+    "build:linux": "npm run clean:linux && electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=x64 --version=0.37.3 --icon=assets/win/whatsapp.ico"
   },
   "devDependencies": {
-    "electron-packager": "^5.1.0",
+    "electron-packager": "^6.0.0",
     "electron-prebuilt": "^0.37.3"
   }
 }

@@ -42,11 +42,11 @@
 
         currentSettings: {},
 
-        init: function() {
+        init() {
             config.loadConfiguration();
         },
 
-        loadConfiguration: function() {
+        loadConfiguration() {
             var settingsFile = app.getPath('userData') +"/settings.json";
             try {
                 var data = fileSystem.readFileSync(settingsFile);
@@ -56,7 +56,7 @@
             }
         },
 
-        applyConfiguration: function() {
+        applyConfiguration() {
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
                 var noAvatar = '.chat-avatar{display: none}';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
@@ -78,7 +78,7 @@
                 }
             });
 
-            if(config.get("useProxy")) {
+            if (config.get("useProxy")) {
                 var session = whatsApp.window.webContents.session;
                 var httpProxy = config.get("httpProxy");
                 var httpsProxy = config.get("httpsProxy") || httpProxy;
@@ -88,19 +88,19 @@
             }
         },
 
-        saveConfiguration: function() {
+        saveConfiguration() {
             fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings) , 'utf-8');
         },
 
-        get: function (key) {
+        get (key) {
             return config.currentSettings[key];
         },
 
-        set: function (key, value) {
+        set (key, value) {
             config.currentSettings[key] = value;
         },
 
-        unSet: function (key) {
+        unSet (key) {
             if (config.currentSettings.hasOwnProperty(key)) {
                 delete config.currentSettings[key];
             }
@@ -108,7 +108,7 @@
     };
 
     global.whatsApp = {
-        init: function() {
+        init() {
             whatsApp.createMenu();
             whatsApp.createTray();
 
@@ -118,29 +118,29 @@
             config.applyConfiguration();
         },
 
-        createMenu: function() {
+        createMenu() {
             whatsApp.menu =
                 AppMenu.buildFromTemplate(require('./menu'));
                 AppMenu.setApplicationMenu(whatsApp.menu);
         },
 
-        createTray: function() {
+        createTray() {
             whatsApp.tray = new AppTray(__dirname + '/assets/img/trayTemplate.png');
 
-            whatsApp.tray.on('clicked', function() {
+            whatsApp.tray.on('clicked', () => {
                 whatsApp.window.show();
             });
 
             whatsApp.tray.setToolTip('WhatsApp Desktop');
         },
 
-        clearCache: function() {
+        clearCache() {
             try {
                 fileSystem.unlinkSync(app.getPath('appData') + '/Application Cache/Index');
             } catch(e) {}
         },
 
-        openWindow: function() {
+        openWindow() {
             whatsApp.window = new BrowserWindow({
                 "y": config.get("posY"),
                 "x": config.get("posX"),
@@ -166,13 +166,13 @@
                 var httpProxy = config.get("httpProxy");
                 var httpsProxy = config.get("httpsProxy") || httpProxy;
                 if (httpProxy) {
-                    session.setProxy("http="+ httpProxy +";https=" + httpsProxy, function(){});
+                    session.setProxy("http="+ httpProxy +";https=" + httpsProxy, () => {});
                 }
             }
 
             whatsApp.window.show();
 
-            whatsApp.window.on('page-title-updated', onlyOSX(function(event, title) {
+            whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
@@ -181,13 +181,13 @@
                 //     app.dock.bounce('informational');
             }));
 
-            whatsApp.window.on('page-title-updated', onlyLinux(function(event, title) {
+            whatsApp.window.on('page-title-updated', onlyLinux((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
             }));
 
-            whatsApp.window.on('page-title-updated', onlyWin(function(event, title) {
+            whatsApp.window.on('page-title-updated', onlyWin((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
@@ -202,19 +202,19 @@
                 }
             }));
 
-            whatsApp.window.webContents.on("new-window", function(e, url){
+            whatsApp.window.webContents.on("new-window", (e, url) => {
                 require('shell').openExternal(url);
                 e.preventDefault();
             });
 
-            whatsApp.window.on('close', onlyOSX(function(e) {
+            whatsApp.window.on('close', onlyOSX((e) => {
                 if (whatsApp.window.forceClose !== true) {
                     e.preventDefault();
                     whatsApp.window.hide();
                 }
             }));
 
-            whatsApp.window.on("close", function() {
+            whatsApp.window.on("close", function(){
                 if (settings.window) {
                     settings.window.close();
                     settings.window = null;
@@ -228,26 +228,26 @@
                 config.saveConfiguration();
             });
 
-            app.on('before-quit', onlyOSX(function() {
+            app.on('before-quit', onlyOSX(() => {
                 whatsApp.window.forceClose = true;
             }));
 
-            app.on('before-quit', onlyLinux(function() {
+            app.on('before-quit', onlyLinux(() => {
                 whatsApp.window.forceClose = true;
             }));
 
-            app.on('activate-with-no-open-windows', onlyOSX(function() {
+            app.on('activate-with-no-open-windows', onlyOSX(() => {
                 whatsApp.window.show();
             }));
 
-            app.on('window-all-closed', onlyWin(function() {
+            app.on('window-all-closed', onlyWin(() => {
                 app.quit();
             }));
         }
     };
 
     global.settings = {
-        init: function() {
+        init() {
             // if there is already one instance of the window created show that one
             if (settings.window){
                 settings.window.show();
@@ -257,14 +257,14 @@
             }
         },
 
-        createMenu: function() {
+        createMenu() {
             settings.menu = new AppMenu();
             settings.menu.append(new MenuItem(
                 {
                     label: "close",
                     visible: false,
                     accelerator: "esc",
-                    click: function() {settings.window.close();}
+                    click() {settings.window.close();}
                 })
             );
             settings.menu.append(new MenuItem(
@@ -272,7 +272,7 @@
                     label: 'Toggle DevTools',
                     accelerator: 'Alt+CmdOrCtrl+O',
                     visible: false,
-                    click: function() {  settings.window.toggleDevTools(); }
+                    click() {  settings.window.toggleDevTools(); }
                 })
             );
             settings.menu.append(new MenuItem(
@@ -280,14 +280,14 @@
                     label: 'Reload settings view',
                     accelerator: 'CmdOrCtrl+r',
                     visible: false,
-                    click: function() { settings.window.reload();}
+                    click() { settings.window.reload();}
                 })
             );
             settings.window.setMenu(settings.menu);
             settings.window.setMenuBarVisibility(false);
         },
 
-        openWindow: function() {
+        openWindow() {
             settings.window = new BrowserWindow(
                 {
                     "width": 500,
@@ -304,13 +304,13 @@
             settings.window.loadURL("file://" + __dirname + "/html/settings.html");
             settings.window.show();
 
-            settings.window.on("close", function() {
+            settings.window.on("close", () => {
                 settings.window = null;
             });
         }
     };
 
-    app.on('ready', function() {
+    app.on('ready', () => {
         whatsApp.init();
     });
 })(this);
