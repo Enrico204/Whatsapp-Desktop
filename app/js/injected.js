@@ -12,7 +12,9 @@
                 console.log("Adding event listeners");
 
                 document.addEventListener("keydown", function (event) {
-                    if (event.keyCode === 75 && event.metaKey === true) inputSearch.focus()
+                    // cmd+k and cmd+f focuses on search input.
+                    if ((event.keyCode === 75 || event.keyCode == 70) && event.metaKey === true)
+                        inputSearch.focus();
                 });
     
                 console.log("Disconnecting the observer");
