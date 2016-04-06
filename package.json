@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": "https://github.com/bcalik/Whatsapp-Desktop.git",
   "description": "Unofficial WhatsApp Desktop Client. Build with Electron.",
   "main": "main.js",
