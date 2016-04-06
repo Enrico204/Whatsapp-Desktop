@@ -9,6 +9,13 @@
                     label: 'About WhatsApp',
                     role: 'orderFrontStandardAboutPanel:'
                 },
+                {
+                  label: 'Settings',
+                  accelerator: 'CmdOrCtrl+',
+                  click: function () {
+                    global.settings.init();
+                  }
+                },
                 { type: 'separator' },
                 {
                     label: 'Hide WhatsApp',
@@ -101,13 +108,6 @@
                 {
                     label: 'Bring All to Front',
                     role: 'arrangeInFront:'
-                },
-                {
-                  label: 'Settings',
-                  accelerator: 'CmdOrCtrl+',
-                  click: function () {
-                    global.settings.init();
-                  }
                 }
             ]
         }
