@@ -14,10 +14,10 @@ This is **NOT** an official product. This project does not attempt to reverse en
 * Dock icon bounces when a new message is received.  
 * Focus on contact search input via CMD+F (WIN+F).  
 * A couple of things can be configured:  
-  * Display or not the avatars  
-  * Display or not the preview of the messages  
+  * Toggle avatar visibility  
+  * Toggle preview of the messages visibility  
   * Set the size for the media thumbs  
-  * Set proxy to connect to WhatsApp web  
+  * Proxy settings connect to WhatsApp web  
 
 **Planned features:**  
 
