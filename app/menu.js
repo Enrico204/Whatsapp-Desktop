@@ -104,6 +104,29 @@
                     role: 'close'
                 }
             ]
+        },
+        {
+            label: 'Audio',
+            submenu: [
+                {
+                    label: 'Increase Audio Rate by 20%',
+                    accelerator: 'CmdOrCtrl+=',
+                    click: function(item, focusedWindow) {
+                        focusedWindow && focusedWindow.webContents.executeJavaScript(
+                            "window.audioRate = (window.audioRate || 1) + 0.2"
+                        )
+                    }
+                },
+                {
+                    label: 'Decrease Audio Rate by 20%',
+                    accelerator: 'CmdOrCtrl+-',
+                    click: function(item, focusedWindow) {
+                        focusedWindow && focusedWindow.webContents.executeJavaScript(
+                            "window.audioRate = (window.audioRate || 1) - 0.2"
+                        )
+                    }
+                }
+            ]
         }
     ];
 

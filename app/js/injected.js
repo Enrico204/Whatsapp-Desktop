@@ -16,7 +16,7 @@
                     if ((event.keyCode === 75 || event.keyCode == 70) && event.metaKey === true)
                         inputSearch.focus();
                 });
-    
+
                 console.log("Disconnecting the observer");
                 observer.disconnect();
             }
@@ -26,4 +26,15 @@
         observer.observe(document.querySelector("body"), config);
 
     }, false);
+
+    setInterval(function() {
+        Array.from(document.querySelectorAll('audio')).map(function(audio) {
+            audio.playbackRate = (window.audioRate || 1)
+        });
+        if (window.audioRate) {
+            Array.from(document.querySelectorAll('.meta-audio *:first-child')).map(function(span) {
+                span.innerHTML = window.audioRate.toFixed(1) + "x&nbsp;";
+            });
+        }
+    }, 200);
 })();
