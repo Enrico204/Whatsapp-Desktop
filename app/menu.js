@@ -43,7 +43,7 @@
                 },
                 {
                     label: 'Settings',
-                    accelerator: 'CmdOrCtrl+',
+                    accelerator: 'CmdOrCtrl+,',
                     click: function () {
                         global.settings.init();
                     }
