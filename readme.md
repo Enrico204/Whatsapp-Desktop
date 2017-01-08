@@ -36,6 +36,9 @@ In order to execute the program in Linux, first you should give it permission to
 `sudo chmod u+x WhatsApp`  
 `./WhatsApp`  
 
+@bil-elmoussaoui also created a package for ArchLinux users here:  
+https://aur.archlinux.org/packages/whatsapp-desktop/
+
 ## Contributions
 
 Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/bcalik/Whatsapp-Desktop/issues).
