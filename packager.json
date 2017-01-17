@@ -1,7 +1,7 @@
 {
   "osx": {
     "title": "WhatsApp",
-    "icon": "assets/osx/WhatsApp.icns",
+    "icon": "assets/osx/whatsapp.icns",
     "icon-size": 80,
     "contents": [
       {
@@ -18,13 +18,13 @@
     ]
   },
   "win": {
-    "tittle": "WhatsApp",
+    "title": "WhatsApp",
     "icon": "assets/win/whatsapp.ico",
     "icon-size": 48,
     "app-bundle-id": "WhatsApp"
   },
   "linux": {
-    "tittle": "WhatsApp",
+    "title": "WhatsApp",
     "icon": "assets/win/whatsapp.ico",
     "icon-size": 48,
     "app-bundle-id": "WhatsApp"
