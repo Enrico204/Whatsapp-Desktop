@@ -148,7 +148,6 @@
                 "height": config.get("height"),
                 "minWidth": 600,
                 "minHeight": 600,
-                "icon": __dirname + 'assets/icon/icon.png',
                 //"type": "toolbar",
                 "title": "WhatsApp",
                 "webPreferences": {
