@@ -16,7 +16,7 @@
     "build:linux": "npm run clean:linux && electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=x64 --version=0.37.3 --icon=assets/win/whatsapp.ico"
   },
   "devDependencies": {
-    "electron-packager": "^6.0.0",
+    "electron-packager": "^8.5.0",
     "electron-prebuilt": "^0.37.3"
   }
 }
