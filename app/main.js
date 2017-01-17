@@ -1,13 +1,13 @@
 (function(scope) {
     "use strict";
 
-    var app = require('app');
-    var AppMenu = require('menu');
-    var MenuItem = require('menu-item');
-    var AppTray = require('tray');
+    var app = require('electron').app;
+    var AppMenu = require('electron').Menu;
+    var MenuItem = require('electron').MenuItem;
+    var AppTray = require('electron').Tray;
     var fileSystem = require('fs');
-    var NativeImage = require('native-image');
-    var BrowserWindow = require('browser-window');
+    var NativeImage = require('electron').NativeImage;
+    var BrowserWindow = require('electron').BrowserWindow;
 
     var join = require('path').join;
 
