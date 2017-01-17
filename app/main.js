@@ -146,7 +146,7 @@
                 "x": config.get("posX"),
                 "width": config.get("width"),
                 "height": config.get("height"),
-                "minWdth": 600,
+                "minWidth": 600,
                 "minHeight": 600,
                 "icon": __dirname + 'assets/icon/icon.png',
                 //"type": "toolbar",
