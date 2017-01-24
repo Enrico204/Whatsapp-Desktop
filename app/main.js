@@ -202,7 +202,7 @@
             }));
 
             whatsApp.window.webContents.on("new-window", (e, url) => {
-                require('shell').openExternal(url);
+                require('electron').shell.openExternal(url);
                 e.preventDefault();
             });
 
