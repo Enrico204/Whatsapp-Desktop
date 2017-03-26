@@ -27,10 +27,11 @@ This is **NOT** an official product. This project does not attempt to reverse en
 
 Download and run the WhatsApp file from the [latest release](https://github.com/bcalik/Whatsapp-Desktop/releases).  
 
-*Note: Windows and Linux versions are test release.*
+*Note: Windows and Linux versions may be buggy. They are not tested properly.*
 
 ## How to use in Linux
 
+Firsty, please note that Linux version is not tested and it's probably buggy.  
 In order to execute the program in Linux, first you should give it permission to the App:
 
 `sudo chmod u+x WhatsApp`  
