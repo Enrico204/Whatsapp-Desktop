@@ -127,6 +127,34 @@
         createTray() {
             whatsApp.tray = new AppTray(__dirname + '/assets/img/trayTemplate.png');
 
+            // Setting up a trayicon context menu
+            whatsApp.trayContextMenu = AppMenu.buildFromTemplate([
+                {label: 'Show',
+                visible: false, // Hide this option on start
+                click: function() {
+                    whatsApp.window.show();
+                }},
+
+                {label: 'Hide',
+                visible: true, // Show this option on start
+                click: function() {
+                    whatsApp.window.hide();
+                }},
+
+                // Quit WhatsApp
+                {label: 'Quit', click: function() {
+                    app.quit();
+                }}
+            ]);
+            whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+
+            // Normal this will show the main window, but electron under Linux
+            // dosent work with the clicked event so we are using the above
+            // contextmenu insted - Rightclick the trayicon and pick Show
+            // WhatsApp
+            // More info:
+            // https://github.com/electron/electron/blob/master/docs/api/tray.md
+            // See the Platform limitations section.
             whatsApp.tray.on('clicked', () => {
                 whatsApp.window.show();
             });
@@ -213,6 +241,13 @@
                 }
             }));
 
+            whatsApp.window.on('close', onlyLinux((e) => {
+                if (whatsApp.window.forceClose !== true) {
+                    e.preventDefault();
+                    whatsApp.window.hide();
+                }
+            }));
+
             whatsApp.window.on("close", function(){
                 if (settings.window) {
                     settings.window.close();
@@ -225,6 +260,26 @@
                 config.set("width", this.getBounds().width);
                 config.set("height", this.getBounds().height);
                 config.saveConfiguration();
+            });
+
+            // Toggle contextmenu content when window is shown
+            whatsApp.window.on("show", function() {
+                whatsApp.trayContextMenu.items[0].visible = false;
+                whatsApp.trayContextMenu.items[1].visible = true;
+
+                // Need to re-set the contextmenu for this to work under Linux
+                // TODO: Only trigger this under Linux
+                whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+            });
+
+            // Toggle contextmenu content when window is hidden
+            whatsApp.window.on("hide", function() {
+                whatsApp.trayContextMenu.items[0].visible = true;
+                whatsApp.trayContextMenu.items[1].visible = false;
+
+                // Need to re-set the contextmenu for this to work under Linux
+                // TODO: Only trigger this under Linux
+                whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
             });
 
             app.on('before-quit', onlyOSX(() => {
