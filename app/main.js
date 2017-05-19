@@ -178,6 +178,7 @@
                 "minHeight": 600,
                 //"type": "toolbar",
                 "title": "WhatsApp",
+                "icon": __dirname + "/assets/icon/icon.png",
                 "webPreferences": {
                   "nodeIntegration": false,
                   "preload": join(__dirname, 'js', 'injected.js')
