@@ -11,6 +11,19 @@
 
     var join = require('path').join;
 
+    const isAlreadyRunning = app.makeSingleInstance(() => {
+        if (whatsApp.window) {
+            if (whatsApp.window.isMinimized()) {
+                whatsApp.window.restore();
+            }
+            whatsApp.window.show();
+        }
+    });
+
+    if (isAlreadyRunning) {
+        app.quit();
+    }
+
     global.onlyOSX = function(callback) {
         if (process.platform === 'darwin') {
             return Function.bind.apply(callback, this, [].slice.call(arguments, 0));
