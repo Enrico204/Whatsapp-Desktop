@@ -51,7 +51,7 @@ To build from the source, run the following commands:
 `npm install`  
 `npm run build`  
 
-## Building Windows build from non-Windows platforms
+## Building Windows build from non-Windows platforms
 
 Wine needs to be installed. On OS X, it is installable via Homebrew:  
 `brew install wine`
