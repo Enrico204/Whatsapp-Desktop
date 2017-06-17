@@ -1,4 +1,10 @@
 language: node_js
 node_js: "node"
+before_install:
+    - sudo apt-get -qq update
+    - sudo apt-get install -y wine
 install: npm install
-script: npm run build:linux
+script:
+    - npm run build:linux
+    - npm run build:osx
+    - npm run build:win
