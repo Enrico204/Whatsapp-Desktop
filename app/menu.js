@@ -162,7 +162,7 @@
                 {
                     label: 'Quit',
                     accelerator: 'Command+Q',
-                    click: () => { require('app').quit() }
+                    click: () => { require('electron').app.quit() }
                 },
             ]
         });
@@ -176,6 +176,24 @@
                 role: 'front'
             }
         );
+    } else if (process.platform == 'linux') {
+        template.unshift({
+            label: 'File',
+            submenu: [
+                {
+                    label: 'About WhatsApp Desktop',
+                    role: 'about'
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Quit',
+                    accelerator: 'Ctrl+Q',
+                    click: () => { require('electron').app.quit() }
+                },
+            ]
+        });
     }
 
     module.exports = template;
