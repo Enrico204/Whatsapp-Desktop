@@ -1,0 +1,139 @@
+# Whatsapp Desktop translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Whatsapp-Desktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-17 11:15+0200\n"
+"PO-Revision-Date: 2017-06-17 12:12+0100\n"
+"Last-Translator: void\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: app/main.js:148 app/main.js:149 app/main.js:168
+msgid "Show"
+msgstr "Show"
+
+#: app/main.js:154 app/main.js:155 app/main.js:174 app/menu.js:146
+msgid "Hide"
+msgstr "Hide"
+
+#: app/main.js:161 app/main.js:162 app/main.js:181 app/menu.js:163
+#: app/menu.js:191
+msgid "Quit"
+msgstr "Quit"
+
+#: app/menu.js:6
+msgid "Edit"
+msgstr "Edit"
+
+#: app/menu.js:9
+msgid "Undo"
+msgstr "Undo"
+
+#: app/menu.js:14
+msgid "Redo"
+msgstr "Redo"
+
+#: app/menu.js:22
+msgid "Cut"
+msgstr "Cut"
+
+#: app/menu.js:27
+msgid "Copy"
+msgstr "Copy"
+
+#: app/menu.js:32
+msgid "Paste"
+msgstr "Paste"
+
+#: app/menu.js:37
+msgid "Select All"
+msgstr "Select All"
+
+#: app/menu.js:45 app/html/settings.html:20
+msgid "Settings"
+msgstr "Settings"
+
+#: app/menu.js:54
+msgid "View"
+msgstr "View"
+
+#: app/menu.js:57
+msgid "Reload"
+msgstr "Reload"
+
+#: app/menu.js:65
+msgid "Toggle Full Screen"
+msgstr "Toggle Full Screen"
+
+#: app/menu.js:78
+msgid "Toggle Developer Tools"
+msgstr "Toggle Developer Tools"
+
+#: app/menu.js:93
+msgid "Window"
+msgstr "Window"
+
+#: app/menu.js:97
+msgid "Minimize"
+msgstr "Minimize"
+
+#: app/menu.js:102 app/html/settings.html:56
+msgid "Close"
+msgstr "Close"
+
+#: app/menu.js:109
+msgid "Audio"
+msgstr "Audio"
+
+#: app/menu.js:112
+msgid "Increase Audio Rate by 20%"
+msgstr "Increase Audio Rate by 20%"
+
+#: app/menu.js:121
+msgid "Decrease Audio Rate by 20%"
+msgstr "Decrease Audio Rate by 20%"
+
+#: app/menu.js:139 app/menu.js:184
+msgid "About"
+msgstr "About"
+
+#: app/menu.js:151
+msgid "Hide Others"
+msgstr "Hide Others"
+
+#: app/menu.js:156
+msgid "Show All"
+msgstr "Show All"
+
+#: app/menu.js:175
+msgid "Bring All to Front"
+msgstr "Bring All to Front"
+
+#: app/html/settings.html:25
+msgid "Hide Avatars"
+msgstr "Hide Avatars"
+
+#: app/html/settings.html:29
+msgid "Hide Message Previews"
+msgstr "Hide Message Previews"
+
+#: app/html/settings.html:40
+msgid "Use Proxy (Changes in proxy settings require app restart)"
+msgstr "Use Proxy (Changes in proxy settings require app restart)"
+
+#: app/html/settings.html:50
+msgid "Https Proxy"
+msgstr "Https Proxy"
+
+#: app/html/settings.html:57
+msgid "Save"
+msgstr "Save"
+
+msgid "Thumb Size"
+msgstr "Thumb Size"

@@ -3,15 +3,15 @@
 
     var template = [
         {
-            label: 'Edit',
+            label: _('Edit'),
             submenu: [
                 {
-                    label: 'Undo',
+                    label: _('Undo'),
                     accelerator: 'CmdOrCtrl+Z',
                     role: 'undo'
                 },
                 {
-                    label: 'Redo',
+                    label: _('Redo'),
                     accelerator: 'Shift+CmdOrCtrl+Z',
                     role: 'redo'
                 },
@@ -19,22 +19,22 @@
                     type: 'separator'
                 },
                 {
-                    label: 'Cut',
+                    label: _('Cut'),
                     accelerator: 'CmdOrCtrl+X',
                     role: 'cut'
                 },
                 {
-                    label: 'Copy',
+                    label: _('Copy'),
                     accelerator: 'CmdOrCtrl+C',
                     role: 'copy'
                 },
                 {
-                    label: 'Paste',
+                    label: _('Paste'),
                     accelerator: 'CmdOrCtrl+V',
                     role: 'paste'
                 },
                 {
-                    label: 'Select All',
+                    label: _('Select All'),
                     accelerator: 'CmdOrCtrl+A',
                     role: 'selectall'
                 },
@@ -42,7 +42,7 @@
                     type: 'separator'
                 },
                 {
-                    label: 'Settings',
+                    label: _('Settings'),
                     accelerator: 'CmdOrCtrl+,',
                     click: function () {
                         global.settings.init();
@@ -51,10 +51,10 @@
             ]
         },
         {
-            label: 'View',
+            label: _('View'),
             submenu: [
                 {
-                    label: 'Reload',
+                    label: _('Reload'),
                     accelerator: 'CmdOrCtrl+R',
                     click: function(item, focusedWindow) {
                         if (focusedWindow)
@@ -62,7 +62,7 @@
                     }
                 },
                 {
-                    label: 'Toggle Full Screen',
+                    label: _('Toggle Full Screen'),
                     accelerator: (function() {
                         if (process.platform == 'darwin')
                             return 'Ctrl+Command+F';
@@ -75,7 +75,7 @@
                     }
                 },
                 {
-                    label: 'Toggle Developer Tools',
+                    label: _('Toggle Developer Tools'),
                     accelerator: (function() {
                         if (process.platform == 'darwin')
                             return 'Alt+Command+I';
@@ -90,26 +90,26 @@
             ]
         },
         {
-            label: 'Window',
+            label: _('Window'),
             role: 'window',
             submenu: [
                 {
-                    label: 'Minimize',
+                    label: _('Minimize'),
                     accelerator: 'CmdOrCtrl+M',
                     role: 'minimize'
                 },
                 {
-                    label: 'Close',
+                    label: _('Close'),
                     accelerator: 'CmdOrCtrl+W',
                     role: 'close'
                 }
             ]
         },
         {
-            label: 'Audio',
+            label: _('Audio'),
             submenu: [
                 {
-                    label: 'Increase Audio Rate by 20%',
+                    label: _('Increase Audio Rate by 20%'),
                     accelerator: 'CmdOrCtrl+=',
                     click: function(item, focusedWindow) {
                         focusedWindow && focusedWindow.webContents.executeJavaScript(
@@ -118,7 +118,7 @@
                     }
                 },
                 {
-                    label: 'Decrease Audio Rate by 20%',
+                    label: _('Decrease Audio Rate by 20%'),
                     accelerator: 'CmdOrCtrl+-',
                     click: function(item, focusedWindow) {
                         focusedWindow && focusedWindow.webContents.executeJavaScript(
@@ -136,31 +136,31 @@
             label: name,
             submenu: [
                 {
-                    label: 'About ' + name,
+                    label: _('About') + " " + name,
                     role: 'about'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: 'Hide ' + name,
+                    label: _('Hide') + " " + name,
                     accelerator: 'Command+H',
                     role: 'hide'
                 },
                 {
-                    label: 'Hide Others',
+                    label: _('Hide Others'),
                     accelerator: 'Command+Alt+H',
                     role: 'hideothers'
                 },
                 {
-                    label: 'Show All',
+                    label: _('Show All'),
                     role: 'unhide'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: 'Quit',
+                    label: _('Quit'),
                     accelerator: 'Command+Q',
                     click: () => { require('electron').app.quit() }
                 },
@@ -172,7 +172,7 @@
                 type: 'separator'
             },
             {
-                label: 'Bring All to Front',
+                label: _('Bring All to Front'),
                 role: 'front'
             }
         );
@@ -181,14 +181,14 @@
             label: 'File',
             submenu: [
                 {
-                    label: 'About WhatsApp Desktop',
+                    label: _('About') + ' WhatsApp Desktop',
                     role: 'about'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: 'Quit',
+                    label: _('Quit'),
                     accelerator: 'Ctrl+Q',
                     click: () => { require('electron').app.quit() }
                 },

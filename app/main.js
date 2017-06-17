@@ -8,8 +8,31 @@
     var fileSystem = require('fs');
     var NativeImage = require('electron').NativeImage;
     var BrowserWindow = require('electron').BrowserWindow;
+    var nodeGettext = require('node-gettext');
+    var gettextParser = require("gettext-parser");
 
     var join = require('path').join;
+
+    var supportedLocales = ['en_US', 'it_IT'];
+
+    global.gt = new nodeGettext();
+    for (var i in supportedLocales) {
+        var loc = supportedLocales[i];
+        gt.addTranslations(loc, 'messages', gettextParser.po.parse(fileSystem.readFileSync("./app/locale/"+loc+"/messages.po")));
+    }
+    gt.setLocale("en_US");
+    gt.setTextDomain("messages");
+    global._ = function (t) {
+        return gt.gettext(t);
+    }
+
+    // Setting default language to system language if available
+    var syslang = (process.env.LC_ALL != undefined ? process.env.LC_ALL :
+        (process.env.LANG != undefined ? process.env.LANG :
+            (process.env.LC_MESSAGES != undefined ? process.env.LC_MESSAGES : 'en-US')));
+    if (supportedLocales.indexOf(syslang.split(".")[0]) >= 0) {
+        gt.setLocale(syslang.split(".")[0]);
+    }
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -142,20 +165,20 @@
 
             // Setting up a trayicon context menu
             whatsApp.trayContextMenu = AppMenu.buildFromTemplate([
-                {label: 'Show',
+                {label: _('Show'),
                 visible: false, // Hide this option on start
                 click: function() {
                     whatsApp.window.show();
                 }},
 
-                {label: 'Hide',
+                {label: _('Hide'),
                 visible: true, // Show this option on start
                 click: function() {
                     whatsApp.window.hide();
                 }},
 
                 // Quit WhatsApp
-                {label: 'Quit', click: function() {
+                {label: _('Quit'), click: function() {
                     app.quit();
                 }}
             ]);
@@ -358,7 +381,7 @@
         openWindow() {
             settings.window = new BrowserWindow(
                 {
-                    "width": 500,
+                    "width": 550,
                     "height": 500,
                     "resizable": true,
                     "center": true,
