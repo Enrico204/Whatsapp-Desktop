@@ -6,6 +6,7 @@
   window.jQuery = window.$ = require('../js/lib/jquery.min.js');
   window.Hammer = require('../js/lib/hammer.min.js');
   window.app = require('electron').remote;
+  _ = window.app.getGlobal("_");
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="../css/settings.css">
@@ -16,44 +17,44 @@
 <body>
   <main class="main-container">
     <header>
-      <h4 class="teal-text text-lighten-1">Settings</h4>
+      <h4 class="teal-text text-lighten-1"><script> document.write(_("Settings")); </script></h4>
     </header>
     <div id="settings-wrapper">
       <p>
         <input type="checkbox" id="avatars" />
-        <label for="avatars">Hide Avatars</label>
+        <label for="avatars"><script> document.write(_("Hide Avatars")); </script></label>
       </p>
       <p>
         <input type="checkbox" id="previews" />
-        <label for="previews">Hide Message Previews</label>
+        <label for="previews"><script> document.write(_("Hide Message Previews")); </script></label>
       </p>
       <div class="row">
         <div class="input-field col s8">
           <input id="thumb-size" type="number" class="validate"  min="50" max="150">
-          <label id="thumb-size_label" for="thumb-size" data-error="Must be between 50 and 150">Thumb Size</label>
+          <label id="thumb-size_label" for="thumb-size" data-error="Must be between 50 and 150"><script> document.write(_("Thumb Size")); </script></label>
         </div>
       </div>
 
       <p>
         <input type="checkbox" id="useProxy" />
-        <label for="useProxy">Use Proxy (Changes in proxy settings require app restart)</label>
+        <label for="useProxy"><script> document.write(_("Use Proxy (Changes in proxy settings require app restart)")); </script></label>
       </p>
 
       <div class="row">
         <div class="input-field col s6">
           <input id="httpProxy" type="text" class="validate">
-          <label id="httpProxy_label" for="httpProxy" data-error="This field is required if you are using a proxy">Http Proxy</label>
+          <label id="httpProxy_label" for="httpProxy" data-error="This field is required if you are using a proxy"><script> document.write(_("Http Proxy")); </script></label>
         </div>
         <div class="input-field col s6">
           <input id="httpsProxy" type="text" placeholder="Leave blank to use the same" class="validate">
-          <label id="httpsProxy_label" for="httpsProxy" >Https Proxy</label>
+          <label id="httpsProxy_label" for="httpsProxy" ><script> document.write(_("Https Proxy")); </script></label>
         </div>
       </div>
 
       <div class="row">
         <div class="col s6 offset-s6 ">
-          <a id="close-button" class="waves-effect waves-light btn">Close</a>
-          <a id="save-button" class="waves-effect waves-light btn">Save</a>
+          <a id="close-button" class="waves-effect waves-light btn"><script> document.write(_("Close")); </script></a>
+          <a id="save-button" class="waves-effect waves-light btn"><script> document.write(_("Save")); </script></a>
         </div>
       </div>
     </div>
