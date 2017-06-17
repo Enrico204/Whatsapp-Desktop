@@ -1,10 +1,13 @@
 language: node_js
 node_js: "node"
 before_install:
-    - sudo apt-get -qq update
-    - sudo apt-get install -y wine
+    - sudo add-apt-repository ppa:wine/wine-builds
+    - sudo apt-get update
+    - sudo apt-get install -y wine-staging
 install: npm install
 before_script:
+  - export WINEDLLOVERRIDES="mscoree,mshtml="
+  - export PATH=$PATH:/opt/wine-staging/bin/
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
