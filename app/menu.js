@@ -87,6 +87,19 @@
                             focusedWindow.toggleDevTools();
                     }
                 },
+                {
+                    label: 'Phone info',
+                    accelerator: (function() {
+                        if (process.platform == 'darwin')
+                            return 'Alt+Command+N';
+                        else
+                            return 'Ctrl+Shift+N';
+                    })(),
+                    click: function(item, focusedWindow) {
+                        if (focusedWindow)
+                            global.phoneinfo.init();
+                    }
+                }
             ]
         },
         {

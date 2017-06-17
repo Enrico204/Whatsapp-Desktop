@@ -401,6 +401,80 @@
         }
     };
 
+    const {ipcMain} = require('electron');
+    ipcMain.on('phoneinfoupdate', (event, arg) => {
+        global.phoneinfo.infos = arg
+    });
+
+    global.phoneinfo = {
+        init() {
+            // if there is already one instance of the window created show that one
+            if (phoneinfo.window){
+                phoneinfo.window.show();
+            } else {
+                phoneinfo.openWindow();
+                phoneinfo.createMenu();
+            }
+        },
+
+        createMenu() {
+            phoneinfo.menu = new AppMenu();
+            phoneinfo.menu.append(new MenuItem(
+                {
+                    label: "close",
+                    visible: false,
+                    accelerator: "esc",
+                    click() {phoneinfo.window.close();}
+                })
+            );
+            phoneinfo.menu.append(new MenuItem(
+                {
+                    label: 'Reload phoneinfo view',
+                    accelerator: 'CmdOrCtrl+r',
+                    visible: false,
+                    click() { phoneinfo.window.reload();}
+                })
+            );
+            phoneinfo.menu.append(new MenuItem({
+                label: 'Toggle Developer Tools',
+                accelerator: (function() {
+                    if (process.platform == 'darwin')
+                        return 'Alt+Command+I';
+                    else
+                        return 'Ctrl+Shift+I';
+                })(),
+                click: function(item, focusedWindow) {
+                    if (focusedWindow)
+                        focusedWindow.toggleDevTools();
+                }
+            }));
+            phoneinfo.window.setMenu(phoneinfo.menu);
+            phoneinfo.window.setMenuBarVisibility(false);
+        },
+
+        openWindow() {
+            phoneinfo.window = new BrowserWindow(
+                {
+                    "width": 500,
+                    "height": 500,
+                    "resizable": true,
+                    "center": true,
+                    "frame": true,
+                    "webPreferences": {
+                      "nodeIntegration": true,
+                    }
+                }
+            );
+
+            phoneinfo.window.loadURL("file://" + __dirname + "/html/phoneinfo.html");
+            phoneinfo.window.show();
+
+            phoneinfo.window.on("close", () => {
+                phoneinfo.window = null;
+            });
+        }
+    }
+
     app.on('ready', () => {
         whatsApp.init();
     });
