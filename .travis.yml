@@ -19,7 +19,7 @@ before_deploy:
 - sudo apt-get install -y zip
 - cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && zip -r WhatsApp-linux-x64.zip WhatsApp-linux-x64/ && cd ..
 deploy:
-  provider: release
+  provider: releases
   skip_cleanup: true
   on:
     tags: true
