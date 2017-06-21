@@ -59,11 +59,14 @@ Contributions are welcome! For feature requests and bug reports please submit an
 To build from the source, run the following commands:
 
     npm install
+    cd app/
+    npm install
+    cd ..
     npm run build:platform
 
 where `build:platform` can be `build:linux` if you want to build only for Linux, `build:osx` for OSX only, `build:win` for Windows only, or simply `build` to build for all platforms.
 
-You'll find artifacts into `dists/` directory.
+You'll find artifacts into `dist/` directory.
 
 ### Building Windows build from non-Windows platforms
 

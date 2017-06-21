@@ -18,7 +18,11 @@
     global.gt = new nodeGettext();
     for (var i in supportedLocales) {
         var loc = supportedLocales[i];
-        gt.addTranslations(loc, 'messages', gettextParser.po.parse(fileSystem.readFileSync("./app/locale/"+loc+"/messages.po")));
+        var dir = process.resourcesPath+"/app/locale/"+loc+"/messages.po";
+        if (!fileSystem.existsSync(dir)) {
+          dir = "./app/locale/"+loc+"/messages.po";
+        }
+        gt.addTranslations(loc, 'messages', gettextParser.po.parse(fileSystem.readFileSync(dir)));
     }
     gt.setLocale("en_US");
     gt.setTextDomain("messages");

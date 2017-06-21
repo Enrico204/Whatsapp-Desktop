@@ -40,6 +40,4 @@ esac
 
 #DEBHELPER#
 
-db_stop
-
 exit 0

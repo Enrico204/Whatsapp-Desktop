@@ -1,7 +1,7 @@
 {
   "name": "whatsapp-desktop",
   "version": "0.3.5",
-  "repository": "https://github.com/bcalik/Whatsapp-Desktop.git",
+  "repository": "https://github.com/Enrico204/Whatsapp-Desktop.git",
   "description": "Unofficial WhatsApp Desktop Client. Build with Electron.",
   "main": "main.js",
   "scripts": {
@@ -15,10 +15,6 @@
     "build:win": "npm run clean:win && electron-packager ./app \"WhatsApp\" --out=dist --platform=win32 --arch=x64 --version=1.4.3 --icon=assets/win/whatsapp.ico",
     "build:osx": "npm run clean:osx && electron-packager ./app \"WhatsApp\" --out=dist --platform=darwin --arch=x64 --version=1.4.3 --icon=assets/osx/whatsapp.icns",
     "build:linux": "npm run clean:linux && electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=x64 --version=1.4.3 --icon=assets/win/whatsapp.ico"
-  },
-  "dependencies": {
-    "gettext-parser": "1.2.2",
-    "node-gettext": "2.0.0"
   },
   "devDependencies": {
     "electron-packager": "^8.5.0",
