@@ -1,4 +1,4 @@
-# WhatsApp Desktop
+# WhatsApp Desktop [![Build Status](https://travis-ci.org/Enrico204/Whatsapp-Desktop.svg?branch=master)](https://travis-ci.org/Enrico204/Whatsapp-Desktop)
 
 WhatsApp desktop client, based on the official WhatsApp web app. Build with [Electron](http://electron.atom.io/).  
 
