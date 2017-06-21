@@ -6,3 +6,8 @@ npm-debug.log
 node_modules/*
 electron-*
 *.mo
+.pc
+*.log
+*.substvars
+*.EX
+debian/whatsapp-desktop/

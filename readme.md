@@ -35,6 +35,10 @@ You can download the ArchLinux package from https://aur.archlinux.org/packages/w
 
 Thanks to @bil-elmoussaoui
 
+## Installation on Debian/Ubuntu
+
+You can download the DEB package from the [latest release](https://github.com/Enrico204/Whatsapp-Desktop/releases)
+
 ## Installation (no package / others platforms)
 
 Download and run the WhatsApp file from the [latest release](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
@@ -43,8 +47,8 @@ Download and run the WhatsApp file from the [latest release](https://github.com/
 
 In order to execute the program in Linux, first you should give it permission to the App:
 
-`sudo chmod u+x WhatsApp`  
-`./WhatsApp`  
+    sudo chmod u+x WhatsApp
+    ./WhatsApp
 
 ## Contributions
 
@@ -54,8 +58,8 @@ Contributions are welcome! For feature requests and bug reports please submit an
 
 To build from the source, run the following commands:
 
-`npm install`  
-`npm run build:platform`  
+    npm install
+    npm run build:platform
 
 where `build:platform` can be `build:linux` if you want to build only for Linux, `build:osx` for OSX only, `build:win` for Windows only, or simply `build` to build for all platforms.
 
@@ -64,8 +68,11 @@ You'll find artifacts into `dists/` directory.
 ### Building Windows build from non-Windows platforms
 
 Wine needs to be installed. On OS X, it is installable via Homebrew:  
-`brew install wine`
+
+    brew install wine
 
 On GNU/Linux you can install `wine` from your distro package manager.
 
 Please mind that `wine` requires an Xorg display, so you should set correctly your DISPLAY env var (you can use `Xvfb` if you don't have/want a real Xorg display running)
+
+### Build Debian package
