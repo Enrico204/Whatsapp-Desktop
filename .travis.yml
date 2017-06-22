@@ -5,7 +5,9 @@ before_install:
 - sudo apt-get update
 - sudo apt-get install -y wine-staging
 - sudo apt-get install -y devscripts build-essential lintian dh-make
-install: npm run prepare
+install:
+- npm install
+- cd app/ && npm install && cd ..
 before_script:
 - export WINEDLLOVERRIDES="mscoree,mshtml="
 - export PATH=$PATH:/opt/wine-staging/bin/
