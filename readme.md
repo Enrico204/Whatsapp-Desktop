@@ -27,7 +27,6 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 * Auto-launch on OS startup.
 * "Let the gtk icon theme manage the applet icon" (from @rotsix)
 * Enable/disable menubar icon
-* Packages for Debian/Ubuntu
 
 ## Installation on ArchLinux
 
@@ -79,3 +78,10 @@ On GNU/Linux you can install `wine` from your distro package manager.
 Please mind that `wine` requires an Xorg display, so you should set correctly your DISPLAY env var (you can use `Xvfb` if you don't have/want a real Xorg display running)
 
 ### Build Debian package
+
+After `npm run build:linux`, launch:
+
+    debuild -b -uc -us
+
+Note that if version is changed you should use `dch` first.
+
