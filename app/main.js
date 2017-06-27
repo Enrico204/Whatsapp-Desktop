@@ -6,7 +6,7 @@
     var MenuItem = require('electron').MenuItem;
     var AppTray = require('electron').Tray;
     var fileSystem = require('fs');
-    var NativeImage = require('electron').NativeImage;
+    var NativeImage = require('electron').nativeImage;
     var BrowserWindow = require('electron').BrowserWindow;
     var nodeGettext = require('node-gettext');
     var gettextParser = require("gettext-parser");

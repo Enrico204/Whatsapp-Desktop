@@ -11,3 +11,4 @@ electron-*
 *.substvars
 *.EX
 debian/whatsapp-desktop/
+debian/files
