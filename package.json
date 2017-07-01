@@ -19,5 +19,9 @@
   "devDependencies": {
     "electron-packager": "^8.5.0",
     "electron": "^1.4.14"
+  },
+  "dependencies": {
+    "process-nextick-args": "^1.0.7",
+    "util-deprecate": "^1.0.2"
   }
 }
