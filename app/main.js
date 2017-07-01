@@ -165,7 +165,12 @@
         },
 
         createTray() {
-            whatsApp.tray = new AppTray(__dirname + '/assets/img/trayTemplate.png');
+            var trayImg = __dirname + '/assets/img/trayTemplate.png';
+            // Darwin requires black/white/transparent icon, other platforms does not
+            if (process.platform != 'darwin') {
+                trayImg = __dirname + '/assets/icon/icon.png';
+            }
+            whatsApp.tray = new AppTray(trayImg);
 
             // Setting up a trayicon context menu
             whatsApp.trayContextMenu = AppMenu.buildFromTemplate([
