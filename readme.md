@@ -25,7 +25,6 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 **Planned features:**  
 
 * Auto-launch on OS startup.
-* "Let the gtk icon theme manage the applet icon" (from @rotsix)
 * Enable/disable menubar icon
 
 ## Installation on ArchLinux
@@ -84,4 +83,3 @@ After `npm run build:linux`, launch:
     debuild -b -uc -us
 
 Note that if version is changed you should use `dch` first.
-
