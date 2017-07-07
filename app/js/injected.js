@@ -8,6 +8,7 @@
             return;
         }
         ipcRenderer.send('phoneinfoupdate', {
+            'info': window.Store.Stream.info,
             'me': "+" + window.Store.Conn.me.split("@")[0],
             'battery': window.Store.Conn.battery,
             'plugged': window.Store.Conn.plugged,

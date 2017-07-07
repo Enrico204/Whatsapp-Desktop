@@ -88,7 +88,7 @@
                     }
                 },
                 {
-                    label: 'Phone info',
+                    label: _('Phone info'),
                     accelerator: (function() {
                         if (process.platform == 'darwin')
                             return 'Alt+Command+N';

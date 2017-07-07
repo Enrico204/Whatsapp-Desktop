@@ -149,6 +149,7 @@
 
     global.whatsApp = {
         init() {
+            global.whatsApp.warningIcon = false;
             whatsApp.createMenu();
             whatsApp.createTray();
 
@@ -162,6 +163,20 @@
             whatsApp.menu =
                 AppMenu.buildFromTemplate(require('./menu'));
                 AppMenu.setApplicationMenu(whatsApp.menu);
+        },
+
+        setWarningTray() {
+            if (process.platform != 'darwin' && !global.whatsApp.warningIcon) {
+                whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarning.png');
+                global.whatsApp.warningIcon = true;
+            }
+        },
+
+        setNormalTray() {
+            if (process.platform != 'darwin' && global.whatsApp.warningIcon) {
+                whatsApp.tray.setImage(__dirname + '/assets/icon/icon.png');
+                global.whatsApp.warningIcon = false;
+            }
         },
 
         createTray() {
@@ -201,6 +216,9 @@
             // https://github.com/electron/electron/blob/master/docs/api/tray.md
             // See the Platform limitations section.
             whatsApp.tray.on('clicked', () => {
+                whatsApp.window.show();
+            });
+            whatsApp.tray.on('click', () => {
                 whatsApp.window.show();
             });
 
@@ -412,7 +430,12 @@
 
     const {ipcMain} = require('electron');
     ipcMain.on('phoneinfoupdate', (event, arg) => {
-        global.phoneinfo.infos = arg
+        global.phoneinfo.infos = arg;
+        if (arg.info != "NORMAL") {
+            global.whatsApp.setWarningTray();
+        } else {
+            global.whatsApp.setNormalTray();
+        }
     });
 
     global.phoneinfo = {

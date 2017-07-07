@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Whatsapp-Desktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-17 11:15+0200\n"
-"PO-Revision-Date: 2017-06-17 12:12+0100\n"
+"PO-Revision-Date: 2017-07-07 20:40+0100\n"
 "Last-Translator: void\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -14,15 +14,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: app/main.js:148 app/main.js:168
+#: app/main.js:168 app/main.js:192
 msgid "Show"
 msgstr "Visualizza"
 
-#: app/main.js:154 app/main.js:174 app/menu.js:146
+#: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
 msgid "Hide"
 msgstr "Nascondi"
 
-#: app/main.js:161 app/main.js:181 app/menu.js:163 app/menu.js:191
+#: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
+#: app/menu.js:176 app/menu.js:204
 msgid "Quit"
 msgstr "Esci"
 
@@ -74,43 +75,43 @@ msgstr "Attiva/disattiva schermo intero"
 msgid "Toggle Developer Tools"
 msgstr "Attiva/disattiva tool sviluppatori"
 
-#: app/menu.js:93
+#: app/menu.js:93 app/menu.js:106
 msgid "Window"
 msgstr "Finestra"
 
-#: app/menu.js:97
+#: app/menu.js:97 app/menu.js:110
 msgid "Minimize"
 msgstr "Minimizza"
 
-#: app/menu.js:102 app/html/settings.html:56
+#: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
 msgid "Close"
 msgstr "Chiudi"
 
-#: app/menu.js:109
+#: app/menu.js:109 app/menu.js:122
 msgid "Audio"
 msgstr "Audio"
 
-#: app/menu.js:112
+#: app/menu.js:112 app/menu.js:125
 msgid "Increase Audio Rate by 20%"
 msgstr "Incrementa la velocità dell'audio del 20%"
 
-#: app/menu.js:121
+#: app/menu.js:121 app/menu.js:134
 msgid "Decrease Audio Rate by 20%"
 msgstr "Decrementa la velocità dell'audio del 20%"
 
-#: app/menu.js:139 app/menu.js:184
+#: app/menu.js:139 app/menu.js:184 app/menu.js:152 app/menu.js:197
 msgid "About"
 msgstr "Riguardo a"
 
-#: app/menu.js:151
+#: app/menu.js:151 app/menu.js:164
 msgid "Hide Others"
 msgstr "Nascondi le altre"
 
-#: app/menu.js:156
+#: app/menu.js:156 app/menu.js:169
 msgid "Show All"
 msgstr "Visualizza tutto"
 
-#: app/menu.js:175
+#: app/menu.js:175 app/menu.js:188
 msgid "Bring All to Front"
 msgstr "Porta tutto in primo piano"
 
@@ -134,5 +135,9 @@ msgstr "Proxy HTTPS"
 msgid "Save"
 msgstr "Salva"
 
-msgid "Thumb Size"
-msgstr "Dimensione anteprima"
+#: app/menu.js:91
+msgid "Phone info"
+msgstr "Informazioni telefono"
+
+#~ msgid "Thumb Size"
+#~ msgstr "Dimensione anteprima"
