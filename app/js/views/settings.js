@@ -25,6 +25,7 @@ var SettingsView = {
     },
 
     init() {
+        $("#trayicon").attr("checked", config.get("trayicon") != false);
         $("#avatars").attr("checked", config.get("hideAvatars"));
         $("#previews").attr("checked", config.get("hidePreviews"));
         if (config.get("thumbSize")) {
@@ -43,6 +44,7 @@ var SettingsView = {
         config.set("hideAvatars", $("#avatars").is(":checked"));
         config.set("hidePreviews", $("#previews").is(":checked"));
         config.set("thumbSize", parseInt($("#thumb-size").val(), 10));
+        config.set("trayicon", $("#trayicon").is(":checked"));
         if ($("#useProxy").is(":checked")) {
             config.set("useProxy", $("#useProxy").is(":checked"));
             config.set("httpProxy", $("#httpProxy").val());

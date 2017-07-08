@@ -189,17 +189,10 @@
                 role: 'front'
             }
         );
-    } else if (process.platform == 'linux') {
+    } else if (process.platform == 'linux' || process.platform == 'win64' || process.platform == 'win32') {
         template.unshift({
             label: 'File',
             submenu: [
-                {
-                    label: _('About') + ' WhatsApp Desktop',
-                    role: 'about'
-                },
-                {
-                    type: 'separator'
-                },
                 {
                     label: _('Quit'),
                     accelerator: 'Ctrl+Q',

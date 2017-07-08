@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Whatsapp-Desktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-17 11:15+0200\n"
-"PO-Revision-Date: 2017-07-07 20:40+0100\n"
+"PO-Revision-Date: 2017-07-08 08:12+0100\n"
 "Last-Translator: void\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -14,16 +14,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: app/main.js:168 app/main.js:192
+#: app/main.js:168 app/main.js:192 app/main.js:198
 msgid "Show"
 msgstr "Visualizza"
 
 #: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
+#: app/main.js:204
 msgid "Hide"
 msgstr "Nascondi"
 
 #: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
-#: app/menu.js:176 app/menu.js:204
+#: app/menu.js:176 app/menu.js:204 app/main.js:211
 msgid "Quit"
 msgstr "Esci"
 
@@ -84,6 +85,7 @@ msgid "Minimize"
 msgstr "Minimizza"
 
 #: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
+#: app/html/settings.html:60
 msgid "Close"
 msgstr "Chiudi"
 
@@ -123,21 +125,25 @@ msgstr "Nascondi gli avatars"
 msgid "Hide Message Previews"
 msgstr "Nascondi le anteprime dei messaggi"
 
-#: app/html/settings.html:40
+#: app/html/settings.html:40 app/html/settings.html:44
 msgid "Use Proxy (Changes in proxy settings require app restart)"
 msgstr "Usa un proxy (è necessario un riavvio)"
 
-#: app/html/settings.html:50
+#: app/html/settings.html:50 app/html/settings.html:54
 msgid "Https Proxy"
 msgstr "Proxy HTTPS"
 
-#: app/html/settings.html:57
+#: app/html/settings.html:57 app/html/settings.html:61
 msgid "Save"
 msgstr "Salva"
 
 #: app/menu.js:91
 msgid "Phone info"
 msgstr "Informazioni telefono"
+
+#: app/html/settings.html:33
+msgid "Show Tray Icon"
+msgstr "Visualizza icona nel vassoio"
 
 #~ msgid "Thumb Size"
 #~ msgstr "Dimensione anteprima"

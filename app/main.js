@@ -126,6 +126,12 @@
                   session.setProxy("http="+ httpProxy +";https=" + httpsProxy, function(){});
                 }
             }
+            if (config.get("trayicon") != false && whatsApp.tray == undefined) {
+                whatsApp.createTray();
+            } else if (config.get("trayicon") == false && whatsApp.tray != undefined) {
+                whatsApp.tray.destroy();
+                whatsApp.tray = undefined;
+            }
         },
 
         saveConfiguration() {
@@ -150,8 +156,8 @@
     global.whatsApp = {
         init() {
             global.whatsApp.warningIcon = false;
+            whatsApp.tray = undefined;
             whatsApp.createMenu();
-            whatsApp.createTray();
 
             whatsApp.clearCache();
             config.init();
@@ -166,14 +172,14 @@
         },
 
         setWarningTray() {
-            if (process.platform != 'darwin' && !global.whatsApp.warningIcon) {
+            if (whatsApp.tray != undefined && process.platform != 'darwin' && !global.whatsApp.warningIcon) {
                 whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarning.png');
                 global.whatsApp.warningIcon = true;
             }
         },
 
         setNormalTray() {
-            if (process.platform != 'darwin' && global.whatsApp.warningIcon) {
+            if (whatsApp.tray != undefined && process.platform != 'darwin' && global.whatsApp.warningIcon) {
                 whatsApp.tray.setImage(__dirname + '/assets/icon/icon.png');
                 global.whatsApp.warningIcon = false;
             }
@@ -306,7 +312,9 @@
             }));
 
             whatsApp.window.on('close', onlyLinux((e) => {
-                if (whatsApp.window.forceClose !== true) {
+                if (whatsApp.tray == undefined) {
+                    app.quit();
+                } else if (whatsApp.window.forceClose !== true) {
                     e.preventDefault();
                     whatsApp.window.hide();
                 }
@@ -328,22 +336,26 @@
 
             // Toggle contextmenu content when window is shown
             whatsApp.window.on("show", function() {
-                whatsApp.trayContextMenu.items[0].visible = false;
-                whatsApp.trayContextMenu.items[1].visible = true;
+                if (whatsApp.tray != undefined) {
+                    whatsApp.trayContextMenu.items[0].visible = false;
+                    whatsApp.trayContextMenu.items[1].visible = true;
 
-                // Need to re-set the contextmenu for this to work under Linux
-                // TODO: Only trigger this under Linux
-                whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+                    // Need to re-set the contextmenu for this to work under Linux
+                    // TODO: Only trigger this under Linux
+                    whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+                }
             });
 
             // Toggle contextmenu content when window is hidden
             whatsApp.window.on("hide", function() {
-                whatsApp.trayContextMenu.items[0].visible = true;
-                whatsApp.trayContextMenu.items[1].visible = false;
+                if (whatsApp.tray != undefined) {
+                    whatsApp.trayContextMenu.items[0].visible = true;
+                    whatsApp.trayContextMenu.items[1].visible = false;
 
-                // Need to re-set the contextmenu for this to work under Linux
-                // TODO: Only trigger this under Linux
-                whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+                    // Need to re-set the contextmenu for this to work under Linux
+                    // TODO: Only trigger this under Linux
+                    whatsApp.tray.setContextMenu(whatsApp.trayContextMenu);
+                }
             });
 
             app.on('before-quit', onlyOSX(() => {

@@ -22,11 +22,6 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
   * Set the size for the media thumbs  
   * Proxy settings connect to WhatsApp web  
 
-**Planned features:**  
-
-* Auto-launch on OS startup.
-* Enable/disable menubar icon
-
 ## Installation on ArchLinux
 
 You can download the ArchLinux package from https://aur.archlinux.org/packages/whatsapp-desktop/

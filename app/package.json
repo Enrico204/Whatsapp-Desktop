@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "main": "main.js",
   "dependencies": {
     "gettext-parser": "1.2.2",

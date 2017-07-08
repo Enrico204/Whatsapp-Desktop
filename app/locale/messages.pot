@@ -14,16 +14,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: app/main.js:168 app/main.js:192
+#: app/main.js:168 app/main.js:192 app/main.js:198
 msgid "Show"
 msgstr ""
 
 #: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
+#: app/main.js:204
 msgid "Hide"
 msgstr ""
 
 #: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
-#: app/menu.js:176 app/menu.js:204
+#: app/menu.js:176 app/menu.js:204 app/main.js:211
 msgid "Quit"
 msgstr ""
 
@@ -84,6 +85,7 @@ msgid "Minimize"
 msgstr ""
 
 #: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
+#: app/html/settings.html:60
 msgid "Close"
 msgstr ""
 
@@ -123,18 +125,22 @@ msgstr ""
 msgid "Hide Message Previews"
 msgstr ""
 
-#: app/html/settings.html:40
+#: app/html/settings.html:40 app/html/settings.html:44
 msgid "Use Proxy (Changes in proxy settings require app restart)"
 msgstr ""
 
-#: app/html/settings.html:50
+#: app/html/settings.html:50 app/html/settings.html:54
 msgid "Https Proxy"
 msgstr ""
 
-#: app/html/settings.html:57
+#: app/html/settings.html:57 app/html/settings.html:61
 msgid "Save"
 msgstr ""
 
 #: app/menu.js:91
 msgid "Phone info"
+msgstr ""
+
+#: app/html/settings.html:33
+msgid "Show Tray Icon"
 msgstr ""
