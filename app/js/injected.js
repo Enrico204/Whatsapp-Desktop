@@ -27,7 +27,7 @@
         if (updatePhoneInfoInterval != null) {
             clearInterval(updatePhoneInfoInterval);
             updatePhoneInfoInterval = null;
-            setInterval(updatePhoneInfo, 5000)
+            setInterval(updatePhoneInfo, 2000)
         }
     }
 

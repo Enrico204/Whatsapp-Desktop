@@ -24,7 +24,7 @@ msgid "Hide"
 msgstr ""
 
 #: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
-#: app/menu.js:176 app/menu.js:204 app/main.js:211
+#: app/menu.js:176 app/menu.js:204 app/main.js:211 app/menu.js:197
 msgid "Quit"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgid "Minimize"
 msgstr ""
 
 #: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
-#: app/html/settings.html:60
+#: app/html/settings.html:60 app/html/settings.html:64
 msgid "Close"
 msgstr ""
 
@@ -126,14 +126,17 @@ msgid "Hide Message Previews"
 msgstr ""
 
 #: app/html/settings.html:40 app/html/settings.html:44
+#: app/html/settings.html:48
 msgid "Use Proxy (Changes in proxy settings require app restart)"
 msgstr ""
 
 #: app/html/settings.html:50 app/html/settings.html:54
+#: app/html/settings.html:58
 msgid "Https Proxy"
 msgstr ""
 
 #: app/html/settings.html:57 app/html/settings.html:61
+#: app/html/settings.html:65
 msgid "Save"
 msgstr ""
 
@@ -143,4 +146,8 @@ msgstr ""
 
 #: app/html/settings.html:33
 msgid "Show Tray Icon"
+msgstr ""
+
+#: app/html/settings.html:37
+msgid "Minimize to tray on startup"
 msgstr ""

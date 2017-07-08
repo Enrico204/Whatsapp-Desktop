@@ -97,6 +97,9 @@
         },
 
         applyConfiguration() {
+            if (config.get("maximized")) {
+                whatsApp.window.maximize();
+            }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
                 var noAvatar = '.chat-avatar{display: none}';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
@@ -135,6 +138,7 @@
         },
 
         saveConfiguration() {
+            config.set("maximized", whatsApp.window.isMaximized());
             fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings) , 'utf-8');
         },
 
@@ -247,6 +251,7 @@
                 "minHeight": 600,
                 //"type": "toolbar",
                 "title": "WhatsApp",
+                "show": config.get("startminimized") != true,
                 "icon": __dirname + "/assets/icon/icon.png",
                 "webPreferences": {
                   "nodeIntegration": false,
@@ -267,7 +272,9 @@
                 }
             }
 
-            whatsApp.window.show();
+            if (config.get("startminimized") != true) {
+                whatsApp.window.show();
+            }
 
             whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
@@ -421,7 +428,7 @@
             settings.window = new BrowserWindow(
                 {
                     "width": 550,
-                    "height": 500,
+                    "height": 550,
                     "resizable": true,
                     "center": true,
                     "frame": true,

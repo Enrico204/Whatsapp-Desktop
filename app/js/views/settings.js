@@ -25,6 +25,9 @@ var SettingsView = {
     },
 
     init() {
+        document.title = _("Settings");
+
+        $("#startminimized").attr("checked", config.get("startminimized") == true);
         $("#trayicon").attr("checked", config.get("trayicon") != false);
         $("#avatars").attr("checked", config.get("hideAvatars"));
         $("#previews").attr("checked", config.get("hidePreviews"));
@@ -41,6 +44,7 @@ var SettingsView = {
     },
 
     saveSettings() {
+        config.set("startminimized", $("#startminimized").is(":checked"));
         config.set("hideAvatars", $("#avatars").is(":checked"));
         config.set("hidePreviews", $("#previews").is(":checked"));
         config.set("thumbSize", parseInt($("#thumb-size").val(), 10));

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Whatsapp-Desktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-17 11:15+0200\n"
-"PO-Revision-Date: 2017-07-08 08:13+0100\n"
+"PO-Revision-Date: 2017-07-08 23:55+0100\n"
 "Last-Translator: void\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -24,7 +24,7 @@ msgid "Hide"
 msgstr "Hide"
 
 #: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
-#: app/menu.js:176 app/menu.js:204 app/main.js:211
+#: app/menu.js:176 app/menu.js:204 app/main.js:211 app/menu.js:197
 msgid "Quit"
 msgstr "Quit"
 
@@ -85,7 +85,7 @@ msgid "Minimize"
 msgstr "Minimize"
 
 #: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
-#: app/html/settings.html:60
+#: app/html/settings.html:60 app/html/settings.html:64
 msgid "Close"
 msgstr "Close"
 
@@ -126,14 +126,17 @@ msgid "Hide Message Previews"
 msgstr "Hide Message Previews"
 
 #: app/html/settings.html:40 app/html/settings.html:44
+#: app/html/settings.html:48
 msgid "Use Proxy (Changes in proxy settings require app restart)"
 msgstr "Use Proxy (Changes in proxy settings require app restart)"
 
 #: app/html/settings.html:50 app/html/settings.html:54
+#: app/html/settings.html:58
 msgid "Https Proxy"
 msgstr "Https Proxy"
 
 #: app/html/settings.html:57 app/html/settings.html:61
+#: app/html/settings.html:65
 msgid "Save"
 msgstr "Save"
 
@@ -144,6 +147,10 @@ msgstr "Phone info"
 #: app/html/settings.html:33
 msgid "Show Tray Icon"
 msgstr "Show Tray Icon"
+
+#: app/html/settings.html:37
+msgid "Minimize to tray on startup"
+msgstr "Minimize to tray on startup"
 
 #~ msgid "Thumb Size"
 #~ msgstr "Thumb Size"
