@@ -16,6 +16,8 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 * Dock icon bounces when a new message is received.  
 * Focus on contact search input via CMD+F (WIN+F).  
 * Phone info window (s/w versions, battery status, etc)
+* Auto-launch on login
+* Start minimized to tray icon
 * A couple of things can be configured:  
   * Toggle avatar visibility  
   * Toggle preview of the messages visibility  
