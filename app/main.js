@@ -10,6 +10,7 @@
     var BrowserWindow = require('electron').BrowserWindow;
     var nodeGettext = require('node-gettext');
     var gettextParser = require("gettext-parser");
+    var AutoLaunch = require("auto-launch");
 
     var join = require('path').join;
 
@@ -37,6 +38,8 @@
     if (supportedLocales.indexOf(syslang.split(".")[0]) >= 0) {
         gt.setLocale(syslang.split(".")[0]);
     }
+
+    global.autolauncher = new AutoLaunch({ name: app.getName() });
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -134,6 +137,15 @@
             } else if (config.get("trayicon") == false && whatsApp.tray != undefined) {
                 whatsApp.tray.destroy();
                 whatsApp.tray = undefined;
+            }
+            if (config.get("autostart") == true) {
+                autolauncher.isEnabled().then(function(enabled) {
+                    if (!enabled) autolauncher.enable();
+                });
+            } else {
+                autolauncher.isEnabled().then(function(enabled) {
+                    if (enabled) autolauncher.disable();
+                });
             }
         },
 

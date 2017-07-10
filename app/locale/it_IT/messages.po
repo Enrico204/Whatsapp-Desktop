@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Whatsapp-Desktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-17 11:15+0200\n"
-"PO-Revision-Date: 2017-07-08 23:56+0100\n"
+"PO-Revision-Date: 2017-07-10 09:59+0100\n"
 "Last-Translator: void\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -14,17 +14,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: app/main.js:168 app/main.js:192 app/main.js:198
+#: app/main.js:168 app/main.js:192 app/main.js:198 app/main.js:214
 msgid "Show"
 msgstr "Visualizza"
 
 #: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
-#: app/main.js:204
+#: app/main.js:204 app/main.js:220
 msgid "Hide"
 msgstr "Nascondi"
 
 #: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
 #: app/menu.js:176 app/menu.js:204 app/main.js:211 app/menu.js:197
+#: app/main.js:227
 msgid "Quit"
 msgstr "Esci"
 
@@ -86,6 +87,7 @@ msgstr "Minimizza"
 
 #: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
 #: app/html/settings.html:60 app/html/settings.html:64
+#: app/html/settings.html:68
 msgid "Close"
 msgstr "Chiudi"
 
@@ -126,17 +128,17 @@ msgid "Hide Message Previews"
 msgstr "Nascondi le anteprime dei messaggi"
 
 #: app/html/settings.html:40 app/html/settings.html:44
-#: app/html/settings.html:48
+#: app/html/settings.html:48 app/html/settings.html:52
 msgid "Use Proxy (Changes in proxy settings require app restart)"
 msgstr "Usa un proxy (è necessario un riavvio)"
 
 #: app/html/settings.html:50 app/html/settings.html:54
-#: app/html/settings.html:58
+#: app/html/settings.html:58 app/html/settings.html:62
 msgid "Https Proxy"
 msgstr "Proxy HTTPS"
 
 #: app/html/settings.html:57 app/html/settings.html:61
-#: app/html/settings.html:65
+#: app/html/settings.html:65 app/html/settings.html:69
 msgid "Save"
 msgstr "Salva"
 
@@ -151,6 +153,10 @@ msgstr "Visualizza icona nel vassoio"
 #: app/html/settings.html:37
 msgid "Minimize to tray on startup"
 msgstr "Minimizza nel vassoio all'avvio"
+
+#: app/html/settings.html:41
+msgid "Auto start on login"
+msgstr "Avvia automaticamente all'accesso"
 
 #~ msgid "Thumb Size"
 #~ msgstr "Dimensione anteprima"
