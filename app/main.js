@@ -151,7 +151,11 @@
 
         saveConfiguration() {
             config.set("maximized", whatsApp.window.isMaximized());
-            fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings) , 'utf-8');
+            if (config.currentSettings == undefined || JSON.stringify(config.currentSettings) == "") {
+                // TODO: if we land here, we need to figure why and how. And fix that
+                return;
+            }
+            fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings), 'utf-8');
         },
 
         get (key) {
