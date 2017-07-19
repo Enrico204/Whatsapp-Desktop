@@ -27,8 +27,12 @@
         app.quit();
     }
 
+    if (process.argv.indexOf("--debug-log") >= 0) {
+        log.transports.file.level = 'debug';
+        log.info("Log level set from command line switch");
+    }
 
-    log.info("Log init");
+    log.info("Log init, file " + app.getPath('userData') + "/log.log");
 
     var supportedLocales = ['en_US', 'it_IT'];
 

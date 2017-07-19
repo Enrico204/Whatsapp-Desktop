@@ -8,21 +8,22 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 
 ## Features
 
-* Cross platform. (OSX, Windows, Linux)  
-* Native notifications.  
-* System tray icon.  
-* Open links in browser.  
-* Badge with the number of notifications in the dock/taskbar.  
-* Dock icon bounces when a new message is received.  
-* Focus on contact search input via CMD+F (WIN+F).  
+* Cross platform (OSX, Windows, Linux)
+* Native notifications
+* System tray icon
+* Open links in browser
+* Badge with the number of notifications in the dock/taskbar
+* Dock icon bounces when a new message is received
+* Focus on contact search input via CMD+F (WIN+F)
 * Phone info window (s/w versions, battery status, etc)
 * Auto-launch on login
 * Start minimized to tray icon
-* A couple of things can be configured:  
-  * Toggle avatar visibility  
-  * Toggle preview of the messages visibility  
-  * Set the size for the media thumbs  
-  * Proxy settings connect to WhatsApp web  
+* Logging system (log to console and *userData*/log.log)
+* A couple of things can be configured:
+  * Toggle avatar visibility
+  * Toggle preview of the messages visibility
+  * Set the size for the media thumbs
+  * Proxy settings connect to WhatsApp web
 
 ## Installation on ArchLinux
 
@@ -44,6 +45,10 @@ In order to execute the program in Linux, first you should give it permission to
 
     sudo chmod u+x WhatsApp
     ./WhatsApp
+
+## Command line switches
+
+    --debug-log         Switch file's log level to "debug" (default: "warn")
 
 ## Contributions
 
