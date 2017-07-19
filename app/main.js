@@ -11,35 +11,8 @@
     var nodeGettext = require('node-gettext');
     var gettextParser = require("gettext-parser");
     var AutoLaunch = require("auto-launch");
-
+    var log = require("electron-log");
     var join = require('path').join;
-
-    var supportedLocales = ['en_US', 'it_IT'];
-
-    global.gt = new nodeGettext();
-    for (var i in supportedLocales) {
-        var loc = supportedLocales[i];
-        var dir = process.resourcesPath+"/app/locale/"+loc+"/messages.po";
-        if (!fileSystem.existsSync(dir)) {
-          dir = "./app/locale/"+loc+"/messages.po";
-        }
-        gt.addTranslations(loc, 'messages', gettextParser.po.parse(fileSystem.readFileSync(dir)));
-    }
-    gt.setLocale("en_US");
-    gt.setTextDomain("messages");
-    global._ = function (t) {
-        return gt.gettext(t);
-    }
-
-    // Setting default language to system language if available
-    var syslang = (process.env.LC_ALL != undefined ? process.env.LC_ALL :
-        (process.env.LANG != undefined ? process.env.LANG :
-            (process.env.LC_MESSAGES != undefined ? process.env.LC_MESSAGES : 'en-US')));
-    if (supportedLocales.indexOf(syslang.split(".")[0]) >= 0) {
-        gt.setLocale(syslang.split(".")[0]);
-    }
-
-    global.autolauncher = new AutoLaunch({ name: app.getName() });
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -53,6 +26,40 @@
     if (isAlreadyRunning) {
         app.quit();
     }
+
+
+    log.info("Log init");
+
+    var supportedLocales = ['en_US', 'it_IT'];
+
+    global.gt = new nodeGettext();
+    for (var i in supportedLocales) {
+        var loc = supportedLocales[i];
+        var dir = process.resourcesPath+"/app/locale/"+loc+"/messages.po";
+        if (!fileSystem.existsSync(dir)) {
+          dir = "./app/locale/"+loc+"/messages.po";
+        }
+        log.info("Loading locale " + loc);
+        gt.addTranslations(loc, 'messages', gettextParser.po.parse(fileSystem.readFileSync(dir)));
+    }
+    gt.setLocale("en_US");
+    gt.setTextDomain("messages");
+    global._ = function (t) {
+        return gt.gettext(t);
+    }
+
+    // Setting default language to system language if available
+    var syslang = (process.env.LC_ALL != undefined ? process.env.LC_ALL :
+        (process.env.LANG != undefined ? process.env.LANG :
+            (process.env.LC_MESSAGES != undefined ? process.env.LC_MESSAGES : 'en-US')));
+    if (supportedLocales.indexOf(syslang.split(".")[0]) >= 0) {
+        log.info("Setting locale " + syslang.split(".")[0]);
+        gt.setLocale(syslang.split(".")[0]);
+    } else {
+        log.warn("No supported locale found, defaulting to en_US");
+    }
+
+    global.autolauncher = new AutoLaunch({ name: app.getName() });
 
     global.onlyOSX = function(callback) {
         if (process.platform === 'darwin') {
@@ -90,16 +97,25 @@
         },
 
         loadConfiguration() {
+            log.info("Loading configuration");
             var settingsFile = app.getPath('userData') +"/settings.json";
             try {
                 var data = fileSystem.readFileSync(settingsFile);
-                config.currentSettings = JSON.parse(data);
+                if (data != "" && data != "{}" && data != "[]") {
+                    config.currentSettings = JSON.parse(data);
+                    log.info("Configuration loaded from " + settingsFile);
+                } else {
+                    config.currentSettings = config.defaultSettings;
+                    log.warn("Configuration file empty, loading default");
+                }
             } catch (e) {
                 config.currentSettings = config.defaultSettings;
+                log.warn("Error loading configuration from " + settingsFile + " (" + e + "), loading default");
             }
         },
 
         applyConfiguration() {
+            log.info("Applying configuration");
             if (config.get("maximized")) {
                 whatsApp.window.maximize();
             }
@@ -129,30 +145,42 @@
                 var httpProxy = config.get("httpProxy");
                 var httpsProxy = config.get("httpsProxy") || httpProxy;
                 if(httpProxy) {
-                  session.setProxy("http="+ httpProxy +";https=" + httpsProxy, function(){});
+                    log.info("Proxy configured: " + "http="+ httpProxy +";https=" + httpsProxy);
+                    session.setProxy("http="+ httpProxy +";https=" + httpsProxy, function(){});
+                } else {
+                    log.info("No proxy");
                 }
             }
             if (config.get("trayicon") != false && whatsApp.tray == undefined) {
                 whatsApp.createTray();
             } else if (config.get("trayicon") == false && whatsApp.tray != undefined) {
+                log.info("Destroying tray icon");
                 whatsApp.tray.destroy();
                 whatsApp.tray = undefined;
             }
             if (config.get("autostart") == true) {
                 autolauncher.isEnabled().then(function(enabled) {
-                    if (!enabled) autolauncher.enable();
+                    if (!enabled) {
+                        autolauncher.enable();
+                        log.info("Autostart enabled");
+                    }
                 });
             } else {
                 autolauncher.isEnabled().then(function(enabled) {
-                    if (enabled) autolauncher.disable();
+                    if (enabled) {
+                        autolauncher.disable();
+                        log.info("Autostart disabled");
+                    }
                 });
             }
         },
 
         saveConfiguration() {
+            log.info("Saving configuration");
             config.set("maximized", whatsApp.window.isMaximized());
             if (config.currentSettings == undefined || JSON.stringify(config.currentSettings) == "") {
                 // TODO: if we land here, we need to figure why and how. And fix that
+                log.error("Configuration empty! This should not happen!");
                 return;
             }
             fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings), 'utf-8');
@@ -186,6 +214,7 @@
         },
 
         createMenu() {
+            log.info("Creating menu");
             whatsApp.menu =
                 AppMenu.buildFromTemplate(require('./menu'));
                 AppMenu.setApplicationMenu(whatsApp.menu);
@@ -193,6 +222,7 @@
 
         setWarningTray() {
             if (whatsApp.tray != undefined && process.platform != 'darwin' && !global.whatsApp.warningIcon) {
+                log.info("Setting tray icon to warning");
                 whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarning.png');
                 global.whatsApp.warningIcon = true;
             }
@@ -200,12 +230,14 @@
 
         setNormalTray() {
             if (whatsApp.tray != undefined && process.platform != 'darwin' && global.whatsApp.warningIcon) {
+                log.info("Setting tray icon to normal");
                 whatsApp.tray.setImage(__dirname + '/assets/icon/icon.png');
                 global.whatsApp.warningIcon = false;
             }
         },
 
         createTray() {
+            log.info("Creating tray icon");
             var trayImg = __dirname + '/assets/img/trayTemplate.png';
             // Darwin requires black/white/transparent icon, other platforms does not
             if (process.platform != 'darwin') {
@@ -252,12 +284,16 @@
         },
 
         clearCache() {
+            log.info("Clearing cache");
             try {
-                fileSystem.unlinkSync(app.getPath('appData') + '/Application Cache/Index');
-            } catch(e) {}
+                fileSystem.unlinkSync(app.getPath('userData') + '/Application Cache/Index');
+            } catch(e) {
+                log.warn("Error clearing cache: " + e);
+            }
         },
 
         openWindow() {
+            log.info("Open main window");
             whatsApp.window = new BrowserWindow({
                 "y": config.get("posY"),
                 "x": config.get("posX"),
@@ -299,12 +335,15 @@
                 app.dock.setBadge(count);
                 // if (parseInt(count) > 0)
                 //     app.dock.bounce('informational');
+                log.info("Badge updated: " + count);
             }));
 
             whatsApp.window.on('page-title-updated', onlyLinux((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
+                // TODO
+                log.info("Badge updated: " + count);
             }));
 
             whatsApp.window.on('page-title-updated', onlyWin((event, title) => {
@@ -320,6 +359,7 @@
                 } else {
                     whatsApp.window.setOverlayIcon(null, "no new messages");
                 }
+                log.info("Badge updated: " + count);
             }));
 
             whatsApp.window.webContents.on("new-window", (e, url) => {
