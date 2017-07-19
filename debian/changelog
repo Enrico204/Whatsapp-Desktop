@@ -1,3 +1,15 @@
+whatsapp-desktop (0.3.11-1) unstable; urgency=medium
+
+  * Added logging system with CLI option
+  * Added auto-launch at login option
+  * Hide tray icon (#5)
+  * fixed tray icon click doesn't fire (#6)
+  * Fixed missing dependency
+  * Skip setting saving if object is invalid (see #8)
+  * Other bugfixes
+
+ -- Enrico <enrico204@gmail.com>  Wed, 19 Jul 2017 12:46:00 +0200
+
 whatsapp-desktop (0.3.6-1) unstable; urgency=medium
 
   * NativeImage electron class renamed to nativeImage
