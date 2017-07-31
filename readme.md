@@ -8,7 +8,7 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 
 ## Features
 
-* Cross platform (OSX, Windows, Linux)
+* Cross platform (OSX, Windows x64, Linux x64 and ARM v7l)
 * Native notifications
 * System tray icon
 * Open links in browser
@@ -25,19 +25,13 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
   * Set the size for the media thumbs
   * Proxy settings connect to WhatsApp web
 
-## Installation on ArchLinux
+## Pre-built packages
 
-You can download the ArchLinux package from https://aur.archlinux.org/packages/whatsapp-desktop/
+@bil-elmoussaoui maintains the ArchLinux package, you can download it from https://aur.archlinux.org/packages/whatsapp-desktop/
 
-Thanks to @bil-elmoussaoui
+Debian packages for amd64 and armv7l are hosted in [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases)
 
-## Installation on Debian/Ubuntu
-
-You can download the DEB package from the [latest release](https://github.com/Enrico204/Whatsapp-Desktop/releases)
-
-## Installation (no package / others platforms)
-
-Download and run the WhatsApp file from the [latest release](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
+For all other platforms: you can download ZIP files from [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
 
 ## How to use in Linux
 
