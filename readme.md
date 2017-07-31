@@ -33,13 +33,6 @@ Debian packages for amd64 and armv7l are hosted in [latest release page](https:/
 
 For all other platforms: you can download ZIP files from [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
 
-## How to use in Linux
-
-In order to execute the program in Linux, first you should give it permission to the App:
-
-    sudo chmod u+x WhatsApp
-    ./WhatsApp
-
 ## Command line switches
 
     --debug-log         Switch file's log level to "debug" (default: "warn")
@@ -54,7 +47,7 @@ Apparently it's caused by an issue of Electron with Pango. Downgrade Pango to `1
 
 Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/Enrico204/Whatsapp-Desktop/issues).
 
-## Build
+## Build from source
 
 To build from the source, run the following commands:
 
@@ -68,20 +61,12 @@ where `build:platform` can be `build:linux` if you want to build only for Linux,
 
 You'll find artifacts into `dist/` directory.
 
-### Building Windows build from non-Windows platforms
+### Cross-build for Windows (from Linux/macOS)
 
-Wine needs to be installed. On OS X, it is installable via Homebrew:  
+Wine needs to be installed. On macOS, it is installable via Homebrew:  
 
     brew install wine
 
 On GNU/Linux you can install `wine` from your distro package manager.
 
 Please mind that `wine` requires an Xorg display, so you should set correctly your DISPLAY env var (you can use `Xvfb` if you don't have/want a real Xorg display running)
-
-### Build Debian package
-
-After `npm run build:linux`, launch:
-
-    debuild -b -uc -us
-
-Note that if version is changed you should use `dch` first.
