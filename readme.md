@@ -50,6 +50,12 @@ In order to execute the program in Linux, first you should give it permission to
 
     --debug-log         Switch file's log level to "debug" (default: "warn")
 
+## Known issues
+
+### Fonts rendering as rectangles after upgrade
+
+Apparently it's caused by an issue of Electron with Pango. Downgrade Pango to `1.40.5` should temporarily fix this (until upstream bugfix by Electron devs). See #13
+
 ## Contributions
 
 Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/Enrico204/Whatsapp-Desktop/issues).
