@@ -21,7 +21,7 @@ script:
 - npm run build:osx
 - npm run build:win
 - npm run build:linuxarmv7l
-- debuild -b -uc -us -aarmhf --target-arch armhf
+- debuild -b -uc -us -aarmhf
 before_deploy:
 - sudo apt-get install -y zip tar gzip
 - cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
