@@ -1,5 +1,6 @@
 language: node_js
 node_js: node
+dist: trusty
 before_install:
 - sudo add-apt-repository -y ppa:wine/wine-builds
 - sudo apt-get update
@@ -20,7 +21,7 @@ script:
 - npm run build:osx
 - npm run build:win
 - npm run build:linuxarmv7l
-- debuild -b -uc -us -aarmhf
+- debuild -b -uc -us -aarmhf --target-arch armhf
 before_deploy:
 - sudo apt-get install -y zip tar gzip
 - cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
