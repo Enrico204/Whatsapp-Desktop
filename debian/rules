@@ -19,14 +19,24 @@ include /usr/share/dpkg/default.mk
 
 # main packaging script based on dh7 syntax
 %:
-	dh $@ 
+	dh $@
+
+binary-arch:
+	mkdir -p debian/whatsapp-desktop/opt/whatsapp-desktop/
+ifeq ($(DEB_TARGET_ARCH),)
+	echo "Target architecture not specified"
+	exit 1
+endif
+
+ifeq ($(DEB_TARGET_ARCH),armhf)
+	cp -r dist/WhatsApp-linux-armv7l/* debian/whatsapp-desktop/opt/whatsapp-desktop/
+endif
+ifeq ($(DEB_TARGET_ARCH),amd64)
+	cp -r dist/WhatsApp-linux-x64/* debian/whatsapp-desktop/opt/whatsapp-desktop/
+endif
 
 # debmake generated override targets
 # This is example for Cmake (See http://bugs.debian.org/641051 )
 #override_dh_auto_configure:
 #	dh_auto_configure -- \
 #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
-
-
-
-
