@@ -19,6 +19,7 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 * Auto-launch on login
 * Start minimized to tray icon
 * Logging system (log to console and *userData*/log.log)
+* Apply custom CSS stylesheet
 * A couple of things can be configured:
   * Toggle avatar visibility
   * Toggle preview of the messages visibility
