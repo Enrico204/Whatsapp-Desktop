@@ -25,7 +25,8 @@ script:
 before_deploy:
 - sudo apt-get install -y zip tar gzip
 - cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
-- export RELEASE_PKG_FILE=$(ls ../whatsapp-desktop*.deb)
+- export RELEASE_AMD64_PKG_FILE=$(ls ../whatsapp-desktop*amd64.deb)
+- export RELEASE_ARM_PKG_FILE=$(ls ../whatsapp-desktop*armhf.deb)
 deploy:
   provider: releases
   skip_cleanup: true
@@ -37,6 +38,7 @@ deploy:
   - dist/WhatsApp-darwin-x64.zip
   - dist/WhatsApp-linux-x64.tar.gz
   - dist/WhatsApp-linux-armv7l.tar.gz
-  - "${RELEASE_PKG_FILE}"
+  - "${RELEASE_AMD64_PKG_FILE}"
+  - "${RELEASE_ARM_PKG_FILE}"
   api_key:
     secure: TX/psfzZ+R8Ua7y/uWUSFLVzajfANM/flNyDO5bG9X/LqURoWOQEnjmvUYV4xBp9IJM/xc5/icvUfl2DyNPunmZdRtVv0M85JhkKkQ0wywGhSHENo33kAWDn9v9gFb5w/cRpkghHOYUH9C7GLSulVxtuyb4FacrvvUdqr6kcth9gzWAqG3MBJNID+sI0/JooyGdu2VTMaszlImyzM4m76UQVl9K09ZCQbtoSlnVGYBhkMbu13gh750LWFbdf02KUkEO3TxQ8WYRMJ1VaXy0j/qcCi3mFAQxWxwvvxDrayNuZPoqLcfp0FFJLtqwT+QIaCPHpWwUWiiAHpLWNj/OmzEk7NkmTkKJ44ToBnJgAs3KibEvS+qrXdUO9qOWYUFG27EkCjQSppSWtZmn9EkY4BilSp6lFL8fPQWcjzvT7tkoQUs//g+cgyYHu5t3fgT3Ld1FuSkbpCzixxwbfWzUnR+jco0aWmtAT6f1wpbHmWAWEUI12SNEy8BtnvyZdXCGIYJFD7vJEM9i8NoT/ztvW1uXq7zqN8IZAFYt6BwmgHSWJ/KKsvaD9itOApVJCWEZy/JH7bm/7iE1z9KjWfUelfIwLAc1VJ5HHtEVfeLdz1oCwQ/WXSPeasQuMPqxrBFgHteyz6zdg1cgY3BoiLMZFpyaafYKdLYpDS9pS7rTuvuM=
