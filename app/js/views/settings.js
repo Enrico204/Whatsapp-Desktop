@@ -1,6 +1,7 @@
 var whatsApp = require('electron').remote.getGlobal("whatsApp");
 var settings = require('electron').remote.getGlobal('settings');
 var config = require('electron').remote.getGlobal('config');
+const {dialog} = require('electron').remote;
 
 var SettingsView = {
     bindEvents() {
@@ -41,10 +42,22 @@ var SettingsView = {
         $("#httpProxy").prop("disabled", !($("#useProxy").is(":checked")));
         $("#httpsProxy").prop("disabled", !($("#useProxy").is(":checked")));
 
+        $("#customcss_enable").attr("checked", config.get("customcss") != undefined);
+        if ($("#customcss_enable").is(":checked")) {
+            $("#customcss_file").val(config.get("customcss"));
+        }
+
         this.bindEvents();
     },
 
     saveSettings() {
+
+        if ($("#customcss_enable").is(":checked")) {
+            config.set("customcss", $("#customcss_file").val());
+        } else {
+            config.set("customcss", undefined);
+        }
+
         config.set("autostart", $("#autostart").is(":checked"));
         config.set("startminimized", $("#startminimized").is(":checked"));
         config.set("hideAvatars", $("#avatars").is(":checked"));
@@ -65,6 +78,20 @@ var SettingsView = {
         whatsApp.window.reload();
     }
 };
+
+function chooseCustomCSS() {
+    if ($("#customcss_enable").is(":checked")) {
+        dialog.showOpenDialog(function (fileNames) {
+            if (fileNames === undefined || fileNames.length == 0) {
+                $("#customcss_enable").removeAttr("checked");
+                return;
+            }
+            $("#customcss_file").val(fileNames[0]);
+        });
+    } else {
+        $("#customcss_file").val("");
+    }
+}
 
 $(document).ready(() => {
     SettingsView.init();

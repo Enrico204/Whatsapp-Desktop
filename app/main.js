@@ -142,6 +142,14 @@
                 if (config.currentSettings.thumbSize) {
                     this.insertCSS(thumbSize);
                 }
+                if (config.get("customcss") != undefined) {
+                    try {
+                        this.insertCSS(fileSystem.readFileSync(config.get("customcss"), "utf-8"));
+                        log.info("Loaded CSS file: " + config.get("customcss"));
+                    } catch (e) {
+                        log.error("CSS error: " + e);
+                    }
+                }
             });
 
             if (config.get("useProxy")) {
@@ -467,7 +475,7 @@
             settings.menu.append(new MenuItem(
                 {
                     label: 'Toggle DevTools',
-                    accelerator: 'Alt+CmdOrCtrl+O',
+                    accelerator: 'Ctrl+Shift+I',
                     visible: false,
                     click() {  settings.window.toggleDevTools(); }
                 })

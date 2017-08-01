@@ -63,6 +63,12 @@
         </div>
       </div>
 
+      <p>
+        <input type="checkbox" id="customcss_enable" onchange="chooseCustomCSS();" />
+        <label for="customcss_enable"><script> document.write(_("Load custom CSS")); </script></label>
+        <input type="text" id="customcss_file" val="" readonly="readonly" />
+      </p>
+
       <div class="row">
         <div class="col s6 offset-s6 ">
           <a id="close-button" class="waves-effect waves-light btn"><script> document.write(_("Close")); </script></a>
