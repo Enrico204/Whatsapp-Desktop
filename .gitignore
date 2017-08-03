@@ -12,3 +12,5 @@ electron-*
 *.EX
 debian/whatsapp-desktop/
 debian/files
+dummy.tar.bz2
+rpmbuild/

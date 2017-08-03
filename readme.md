@@ -28,9 +28,9 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 
 ## Pre-built packages
 
-@bil-elmoussaoui maintains the ArchLinux package, you can download it from https://aur.archlinux.org/packages/whatsapp-desktop/
+@bil-elmoussaoui maintains the **ArchLinux** package, you can download it from https://aur.archlinux.org/packages/whatsapp-desktop/
 
-Debian packages for amd64 and armv7l are hosted in [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases)
+**DEB** and **RPM** packages for amd64 and armv7l (armhf) are hosted in [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases)
 
 For all other platforms: you can download ZIP files from [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
 
