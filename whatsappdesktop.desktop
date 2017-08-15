@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WhatsApp Desktop
+Comment=WhatsApp Desktop unofficial client
+Exec=/opt/whatsapp-desktop/WhatsApp
+StartupNotify=false
+Terminal=false
+Categories=Network;InstantMessaging;
+Icon=whatsapp

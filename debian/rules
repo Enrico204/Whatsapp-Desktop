@@ -23,6 +23,12 @@ include /usr/share/dpkg/default.mk
 
 binary-arch:
 	mkdir -p debian/whatsapp-desktop/opt/whatsapp-desktop/
+	mkdir -p debian/whatsapp-desktop/usr/share/applications/
+	mkdir -p debian/whatsapp-desktop/usr/share/icons/hicolor/128x128/apps/
+	mkdir -p debian/whatsapp-desktop/usr/share/icons/hicolor/64x64/apps/
+	cp "app/assets/icon/icon@2x.png" debian/whatsapp-desktop/usr/share/icons/hicolor/128x128/apps/whatsapp.png
+	cp "app/assets/icon/icon.png" debian/whatsapp-desktop/usr/share/icons/hicolor/64x64/apps/whatsapp.png
+	cp whatsappdesktop.desktop debian/whatsapp-desktop/usr/share/applications/
 ifeq ($(DEB_HOST_ARCH),)
 	echo "Target architecture not specified"
 	exit 1
