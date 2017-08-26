@@ -400,11 +400,12 @@
                 }
 
                 // save the window position
-                config.set("posX", this.getBounds().x);
-                config.set("posY", this.getBounds().y);
-                config.set("width", this.getBounds().width);
-                config.set("height", this.getBounds().height);
-                config.saveConfiguration();
+                // TODO: check if this triggers the issue #8 (see Github)
+                // config.set("posX", this.getBounds().x);
+                // config.set("posY", this.getBounds().y);
+                // config.set("width", this.getBounds().width);
+                // config.set("height", this.getBounds().height);
+                // config.saveConfiguration();
             });
 
             // Toggle contextmenu content when window is shown
