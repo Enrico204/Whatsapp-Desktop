@@ -218,6 +218,11 @@
             global.whatsApp.warningIcon = false;
             whatsApp.tray = undefined;
             whatsApp.createMenu();
+            // Bitmask: LSB
+            // First bit: warning icon (phone disconnected)
+            // Second bit: new message red-dot
+            global.whatsApp.iconStatus = 0;
+            global.whatsApp.oldIconStatus = 0;
 
             whatsApp.clearCache();
             config.init();
@@ -232,20 +237,55 @@
                 AppMenu.setApplicationMenu(whatsApp.menu);
         },
 
-        setWarningTray() {
-            if (whatsApp.tray != undefined && process.platform != 'darwin' && !global.whatsApp.warningIcon) {
-                log.info("Setting tray icon to warning");
-                whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarning.png');
-                global.whatsApp.warningIcon = true;
-            }
+        setNormalTray() {
+            global.whatsApp.iconStatus = global.whatsApp.iconStatus & 0xFFFFFFFE;
+            global.whatsApp.updateTrayIcon();
         },
 
-        setNormalTray() {
-            if (whatsApp.tray != undefined && process.platform != 'darwin' && global.whatsApp.warningIcon) {
-                log.info("Setting tray icon to normal");
-                whatsApp.tray.setImage(__dirname + '/assets/icon/icon.png');
-                global.whatsApp.warningIcon = false;
+        setWarningTray() {
+            global.whatsApp.iconStatus = global.whatsApp.iconStatus | 0x00000001;
+            global.whatsApp.updateTrayIcon();
+        },
+
+        isWarningTrayIcon() {
+            return (global.whatsApp.iconStatus & 0x1) > 0;
+        },
+
+        setNewMessageIcon() {
+            global.whatsApp.iconStatus = global.whatsApp.iconStatus | 0x00000002;
+            global.whatsApp.updateTrayIcon();
+        },
+
+        clearNewMessageIcon() {
+            global.whatsApp.iconStatus = global.whatsApp.iconStatus & 0xFFFFFFFD;
+            global.whatsApp.updateTrayIcon();
+        },
+
+        isNewMessageIcon() {
+            return (global.whatsApp.iconStatus & 0x2) > 0;
+        },
+
+        updateTrayIcon() {
+            if (global.whatsApp.oldIconStatus == global.whatsApp.iconStatus) {
+                return;
             }
+            if (whatsApp.tray != undefined && process.platform != 'darwin') {
+                if (global.whatsApp.isWarningTrayIcon() && !global.whatsApp.isNewMessageIcon()) {
+                    log.info("Setting tray icon to warning");
+                    whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarning.png');
+                } if (global.whatsApp.isWarningTrayIcon() && global.whatsApp.isNewMessageIcon()) {
+                    log.info("Setting tray icon to warning with messages");
+                    whatsApp.tray.setImage(__dirname + '/assets/icon/iconWarningWithMsg.png');
+                } if (!global.whatsApp.isWarningTrayIcon() && global.whatsApp.isNewMessageIcon()) {
+                    log.info("Setting tray icon to normal with messages");
+                    whatsApp.tray.setImage(__dirname + '/assets/icon/iconWithMsg.png');
+                } else {
+                    log.info("Setting tray icon to normal");
+                    whatsApp.tray.setImage(__dirname + '/assets/icon/icon.png');
+                }
+                log.info("Mask value: " + global.whatsApp.iconStatus);
+            }
+            global.whatsApp.oldIconStatus = global.whatsApp.iconStatus;
         },
 
         createTray() {
@@ -341,10 +381,6 @@
             whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
-
-                app.dock.setBadge(count);
-                // if (parseInt(count) > 0)
-                //     app.dock.bounce('informational');
                 log.info("Badge updated: " + count);
             }));
 
@@ -352,7 +388,11 @@
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
 
-                // TODO
+                if (parseInt(count) > 0) {
+                    global.whatsApp.setNewMessageIcon();
+                } else {
+                    global.whatsApp.clearNewMessageIcon();
+                }
                 log.info("Badge updated: " + count);
             }));
 
