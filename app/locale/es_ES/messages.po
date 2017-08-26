@@ -1,0 +1,160 @@
+# Whatsapp Desktop translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Whatsapp-Desktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-17 11:15+0200\n"
+"PO-Revision-Date: 2017-08-26 17:11-0300\n"
+"Language-Team: Mauricio López\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_419\n"
+
+#: app/main.js:168 app/main.js:192 app/main.js:198 app/main.js:214
+msgid "Show"
+msgstr "Mostrar"
+
+#: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
+#: app/main.js:204 app/main.js:220
+msgid "Hide"
+msgstr "Ocultar"
+
+#: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
+#: app/menu.js:176 app/menu.js:204 app/main.js:211 app/menu.js:197
+#: app/main.js:227
+msgid "Quit"
+msgstr "Salir"
+
+#: app/menu.js:6
+msgid "Edit"
+msgstr "Editar"
+
+#: app/menu.js:9
+msgid "Undo"
+msgstr "Deshacer"
+
+#: app/menu.js:14
+msgid "Redo"
+msgstr "Rehacer"
+
+#: app/menu.js:22
+msgid "Cut"
+msgstr "Cortar"
+
+#: app/menu.js:27
+msgid "Copy"
+msgstr "Copiar"
+
+#: app/menu.js:32
+msgid "Paste"
+msgstr "Pegar"
+
+#: app/menu.js:37
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: app/menu.js:45 app/html/settings.html:20
+msgid "Settings"
+msgstr "Ajustes"
+
+#: app/menu.js:54
+msgid "View"
+msgstr "Ver"
+
+#: app/menu.js:57
+msgid "Reload"
+msgstr "Actualizar"
+
+#: app/menu.js:65
+msgid "Toggle Full Screen"
+msgstr "Alternar pantalla completa"
+
+#: app/menu.js:78
+msgid "Toggle Developer Tools"
+msgstr "Alternar herramientas de desarrollo"
+
+#: app/menu.js:93 app/menu.js:106
+msgid "Window"
+msgstr "Ventana"
+
+#: app/menu.js:97 app/menu.js:110
+msgid "Minimize"
+msgstr "Minimizar"
+
+#: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
+#: app/html/settings.html:60 app/html/settings.html:64
+#: app/html/settings.html:68
+msgid "Close"
+msgstr "Cerrar"
+
+#: app/menu.js:109 app/menu.js:122
+msgid "Audio"
+msgstr "Audio"
+
+#: app/menu.js:112 app/menu.js:125
+msgid "Increase Audio Rate by 20%"
+msgstr "Subir volumen un 20%"
+
+#: app/menu.js:121 app/menu.js:134
+msgid "Decrease Audio Rate by 20%"
+msgstr "Bajar volumen un 20%"
+
+#: app/menu.js:139 app/menu.js:184 app/menu.js:152 app/menu.js:197
+msgid "About"
+msgstr "Acerca de"
+
+#: app/menu.js:151 app/menu.js:164
+msgid "Hide Others"
+msgstr "Ocultar otros"
+
+#: app/menu.js:156 app/menu.js:169
+msgid "Show All"
+msgstr "Mostrar todos"
+
+#: app/menu.js:175 app/menu.js:188
+msgid "Bring All to Front"
+msgstr "Traer todos al frente"
+
+#: app/html/settings.html:25
+msgid "Hide Avatars"
+msgstr "Ocultar avatares"
+
+#: app/html/settings.html:29
+msgid "Hide Message Previews"
+msgstr "Ocultar previsualización de mensajes"
+
+#: app/html/settings.html:40 app/html/settings.html:44
+#: app/html/settings.html:48 app/html/settings.html:52
+msgid "Use Proxy (Changes in proxy settings require app restart)"
+msgstr "Usar proxy (los cambios en los ajustes del proxy requieren reiniciar la aplicación)"
+
+#: app/html/settings.html:50 app/html/settings.html:54
+#: app/html/settings.html:58 app/html/settings.html:62
+msgid "Https Proxy"
+msgstr "Proxy https"
+
+#: app/html/settings.html:57 app/html/settings.html:61
+#: app/html/settings.html:65 app/html/settings.html:69
+msgid "Save"
+msgstr "Guardar"
+
+#: app/menu.js:91
+msgid "Phone info"
+msgstr "Información del teléfono"
+
+#: app/html/settings.html:33
+msgid "Show Tray Icon"
+msgstr "Mostrar ícono en la barra de notificación"
+
+#: app/html/settings.html:37
+msgid "Minimize to tray on startup"
+msgstr "Minimizar a la barra de notifiación al iniciar"
+
+#: app/html/settings.html:41
+msgid "Auto start on login"
+msgstr "Inicio automático al iniciar sesión"
