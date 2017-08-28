@@ -424,6 +424,15 @@
                 }
             }));
 
+            whatsApp.window.on('close', onlyWin((e) => {
+                if (whatsApp.tray == undefined) {
+                    app.quit();
+                } else if (whatsApp.window.forceClose !== true) {
+                    e.preventDefault();
+                    whatsApp.window.hide();
+                }
+            }));
+
             whatsApp.window.on('close', onlyLinux((e) => {
                 if (whatsApp.tray == undefined) {
                     app.quit();
@@ -477,6 +486,10 @@
             }));
 
             app.on('before-quit', onlyLinux(() => {
+                whatsApp.window.forceClose = true;
+            }));
+
+            app.on('before-quit', onlyWin(() => {
                 whatsApp.window.forceClose = true;
             }));
 
