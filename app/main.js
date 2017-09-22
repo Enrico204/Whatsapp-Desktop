@@ -303,6 +303,9 @@
                 visible: false, // Hide this option on start
                 click: function() {
                     whatsApp.window.show();
+                    whatsApp.window.setAlwaysOnTop(true);
+                    whatsApp.window.focus();
+                    whatsApp.window.setAlwaysOnTop(false);
                 }},
 
                 {label: _('Hide'),
@@ -327,9 +330,15 @@
             // See the Platform limitations section.
             whatsApp.tray.on('clicked', () => {
                 whatsApp.window.show();
+                whatsApp.window.setAlwaysOnTop(true);
+                whatsApp.window.focus();
+                whatsApp.window.setAlwaysOnTop(false);
             });
             whatsApp.tray.on('click', () => {
                 whatsApp.window.show();
+                whatsApp.window.setAlwaysOnTop(true);
+                whatsApp.window.focus();
+                whatsApp.window.setAlwaysOnTop(false);
             });
 
             whatsApp.tray.setToolTip('WhatsApp Desktop');
