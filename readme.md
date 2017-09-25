@@ -42,7 +42,7 @@ For all other platforms: you can download ZIP files from [latest release page](h
 
 ### Fonts rendering as rectangles after upgrade
 
-Apparently it's caused by an issue of Electron with Pango. Downgrade Pango to `1.40.5` should temporarily fix this (until upstream bugfix by Electron devs). See https://github.com/Enrico204/Whatsapp-Desktop/issues/13
+Apparently it's caused by an issue of Electron with an older version of Pango. Upgrade Pango at least to `1.40.12` or downgrade to `1.40.5` should fix this. See https://github.com/Enrico204/Whatsapp-Desktop/issues/13
 
 ## Contributions
 
