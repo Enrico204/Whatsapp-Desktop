@@ -27,6 +27,10 @@
         app.quit();
     }
 
+    if (process.argv.indexOf("--disable-gpu") >= 0) {
+        app.disableHardwareAcceleration();
+    }
+
     if (process.argv.indexOf("--debug-log") >= 0) {
         log.transports.file.level = 'debug';
         log.info("Log level set from command line switch");
