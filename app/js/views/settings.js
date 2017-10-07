@@ -28,6 +28,7 @@ var SettingsView = {
     init() {
         document.title = _("Settings");
 
+        $("#autoHideMenuBar").attr("checked", config.get("autoHideMenuBar") == true);
         $("#disablegpu").attr("checked", config.get("disablegpu") == true);
         $("#autostart").attr("checked", config.get("autostart") == true);
         $("#startminimized").attr("checked", config.get("startminimized") == true);
@@ -59,6 +60,7 @@ var SettingsView = {
             config.set("customcss", undefined);
         }
 
+        config.set("autoHideMenuBar", $("#autoHideMenuBar").is(":checked"));
         config.set("disablegpu", $("#disablegpu").is(":checked"));
         config.set("autostart", $("#autostart").is(":checked"));
         config.set("startminimized", $("#startminimized").is(":checked"));

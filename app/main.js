@@ -195,6 +195,8 @@
                     }
                 });
             }
+            whatsApp.window.setMenuBarVisibility(config.get("autoHideMenuBar") != true);
+            whatsApp.window.setAutoHideMenuBar(config.get("autoHideMenuBar") == true);
         },
 
         saveConfiguration() {
@@ -376,6 +378,7 @@
                 //"type": "toolbar",
                 "title": "WhatsApp",
                 "show": config.get("startminimized") != true,
+                "autoHideMenuBar": config.get("autoHideMenuBar") == true,
                 "icon": __dirname + "/assets/icon/icon.png",
                 "webPreferences": {
                   "nodeIntegration": false,
