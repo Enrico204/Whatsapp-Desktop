@@ -194,6 +194,10 @@
             label: '&File',
             submenu: [
                 {
+                    label: _('About'),
+                    click: () => { global.about.init(); }
+                },
+                {
                     label: _('Quit'),
                     accelerator: 'Ctrl+Q',
                     click: () => { require('electron').app.quit() }

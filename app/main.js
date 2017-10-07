@@ -13,6 +13,9 @@
     var AutoLaunch = require("auto-launch");
     var log = require("electron-log");
     var join = require('path').join;
+    var request = require('request');
+    var pjson = require('./package.json');
+    var notifier = require('node-notifier');
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -237,6 +240,7 @@
             // Second bit: new message red-dot
             global.whatsApp.iconStatus = 0;
             global.whatsApp.oldIconStatus = 0;
+            global.whatsApp.newVersion = null;
 
             whatsApp.clearCache();
             whatsApp.openWindow();
@@ -387,6 +391,34 @@
             });
 
             whatsApp.window.loadURL('https://web.whatsapp.com');
+
+            whatsApp.window.webContents.on('did-finish-load', function() {
+                // Checking for new version
+                var ep = "https://api.github.com/repos/Enrico204/Whatsapp-Desktop/releases/latest";
+                log.info("Checking for new versions (current version "+pjson.version+")");
+                request.get({url: ep, headers:{'User-Agent':'Whatsapp-Desktop'}}, function(err, response, body) {
+                    if (!err && response.statusCode == 200) {
+                        var ghinfo = JSON.parse(body);
+                        global.whatsApp.newVersion = ghinfo['tag_name'];
+                        if (ghinfo['tag_name'] != "v"+pjson.version) {
+                            log.info("A new version is available: " + ghinfo['tag_name']);
+                            var options = {
+                                title: "Whatsapp-Desktop",
+                                message: "A new version is available, download it at https://github.com/Enrico204/Whatsapp-Desktop",
+                                open: 'https://github.com/Enrico204/Whatsapp-Desktop/releases/latest',
+                                sound: true
+                            };
+                            notifier.notify(options, function (err, response) {
+                                    if (!err) log.warn("Error: " + err);
+                                });
+                        } else {
+                            log.info("Already on latest version");
+                        }
+                    } else {
+                        log.warn("Error checking updates (status " + response.statusCode + "): " + err);
+                    }
+                });
+            });
 
             if (config.get("useProxy")) {
                 var session = whatsApp.window.webContents.session;
@@ -586,6 +618,46 @@
 
             settings.window.on("close", () => {
                 settings.window = null;
+            });
+        }
+    };
+
+    global.pjson = pjson;
+    global.about = {
+        init() {
+            // if there is already one instance of the window created show that one
+            if (about.window){
+                about.window.show();
+            } else {
+                about.openWindow();
+                about.window.setMenu(null);
+                about.window.setMenuBarVisibility(false);
+            }
+        },
+
+        openWindow() {
+            about.window = new BrowserWindow(
+                {
+                    "width": 600,
+                    "height": 450,
+                    "resizable": true,
+                    "center": true,
+                    "frame": true,
+                    "webPreferences": {
+                      "nodeIntegration": true,
+                    }
+                }
+            );
+
+            about.window.loadURL("file://" + __dirname + "/html/about.html");
+            about.window.show();
+            about.window.webContents.on("new-window", (e, url) => {
+                require('electron').shell.openExternal(url);
+                e.preventDefault();
+            });
+
+            about.window.on("close", () => {
+                about.window = null;
             });
         }
     };

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+  window.jQuery = window.$ = require('../js/lib/jquery.min.js');
+  window.Hammer = require('../js/lib/hammer.min.js');
+  window.app = require('electron').remote;
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../css/settings.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script src="../js/views/about.js"></script>
+  <title>About</title>
+</head>
+<body>
+  <main class="main-container">
+    <header>
+      <h4 class="teal-text text-lighten-1"><script> document.write(_("Settings")); </script></h4>
+    </header>
+
+    <div id="settings-wrapper">
+        <p>WhatsApp desktop client, based on the official WhatsApp web app. Build with Electron.</p>
+        <p>This is <b>NOT</b> an official product. This project does not attempt to reverse engineer the WhatsApp API or attempt to
+            reimplement any part of the WhatsApp client. Any communication between the user and WhatsApp servers is handled by
+            official WhatsApp Web itself; this is just a native wrapper for WhatsApp Web, like a browser.</p>
+        <p>App version: <span id="appversion"></span></p>
+        <p><b><span id="appupdates"></span></b></p>
+        <p>Website: <a href="https://github.com/Enrico204/Whatsapp-Desktop" target="_blank">https://github.com/Enrico204/Whatsapp-Desktop</a></p>
+    </div>
+  </main>
+</body>
+</html>
