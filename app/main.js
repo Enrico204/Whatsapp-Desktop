@@ -133,6 +133,7 @@
 
         applyConfiguration() {
             log.info("Applying configuration");
+            this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; }');
             if (config.get("maximized")) {
                 whatsApp.window.maximize();
             }
