@@ -9,14 +9,14 @@
     "gettext": "xgettext app/*.js -j --omit-header -o app/locale/messages.pot && xgettext app/html/*.html -L JavaScript -j --omit-header -o app/locale/messages.pot",
     "clean": "node clean.js",
     "build": "npm run clean && npm run build:osx && npm run build:win && npm run build:linux",
-    "build:win": "electron-packager ./app \"WhatsApp\" --out=dist --platform=win32 --arch=x64 --version=1.4.3 --icon=assets/win/whatsapp.ico",
-    "build:osx": "electron-packager ./app \"WhatsApp\" --out=dist --platform=darwin --arch=x64 --version=1.4.3 --icon=assets/osx/whatsapp.icns",
-    "build:linux": "electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=x64 --version=1.4.3 --icon=assets/win/whatsapp.ico",
-    "build:linuxarmv7l": "electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=armv7l --version=1.4.3 --icon=assets/win/whatsapp.ico"
+    "build:win": "electron-packager ./app \"WhatsApp\" --out=dist --platform=win32 --arch=x64 --electron-version=1.7.8 --icon=assets/win/whatsapp.ico",
+    "build:osx": "electron-packager ./app \"WhatsApp\" --out=dist --platform=darwin --arch=x64 --electron-version=1.7.8 --icon=assets/osx/whatsapp.icns",
+    "build:linux": "electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=x64 --electron-version=1.7.8 --icon=assets/win/whatsapp.ico",
+    "build:linuxarmv7l": "electron-packager ./app \"WhatsApp\" --out=dist --platform=linux --arch=armv7l --electron-version=1.7.8 --icon=assets/win/whatsapp.ico"
   },
   "devDependencies": {
     "electron-packager": "^8.5.0",
-    "electron": "^1.4.14"
+    "electron": "^1.7.8"
   },
   "dependencies": {
     "process-nextick-args": "^1.0.7",
