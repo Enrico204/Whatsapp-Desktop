@@ -27,13 +27,14 @@
         app.quit();
     }
 
-    if (process.argv.indexOf("--disable-gpu") >= 0) {
-        app.disableHardwareAcceleration();
-    }
-
     if (process.argv.indexOf("--debug-log") >= 0) {
         log.transports.file.level = 'debug';
         log.info("Log level set from command line switch");
+    }
+
+    if (process.argv.indexOf("--disable-gpu") >= 0) {
+        log.warn("Disabling GPU acceleration");
+        app.disableHardwareAcceleration();
     }
 
     log.info("Log init, file " + app.getPath('userData') + "/log.log");
@@ -119,6 +120,11 @@
             } catch (e) {
                 config.currentSettings = config.defaultSettings;
                 log.warn("Error loading configuration from " + settingsFile + " (" + e + "), loading default");
+            }
+            // First time configuration - eg. before app init
+            if(config.get("disablegpu") == true) {
+                log.warn("Disabling GPU acceleration");
+                app.disableHardwareAcceleration();
             }
         },
 
@@ -217,6 +223,8 @@
         }
     };
 
+    global.config.init();
+
     global.whatsApp = {
         init() {
             global.whatsApp.warningIcon = false;
@@ -229,7 +237,6 @@
             global.whatsApp.oldIconStatus = 0;
 
             whatsApp.clearCache();
-            config.init();
             whatsApp.openWindow();
             config.applyConfiguration();
         },
