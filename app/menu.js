@@ -3,7 +3,7 @@
 
     var template = [
         {
-            label: _('Edit'),
+            label: "&" + _('Edit'),
             submenu: [
                 {
                     label: _('Undo'),
@@ -51,7 +51,7 @@
             ]
         },
         {
-            label: _('View'),
+            label: "&" + _('View'),
             submenu: [
                 {
                     label: _('Reload'),
@@ -103,7 +103,7 @@
             ]
         },
         {
-            label: _('Window'),
+            label: "&" + _('Window'),
             role: 'window',
             submenu: [
                 {
@@ -119,7 +119,7 @@
             ]
         },
         {
-            label: _('Audio'),
+            label: "&" + _('Audio'),
             submenu: [
                 {
                     label: _('Increase Audio Rate by 20%'),
@@ -146,7 +146,7 @@
     if (process.platform == 'darwin') {
         var name = 'WhatsApp Desktop';
         template.unshift({
-            label: name,
+            label: "&" + name,
             submenu: [
                 {
                     label: _('About') + " " + name,
@@ -191,7 +191,7 @@
         );
     } else if (process.platform == 'linux' || process.platform == 'win64' || process.platform == 'win32') {
         template.unshift({
-            label: 'File',
+            label: '&File',
             submenu: [
                 {
                     label: _('Quit'),
