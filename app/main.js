@@ -137,7 +137,11 @@
                 whatsApp.window.maximize();
             }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
-                this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; }');
+                var fontSize = config.get("fontSize");
+                fontSize = (fontSize == undefined) ? "normal" : fontSize;
+                var fontCSS = (fontSize != "normal") ? "font-size:" + fontSize + " !important;" : "";
+                this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; '
+                    + fontCSS + '}');
 
                 var imgpath = config.get("background-image");
                 if (imgpath != undefined) {

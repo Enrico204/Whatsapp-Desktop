@@ -36,6 +36,10 @@ var SettingsView = {
             $("#background_opacity").val("100");
         }
 
+        if (config.get("fontSize") != undefined) {
+            $("#fontSize").val(config.get("fontSize"));
+        }
+
         $("#autoHideMenuBar").attr("checked", config.get("autoHideMenuBar") == true);
         $("#disablegpu").attr("checked", config.get("disablegpu") == true);
         $("#autostart").attr("checked", config.get("autostart") == true);
@@ -74,6 +78,8 @@ var SettingsView = {
         } else {
             config.set("background-image", undefined);
         }
+
+        config.set("fontSize", $("#fontSize").val());
 
         config.set("autoHideMenuBar", $("#autoHideMenuBar").is(":checked"));
         config.set("disablegpu", $("#disablegpu").is(":checked"));
