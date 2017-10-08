@@ -133,11 +133,11 @@
 
         applyConfiguration() {
             log.info("Applying configuration");
-            this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; }');
             if (config.get("maximized")) {
                 whatsApp.window.maximize();
             }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
+                this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; }');
                 var noAvatar = '.chat-avatar{display: none}';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
 
