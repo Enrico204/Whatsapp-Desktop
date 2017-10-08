@@ -28,6 +28,14 @@ var SettingsView = {
     init() {
         document.title = _("Settings");
 
+        $("#custombackground_enable").attr("checked", config.get("background-image") != undefined);
+        if (config.get("background-image") != undefined) {
+            $("#custombackground_file").val(config.get("background-image"));
+            $("#background_opacity").val(config.get("background-opacity"));
+        } else {
+            $("#background_opacity").val("100");
+        }
+
         $("#autoHideMenuBar").attr("checked", config.get("autoHideMenuBar") == true);
         $("#disablegpu").attr("checked", config.get("disablegpu") == true);
         $("#autostart").attr("checked", config.get("autostart") == true);
@@ -58,6 +66,13 @@ var SettingsView = {
             config.set("customcss", $("#customcss_file").val());
         } else {
             config.set("customcss", undefined);
+        }
+
+        if ($("#custombackground_enable").is(":checked")) {
+            config.set("background-image", $("#custombackground_file").val());
+            config.set("background-opacity", $("#background_opacity").val());
+        } else {
+            config.set("background-image", undefined);
         }
 
         config.set("autoHideMenuBar", $("#autoHideMenuBar").is(":checked"));
@@ -94,6 +109,27 @@ function chooseCustomCSS() {
         });
     } else {
         $("#customcss_file").val("");
+    }
+}
+
+function chooseChatBackground() {
+    if ($("#custombackground_enable").is(":checked")) {
+        dialog.showOpenDialog(function (fileNames) {
+            if (fileNames === undefined || fileNames.length == 0) {
+                $("#custombackground_enable").removeAttr("checked");
+                return;
+            }
+            if (fileNames[0].endsWith(".jpg") || fileNames[0].endsWith(".jpeg")
+                || fileNames[0].endsWith(".png")
+                || fileNames[0].endsWith(".gif")) {
+                $("#custombackground_file").val(fileNames[0]);
+            } else {
+                alert(_("Please choose a JPEG or PNG file"));
+                $("#custombackground_enable").removeAttr("checked");
+            }
+        });
+    } else {
+        $("#custombackground_file").val("");
     }
 }
 

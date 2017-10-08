@@ -138,6 +138,17 @@
             }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
                 this.insertCSS('* { text-rendering: optimizeSpeed !important; -webkit-font-smoothing: subpixel-antialiased !important; }');
+
+                var imgpath = config.get("background-image");
+                if (imgpath != undefined) {
+                    var img = new Buffer(fileSystem.readFileSync(imgpath)).toString('base64');
+                    var opacity = parseFloat(config.get("background-opacity"))/100.0;
+                    var mime = (imgpath.endsWith(".jpg") || imgpath.endsWith(".jpeg"))?"image/jpg":
+                        ((imgpath.endsWith(".png")?"image/png":((imgpath.endsWith(".gif")?"image/gif":""))));
+                    this.insertCSS(".pane-chat-tile { background-image: url(data:"+mime+";base64,"+img+") !important; background-size: cover !important; opacity: "+
+                        opacity+" !important; max-width: 100% !important; }");
+                }
+
                 var noAvatar = '.chat-avatar{display: none}';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
 
