@@ -460,8 +460,14 @@
                     count = count ? count[1] : '';
 
                 if (parseInt(count) > 0) {
+                    if (!whatsApp.window.isFocused()) {
+                      whatsApp.window.flashFrame(true);
+                    }
+                    var badge = NativeImage.createFromPath(app.getAppPath() + "/assets/badges/badge-" + (count > 9 ? 0 : count) +".png");
+                    whatsApp.window.setOverlayIcon(badge, "new messages");
                     global.whatsApp.setNewMessageIcon();
                 } else {
+                    whatsApp.window.setOverlayIcon(null, "no new messages");
                     global.whatsApp.clearNewMessageIcon();
                 }
                 log.info("Badge updated: " + count);
