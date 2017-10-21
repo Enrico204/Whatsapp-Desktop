@@ -44,6 +44,10 @@ For all other platforms: you can download ZIP files from [latest release page](h
 
 Apparently it's caused by an issue of Electron with an older version of Pango. Upgrade Pango at least to `1.40.12` or downgrade to `1.40.5` should fix this. See https://github.com/Enrico204/Whatsapp-Desktop/issues/13
 
+### Tray Icon is displayed wrong in KDE
+
+This is due to some bugs between Electron and KDE on tray icons, see [this comment on issue #27](https://github.com/Enrico204/Whatsapp-Desktop/issues/27#issuecomment-338410450) and [vector-im/riot-web#3133](https://github.com/vector-im/riot-web/issues/3133). A workaround is to uninstall `libappindicator` and `libappindicator-gtk3` packages (this will change also the behavior of click on the tray icon).
+
 ## Contributions
 
 Contributions are welcome! For feature requests and bug reports please submit an [issue](https://github.com/Enrico204/Whatsapp-Desktop/issues).
@@ -61,6 +65,10 @@ To build from the source, run the following commands:
 where `build:platform` can be `build:linux` if you want to build only for Linux, `build:osx` for OSX only, `build:win` for Windows only, or simply `build` to build for all platforms.
 
 You'll find artifacts into `dist/` directory.
+
+## Run on-the-fly (for devs)
+
+If you're a developer, you may want to use directly `npm run dev` (in project root) instead of compiling the code each time. Please note that autostart feature will not work in this mode.
 
 ### Cross-build for Windows (from Linux/macOS)
 
