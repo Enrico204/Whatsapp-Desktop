@@ -1,3 +1,9 @@
+whatsapp-desktop (0.3.14-1) unstable; urgency=low
+
+  * Various bugfixes, update notifications
+
+ -- Enrico <enrico204@gmail.com>  Sat, 04 Nov 2017 18:30:00 +0200
+
 whatsapp-desktop (0.3.13-1) unstable; urgency=low
 
   * Fixed some bugs
