@@ -375,6 +375,19 @@
             });
 
             whatsApp.tray.setToolTip('WhatsApp Desktop');
+
+            // OSX Dock menu
+            if (process.platform == 'darwin') {
+                const dockMenu = AppMenu.buildFromTemplate([
+                  {label: 'Show main window', click () {
+                      whatsApp.window.show();
+                      whatsApp.window.setAlwaysOnTop(true);
+                      whatsApp.window.focus();
+                      whatsApp.window.setAlwaysOnTop(false);
+                  }}
+                ])
+                app.dock.setMenu(dockMenu);
+            }
         },
 
         clearCache() {
