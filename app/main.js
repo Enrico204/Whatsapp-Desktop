@@ -452,6 +452,7 @@
             whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
+                app.dock.setBadge(count);
                 log.info("Badge updated: " + count);
             }));
 
