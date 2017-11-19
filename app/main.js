@@ -426,7 +426,7 @@
                 var ep = "https://api.github.com/repos/Enrico204/Whatsapp-Desktop/releases/latest";
                 log.info("Checking for new versions (current version "+pjson.version+")");
                 request.get({url: ep, headers:{'User-Agent':'Whatsapp-Desktop'}}, function(err, response, body) {
-                    if (!err && response.statusCode == 200) {
+                    if (!err && response != undefined && response.statusCode == 200) {
                         var ghinfo = JSON.parse(body);
                         global.whatsApp.newVersion = ghinfo['tag_name'];
                         if (ghinfo['tag_name'] != "v"+pjson.version) {
@@ -444,7 +444,7 @@
                             log.info("Already on latest version");
                         }
                     } else {
-                        log.warn("Error checking updates (status " + response.statusCode + "): " + err);
+                        log.warn("Error checking updates (status " + (response != undefined ? response.statusCode : " not available") + "): " + err);
                     }
                 });
             });
