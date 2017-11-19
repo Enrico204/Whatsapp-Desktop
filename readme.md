@@ -62,7 +62,7 @@ To build from the source, run the following commands:
     cd ..
     npm run build:platform
 
-where `build:platform` can be `build:linux` if you want to build only for Linux, `build:osx` for OSX only, `build:win` for Windows only, or simply `build` to build for all platforms.
+where `build:platform` can be `build:linux` if you want to build for Linux (use `build:linux32` for 32-bit), `build:osx` for OSX only, `build:win` for Windows only, or simply `build` to build for all platforms.
 
 You'll find artifacts into `dist/` directory.
 

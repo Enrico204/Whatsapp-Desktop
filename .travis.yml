@@ -25,9 +25,10 @@ script:
 - npm run build:linuxarmv7l
 - debuild -b -uc -us -aarmhf
 - cd rpmbuild && rpmbuild --define "_topdir $(pwd)/" -bb ../whatsapp-desktop.spec && cd ..
+- npm run build:linux32
 before_deploy:
 - sudo apt-get install -y zip tar gzip
-- cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
+- cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-ia32.tar.gz WhatsApp-linux-ia32/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
 - export RELEASE_AMD64_PKG_FILE=$(ls ../whatsapp-desktop*amd64.deb)
 - export RELEASE_ARM_PKG_FILE=$(ls ../whatsapp-desktop*armhf.deb)
 - export RELEASE_AMD64_RPM_FILE=$(ls rpmbuild/RPMS/x86_64/*.rpm)
@@ -41,6 +42,7 @@ deploy:
   - dist/WhatsApp-win32-x64.zip
   - dist/WhatsApp-darwin-x64.zip
   - dist/WhatsApp-linux-x64.tar.gz
+  - dist/WhatsApp-linux-ia32.tar.gz
   - dist/WhatsApp-linux-armv7l.tar.gz
   - "${RELEASE_AMD64_PKG_FILE}"
   - "${RELEASE_ARM_PKG_FILE}"
