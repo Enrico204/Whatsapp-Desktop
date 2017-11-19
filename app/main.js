@@ -387,6 +387,9 @@
                   }}
                 ])
                 app.dock.setMenu(dockMenu);
+                app.dock.on('activate', (event, hasVisibleWindows) => {
+                    whatsApp.window.show();
+                });
             }
         },
 
@@ -584,10 +587,6 @@
 
             app.on('before-quit', onlyWin(() => {
                 whatsApp.window.forceClose = true;
-            }));
-
-            app.on('activate-with-no-open-windows', onlyOSX(() => {
-                whatsApp.window.show();
             }));
 
             app.on('window-all-closed', onlyWin(() => {
