@@ -133,7 +133,7 @@
 
         applyConfiguration() {
             log.info("Applying configuration");
-            if (config.get("maximized")) {
+            if (config.get("maximized") && config.get("startminimized") != true) {
                 whatsApp.window.maximize();
             }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
@@ -413,7 +413,7 @@
                 "minHeight": 600,
                 //"type": "toolbar",
                 "title": "WhatsApp",
-                "show": config.get("startminimized") != true,
+                "show": false,
                 "autoHideMenuBar": config.get("autoHideMenuBar") == true,
                 "icon": __dirname + "/assets/icon/icon.png",
                 "webPreferences": {
