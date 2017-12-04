@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "electron --debug=5858 ./app",
+    "preinstall": "cd app && npm install",
     "gettext": "xgettext app/*.js -j --omit-header -o app/locale/messages.pot && xgettext app/html/*.html -L JavaScript -j --omit-header -o app/locale/messages.pot",
     "clean": "node clean.js",
     "build": "npm run clean && npm run build:osx && npm run build:win && npm run build:linux && npm run build:linux32",
