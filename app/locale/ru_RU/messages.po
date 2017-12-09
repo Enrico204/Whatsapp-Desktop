@@ -1,0 +1,162 @@
+# Whatsapp Desktop translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Whatsapp-Desktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-17 11:15+0200\n"
+"PO-Revision-Date: 2017-11-27 19:54+0300\n"
+"Last-Translator: void\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: app/main.js:168 app/main.js:192 app/main.js:198 app/main.js:214
+msgid "Show"
+msgstr "Восстановить"
+
+#: app/main.js:174 app/menu.js:146 app/main.js:198 app/menu.js:159
+#: app/main.js:204 app/main.js:220
+msgid "Hide"
+msgstr "Скрыть"
+
+#: app/main.js:181 app/menu.js:163 app/menu.js:191 app/main.js:205
+#: app/menu.js:176 app/menu.js:204 app/main.js:211 app/menu.js:197
+#: app/main.js:227
+msgid "Quit"
+msgstr "Выход"
+
+#: app/menu.js:6
+msgid "Edit"
+msgstr "Правка"
+
+#: app/menu.js:9
+msgid "Undo"
+msgstr "Отменить"
+
+#: app/menu.js:14
+msgid "Redo"
+msgstr "Вернуть"
+
+#: app/menu.js:22
+msgid "Cut"
+msgstr "Вырезать"
+
+#: app/menu.js:27
+msgid "Copy"
+msgstr "Копировать"
+
+#: app/menu.js:32
+msgid "Paste"
+msgstr "Вставить"
+
+#: app/menu.js:37
+msgid "Select All"
+msgstr "Выделить всё"
+
+#: app/menu.js:45 app/html/settings.html:20
+msgid "Settings"
+msgstr "Настройки"
+
+#: app/menu.js:54
+msgid "View"
+msgstr "Вид"
+
+#: app/menu.js:57
+msgid "Reload"
+msgstr "Перезагрузить"
+
+#: app/menu.js:65
+msgid "Toggle Full Screen"
+msgstr "Во весь экран"
+
+#: app/menu.js:78
+msgid "Toggle Developer Tools"
+msgstr "Инструменты разработчика"
+
+#: app/menu.js:93 app/menu.js:106
+msgid "Window"
+msgstr "Окно"
+
+#: app/menu.js:97 app/menu.js:110
+msgid "Minimize"
+msgstr "Свернуть"
+
+#: app/menu.js:102 app/html/settings.html:56 app/menu.js:115
+#: app/html/settings.html:60 app/html/settings.html:64
+#: app/html/settings.html:68
+msgid "Close"
+msgstr "Закрыть"
+
+#: app/menu.js:109 app/menu.js:122
+msgid "Audio"
+msgstr "Звук"
+
+#: app/menu.js:112 app/menu.js:125
+msgid "Increase Audio Rate by 20%"
+msgstr "Увеличить громкость на 20%"
+
+#: app/menu.js:121 app/menu.js:134
+msgid "Decrease Audio Rate by 20%"
+msgstr "Уменьшить громкость на 20%"
+
+#: app/menu.js:139 app/menu.js:184 app/menu.js:152 app/menu.js:197
+msgid "About"
+msgstr "О программе"
+
+#: app/menu.js:151 app/menu.js:164
+msgid "Hide Others"
+msgstr "Скрыть остальные"
+
+#: app/menu.js:156 app/menu.js:169
+msgid "Show All"
+msgstr "Показать все окна"
+
+#: app/menu.js:175 app/menu.js:188
+msgid "Bring All to Front"
+msgstr "Расположить сверху"
+
+#: app/html/settings.html:25
+msgid "Hide Avatars"
+msgstr "Скрывать аватарки"
+
+#: app/html/settings.html:29
+msgid "Hide Message Previews"
+msgstr "Скрывать содержимое сообщений"
+
+#: app/html/settings.html:40 app/html/settings.html:44
+#: app/html/settings.html:48 app/html/settings.html:52
+msgid "Use Proxy (Changes in proxy settings require app restart)"
+msgstr "Использовать Proxy (Требуется перезапуск программы)"
+
+#: app/html/settings.html:50 app/html/settings.html:54
+#: app/html/settings.html:58 app/html/settings.html:62
+msgid "Https Proxy"
+msgstr "Https Proxy"
+
+#: app/html/settings.html:57 app/html/settings.html:61
+#: app/html/settings.html:65 app/html/settings.html:69
+msgid "Save"
+msgstr "Сохранить"
+
+#: app/menu.js:91
+msgid "Phone info"
+msgstr "Информация о телефоне"
+
+#: app/html/settings.html:33
+msgid "Show Tray Icon"
+msgstr "Показывать иконку в трее"
+
+#: app/html/settings.html:37
+msgid "Minimize to tray on startup"
+msgstr "Свернуть в трей при запуске"
+
+#: app/html/settings.html:41
+msgid "Auto start on login"
+msgstr "Автозапуск"
+
+#~ msgid "Thumb Size"
+#~ msgstr "Размер изображения"
