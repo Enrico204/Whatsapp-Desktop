@@ -20,6 +20,8 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 * Start minimized to tray icon
 * Logging system (log to console and *userData*/log.log)
 * Apply custom CSS stylesheet
+* Auto-hide menu bar (Windows, Linux)
+* Disabling GPU rendering (useful when dealing with bugged video drivers)
 * A couple of things can be configured:
   * Toggle avatar visibility
   * Toggle preview of the messages visibility
