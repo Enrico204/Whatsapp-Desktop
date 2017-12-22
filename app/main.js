@@ -465,6 +465,22 @@
                 whatsApp.window.show();
             }
 
+            whatsApp.window.on('move', (e, evt) => {
+                config.set("posX", whatsApp.window.getBounds().x);
+                config.set("posY", whatsApp.window.getBounds().y);
+                config.set("width", whatsApp.window.getBounds().width);
+                config.set("height", whatsApp.window.getBounds().height);
+                config.saveConfiguration();
+            });
+
+            whatsApp.window.on('resize', (e, evt) => {
+                config.set("posX", whatsApp.window.getBounds().x);
+                config.set("posY", whatsApp.window.getBounds().y);
+                config.set("width", whatsApp.window.getBounds().width);
+                config.set("height", whatsApp.window.getBounds().height);
+                config.saveConfiguration();
+            });
+
             whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
