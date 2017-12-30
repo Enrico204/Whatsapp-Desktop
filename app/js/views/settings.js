@@ -61,6 +61,14 @@ var SettingsView = {
             $("#customcss_file").val(config.get("customcss"));
         }
 
+        // Disable unavailable options
+        if (process.platform === 'darwin') {
+            $("#autostart").prop("disabled", true);
+            $("#autoHideMenuBar").prop("disabled", true);
+            $("#trayicon").prop("disabled", true);
+            $("#trayicon").prop("checked", false);
+        }
+
         this.bindEvents();
     },
 

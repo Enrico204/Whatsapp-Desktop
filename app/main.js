@@ -153,7 +153,7 @@
                         opacity+" !important; max-width: 100% !important; }");
                 }
 
-                var noAvatar = '.chat-avatar{display: none}';
+                var noAvatar = '.chat-avatar img { display: none !important; }';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
 
                 var thumbSize = '.image-thumb { width: '+ config.currentSettings.thumbSize + 'px  !important;' +
