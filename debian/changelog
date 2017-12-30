@@ -1,3 +1,10 @@
+whatsapp-desktop (0.4.0-1) unstable; urgency=low
+
+  * Bugfix
+  * German translations (thanks to @wotomg)
+
+ -- Enrico <enrico204@gmail.com>  Sun, 31 Dec 2017 00:04:30 +0200
+
 whatsapp-desktop (0.3.14-1) unstable; urgency=low
 
   * Various bugfixes, update notifications

@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.3.14",
+  "version": "0.4.0",
   "main": "main.js",
   "dependencies": {
     "auto-launch": "^5.0.1",
