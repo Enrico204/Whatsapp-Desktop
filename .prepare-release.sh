@@ -12,6 +12,3 @@ editor debian/changelog
 editor whatsapp-desktop.spec
 
 npm install
-pushd app
-npm install
-popd
