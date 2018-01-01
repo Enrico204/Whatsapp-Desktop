@@ -115,6 +115,12 @@
                     label: _('Close'),
                     accelerator: 'CmdOrCtrl+W',
                     role: 'close'
+                },
+                {
+                    label: 'close2',
+                    visible: false,
+                    accelerator: "esc",
+                    role: 'close'
                 }
             ]
         },
