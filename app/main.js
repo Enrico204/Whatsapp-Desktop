@@ -192,6 +192,26 @@
                     log.info("No proxy");
                 }
             }
+
+            // OSX Dock menu
+            if (process.platform == 'darwin') {
+                const dockMenu = AppMenu.buildFromTemplate([
+                  {label: 'Show main window', click () {
+                      whatsApp.window.show();
+                      whatsApp.window.setAlwaysOnTop(true);
+                      whatsApp.window.focus();
+                      whatsApp.window.setAlwaysOnTop(false);
+                  }}
+                ])
+                app.dock.setMenu(dockMenu);
+                app.on('activate', (event, hasVisibleWindows) => {
+                    whatsApp.window.show();
+                    whatsApp.window.setAlwaysOnTop(true);
+                    whatsApp.window.focus();
+                    whatsApp.window.setAlwaysOnTop(false);
+                });
+            }
+
             if (config.get("trayicon") != false && whatsApp.tray == undefined) {
                 whatsApp.createTray();
             } else if (config.get("trayicon") == false && whatsApp.tray != undefined) {
@@ -375,22 +395,6 @@
             });
 
             whatsApp.tray.setToolTip('WhatsApp Desktop');
-
-            // OSX Dock menu
-            if (process.platform == 'darwin') {
-                const dockMenu = AppMenu.buildFromTemplate([
-                  {label: 'Show main window', click () {
-                      whatsApp.window.show();
-                      whatsApp.window.setAlwaysOnTop(true);
-                      whatsApp.window.focus();
-                      whatsApp.window.setAlwaysOnTop(false);
-                  }}
-                ])
-                app.dock.setMenu(dockMenu);
-                app.dock.on('activate', (event, hasVisibleWindows) => {
-                    whatsApp.window.show();
-                });
-            }
         },
 
         clearCache() {
