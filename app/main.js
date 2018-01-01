@@ -728,6 +728,12 @@
             global.whatsApp.setNormalTray();
         }
     });
+    ipcMain.on('notificationClick', (event, arg) => {
+        global.whatsApp.window.show();
+        global.whatsApp.window.setAlwaysOnTop(true);
+        global.whatsApp.window.focus();
+        global.whatsApp.window.setAlwaysOnTop(false);
+    });
 
     global.phoneinfo = {
         init() {

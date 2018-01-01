@@ -69,4 +69,20 @@
             });
         }
     }, 200);
+
+    var NativeNotification = Notification;
+    Notification = function(title, options) {
+    	var notification = new NativeNotification(title, options);
+
+    	notification.addEventListener('click', function() {
+    		ipcRenderer.send('notificationClick');
+    	});
+
+    	return notification;
+    }
+
+    Notification.prototype = NativeNotification.prototype;
+    Notification.permission = NativeNotification.permission;
+    Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
+
 })();
