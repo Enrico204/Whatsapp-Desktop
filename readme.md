@@ -36,6 +36,10 @@ Original version of WhatsApp Desktop was written by @bcalik there: https://githu
 
 For all other platforms: you can download ZIP files from [latest release page](https://github.com/Enrico204/Whatsapp-Desktop/releases).  
 
+## Screenshots
+
+![screenshot](http://i1-win.softpedia-static.com/screenshots/WhatsApp-Desktop_1.png "Main Window")
+
 ## Command line switches
 
     --debug-log         Switch file's log level to "debug" (default: "warn")
