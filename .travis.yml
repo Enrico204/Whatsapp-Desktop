@@ -5,9 +5,11 @@ before_install:
 - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 - sudo add-apt-repository -y ppa:wine/wine-builds
-- echo "" | sudo add-apt-repository ppa:alexlarsson/flatpak
 - sudo apt-get update
-- sudo apt-get install -y wine-staging devscripts build-essential lintian dh-make rpm yarn flatpak flatpak-builder
+- sudo apt-get install -y wine-staging devscripts build-essential lintian dh-make rpm yarn
+- sudo apt-get update
+- echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee /etc/apt/sources.list.d/jessie-backports.list
+- sudo apt-get -t jessie-backports install -y --force-yes flatpak flatpak-builder
 install:
 - yarn
 before_script:
