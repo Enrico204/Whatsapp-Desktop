@@ -38,7 +38,7 @@ before_deploy:
 - export RELEASE_AMD64_PKG_FILE=$(ls ../whatsapp-desktop*amd64.deb)
 - export RELEASE_ARM_PKG_FILE=$(ls ../whatsapp-desktop*armhf.deb)
 - export RELEASE_AMD64_RPM_FILE=$(ls rpmbuild/RPMS/x86_64/*.rpm)
-- export RELEASE_APPIMAGE_FILE=$(ls dist/whatsapp-desktop*-x86_64.Appimage)
+- export RELEASE_APPIMAGE_FILE=$(ls dist/whatsapp-desktop*-x86_64.AppImage)
 deploy:
   provider: releases
   skip_cleanup: true
