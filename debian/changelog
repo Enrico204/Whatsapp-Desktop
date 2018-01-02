@@ -1,3 +1,11 @@
+whatsapp-desktop (0.4.1-1) unstable; urgency=low
+
+  * Added flatpak/AppImage support
+  * Added feature: open main window on notification click
+  * Bugfix: fixed various bugs on macOS
+
+ -- Enrico <enrico204@gmail.com>  Tue, 02 Jan 2018 22:08:05
+
 whatsapp-desktop (0.4.0-1) unstable; urgency=low
 
   * Bugfix

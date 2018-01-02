@@ -11,4 +11,4 @@ editor app/package.json
 editor debian/changelog
 editor whatsapp-desktop.spec
 
-npm install
+yarn
