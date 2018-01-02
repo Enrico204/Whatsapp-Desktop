@@ -22,16 +22,16 @@ before_script:
 - mkdir -p rpmbuild/SOURCES
 - tar -cjf rpmbuild/SOURCES/dummy.tar.bz2 readme.md
 script:
-- npm run build:linux
+- yarn run build:linux
 - debuild -b -uc -us
-- npm run build:osx
-- npm run build:win
-- npm run build:linuxarmv7l
+- yarn run build:osx
+- yarn run build:win
+- yarn run build:linuxarmv7l
 - debuild -b -uc -us -aarmhf
 - cd rpmbuild && rpmbuild --define "_topdir $(pwd)/" -bb ../whatsapp-desktop.spec && cd ..
-- npm run build:linux32
-- npm run build:appimage
-- npm run build:flatpak64
+- yarn run build:linux32
+- yarn run build:appimage
+- yarn run build:flatpak64
 before_deploy:
 - sudo apt-get install -y zip tar gzip
 - cd dist/ && zip -r WhatsApp-win32-x64.zip WhatsApp-win32-x64/ && zip -r WhatsApp-darwin-x64.zip WhatsApp-darwin-x64/ && tar czf WhatsApp-linux-ia32.tar.gz WhatsApp-linux-ia32/ && tar czf WhatsApp-linux-x64.tar.gz WhatsApp-linux-x64/ && tar czf WhatsApp-linux-armv7l.tar.gz WhatsApp-linux-armv7l/ && cd ..
