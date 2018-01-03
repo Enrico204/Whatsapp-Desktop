@@ -1,3 +1,9 @@
+whatsapp-desktop (0.4.2-1) unstable; urgency=low
+
+  * Fixed build issue
+
+ -- Enrico <enrico204@gmail.com>  Wed, 03 Jan 2018 16:33:00 +0200
+
 whatsapp-desktop (0.4.1-1) unstable; urgency=low
 
   * Added flatpak/AppImage support
