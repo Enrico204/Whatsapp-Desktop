@@ -16,6 +16,7 @@
     var request = require('request');
     var pjson = require('./package.json');
     var notifier = require('node-notifier');
+    var globalShortcut = require('electron').globalShortcut;
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -133,7 +134,7 @@
 
         applyConfiguration() {
             log.info("Applying configuration");
-            if (config.get("maximized") && config.get("startminimized") != true) {
+            if (config.get("maximized")) {
                 whatsApp.window.maximize();
             }
             whatsApp.window.webContents.on('dom-ready', function (event, two) {
@@ -153,7 +154,7 @@
                         opacity+" !important; max-width: 100% !important; }");
                 }
 
-                var noAvatar = '.chat-avatar img { display: none !important; }';
+                var noAvatar = '.chat-avatar{display: none}';
                 var noPreview = '.chat-secondary .chat-status{z-index: -999;}';
 
                 var thumbSize = '.image-thumb { width: '+ config.currentSettings.thumbSize + 'px  !important;' +
@@ -192,26 +193,6 @@
                     log.info("No proxy");
                 }
             }
-
-            // OSX Dock menu
-            if (process.platform == 'darwin') {
-                const dockMenu = AppMenu.buildFromTemplate([
-                  {label: 'Show main window', click () {
-                      whatsApp.window.show();
-                      whatsApp.window.setAlwaysOnTop(true);
-                      whatsApp.window.focus();
-                      whatsApp.window.setAlwaysOnTop(false);
-                  }}
-                ])
-                app.dock.setMenu(dockMenu);
-                app.on('activate', (event, hasVisibleWindows) => {
-                    whatsApp.window.show();
-                    whatsApp.window.setAlwaysOnTop(true);
-                    whatsApp.window.focus();
-                    whatsApp.window.setAlwaysOnTop(false);
-                });
-            }
-
             if (config.get("trayicon") != false && whatsApp.tray == undefined) {
                 whatsApp.createTray();
             } else if (config.get("trayicon") == false && whatsApp.tray != undefined) {
@@ -417,7 +398,7 @@
                 "minHeight": 600,
                 //"type": "toolbar",
                 "title": "WhatsApp",
-                "show": false,
+                "show": config.get("startminimized") != true,
                 "autoHideMenuBar": config.get("autoHideMenuBar") == true,
                 "icon": __dirname + "/assets/icon/icon.png",
                 "webPreferences": {
@@ -433,7 +414,7 @@
                 var ep = "https://api.github.com/repos/Enrico204/Whatsapp-Desktop/releases/latest";
                 log.info("Checking for new versions (current version "+pjson.version+")");
                 request.get({url: ep, headers:{'User-Agent':'Whatsapp-Desktop'}}, function(err, response, body) {
-                    if (!err && response != undefined && response.statusCode == 200) {
+                    if (!err && response.statusCode == 200) {
                         var ghinfo = JSON.parse(body);
                         global.whatsApp.newVersion = ghinfo['tag_name'];
                         if (ghinfo['tag_name'] != "v"+pjson.version) {
@@ -451,7 +432,7 @@
                             log.info("Already on latest version");
                         }
                     } else {
-                        log.warn("Error checking updates (status " + (response != undefined ? response.statusCode : " not available") + "): " + err);
+                        log.warn("Error checking updates (status " + response.statusCode + "): " + err);
                     }
                 });
             });
@@ -469,26 +450,9 @@
                 whatsApp.window.show();
             }
 
-            whatsApp.window.on('move', (e, evt) => {
-                config.set("posX", whatsApp.window.getBounds().x);
-                config.set("posY", whatsApp.window.getBounds().y);
-                config.set("width", whatsApp.window.getBounds().width);
-                config.set("height", whatsApp.window.getBounds().height);
-                config.saveConfiguration();
-            });
-
-            whatsApp.window.on('resize', (e, evt) => {
-                config.set("posX", whatsApp.window.getBounds().x);
-                config.set("posY", whatsApp.window.getBounds().y);
-                config.set("width", whatsApp.window.getBounds().width);
-                config.set("height", whatsApp.window.getBounds().height);
-                config.saveConfiguration();
-            });
-
             whatsApp.window.on('page-title-updated', onlyOSX((event, title) => {
                 var count = title.match(/\((\d+)\)/);
                     count = count ? count[1] : '';
-                app.dock.setBadge(count);
                 log.info("Badge updated: " + count);
             }));
 
@@ -607,6 +571,10 @@
 
             app.on('before-quit', onlyWin(() => {
                 whatsApp.window.forceClose = true;
+            }));
+
+            app.on('activate-with-no-open-windows', onlyOSX(() => {
+                whatsApp.window.show();
             }));
 
             app.on('window-all-closed', onlyWin(() => {
@@ -728,12 +696,6 @@
             global.whatsApp.setNormalTray();
         }
     });
-    ipcMain.on('notificationClick', (event, arg) => {
-        global.whatsApp.window.show();
-        global.whatsApp.window.setAlwaysOnTop(true);
-        global.whatsApp.window.focus();
-        global.whatsApp.window.setAlwaysOnTop(false);
-    });
 
     global.phoneinfo = {
         init() {
@@ -806,5 +768,18 @@
 
     app.on('ready', () => {
         whatsApp.init();
+        // setting of globalShortcut
+        if(config.get("globalshortcut") == true) {
+            globalShortcut.register('CmdOrCtrl + Alt + W', function(){
+                whatsApp.window.show();
+            })   
+        }
+    });
+
+    // unregistering the globalShorcut on quit of application
+    app.on('will-quit', function(){
+        if(config.get("globalshortcut") == true) {
+            globalShortcut.unregisterAll();
+        }
     });
 })(this);

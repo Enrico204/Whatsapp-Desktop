@@ -42,6 +42,7 @@ var SettingsView = {
 
         $("#autoHideMenuBar").attr("checked", config.get("autoHideMenuBar") == true);
         $("#disablegpu").attr("checked", config.get("disablegpu") == true);
+        $("#globalshortcut").attr("checked", config.get("globalshortcut") == true);
         $("#autostart").attr("checked", config.get("autostart") == true);
         $("#startminimized").attr("checked", config.get("startminimized") == true);
         $("#trayicon").attr("checked", config.get("trayicon") != false);
@@ -59,14 +60,6 @@ var SettingsView = {
         $("#customcss_enable").attr("checked", config.get("customcss") != undefined);
         if ($("#customcss_enable").is(":checked")) {
             $("#customcss_file").val(config.get("customcss"));
-        }
-
-        // Disable unavailable options
-        if (process.platform === 'darwin') {
-            $("#autostart").prop("disabled", true);
-            $("#autoHideMenuBar").prop("disabled", true);
-            $("#trayicon").prop("disabled", true);
-            $("#trayicon").prop("checked", false);
         }
 
         this.bindEvents();
@@ -91,6 +84,7 @@ var SettingsView = {
 
         config.set("autoHideMenuBar", $("#autoHideMenuBar").is(":checked"));
         config.set("disablegpu", $("#disablegpu").is(":checked"));
+        config.set("globalshortcut", $("#globalshortcut").is(":checked"));
         config.set("autostart", $("#autostart").is(":checked"));
         config.set("startminimized", $("#startminimized").is(":checked"));
         config.set("hideAvatars", $("#avatars").is(":checked"));
