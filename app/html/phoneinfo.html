@@ -10,32 +10,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="../css/settings.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-  <script src="../js/views/phoneinfo.js"></script>
-  <title>Phone Info</title>
+  <script src="../js/views/about.js"></script>
+  <title>About</title>
 </head>
 <body>
   <main class="main-container">
     <header>
-      <h4 class="teal-text text-lighten-1">Phone Info</h4>
+      <h4 class="teal-text text-lighten-1">About</h4>
     </header>
 
     <div id="settings-wrapper">
-      <div class="row">
-        <div class="col s6">
-            <p>Mobile number: <span id="me"></span></p>
-            <p>Battery: <span id="battery"></span></p>
-            <p>Phone: <span id="manufacturer"></span> <span id="model"></span> <span id="platform"></span>
-                <span id="os_version"></span> <span id="os_build_number"></span></p>
-            <p>WhatsApp version: <span id="wa_version"></span></p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col s6 offset-s6 ">
-          <a id="close-button" class="waves-effect waves-light btn">Close</a>
-        </div>
-      </div>
+        <p>WhatsApp desktop client, based on the official WhatsApp web app. Build with Electron.</p>
+        <p>This is <b>NOT</b> an official product. This project does not attempt to reverse engineer the WhatsApp API or attempt to
+            reimplement any part of the WhatsApp client. Any communication between the user and WhatsApp servers is handled by
+            official WhatsApp Web itself; this is just a native wrapper for WhatsApp Web, like a browser.</p>
+        <p>App version: <span id="appversion"></span></p>
+        <p><b><span id="appupdates"></span></b></p>
+        <p>Website: <a href="https://github.com/Enrico204/Whatsapp-Desktop" target="_blank">https://github.com/Enrico204/Whatsapp-Desktop</a></p>
     </div>
   </main>
 </body>
 </html>
+

@@ -17,7 +17,7 @@
 <body>
   <main class="main-container">
     <header>
-      <h4 class="teal-text text-lighten-1"><script> document.write(_("Settings")); </script></h4>
+      <h4 class="teal-text text-lighten-1">Settings</h4>
     </header>
     <div id="settings-wrapper">
       <p>
@@ -30,8 +30,7 @@
       </p>
       <p>
         <input type="checkbox" id="trayicon" />
-        <label for="trayicon"><script> document.write(_("Show Tray Icon")); </script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <small>[Windows/Linux]</small></label>
+        <label for="trayicon"><script> document.write(_("Show Tray Icon")); </script></label>
       </p>
       <p>
         <input type="checkbox" id="startminimized" />
@@ -39,17 +38,19 @@
       </p>
       <p>
         <input type="checkbox" id="autostart" />
-        <label for="autostart"><script> document.write(_("Auto start on login")); </script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <small>[Windows/Linux]</small></label>
+        <label for="autostart"><script> document.write(_("Auto start on login")); </script></label>
       </p>
       <p>
         <input type="checkbox" id="autoHideMenuBar" />
-        <label for="autoHideMenuBar"><script> document.write(_("Auto hide menu bar")); </script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <small>[Windows/Linux]</small></label>
+        <label for="autoHideMenuBar"><script> document.write(_("Auto hide menu bar")); </script></label>
       </p>
       <p>
         <input type="checkbox" id="disablegpu" />
         <label for="disablegpu"><script> document.write(_("Disable GPU (restart to take effect)")); </script></label>
+      </p>
+      <p>
+        <input type="checkbox" id="globalshortcut" />
+        <label for="globalshortcut"><script> document.write(_("Enable Hot Keys (CmdOrCtrl + Alt + W, restart to take effect)")); </script></label>
       </p>
       <div class="row">
         <div class="input-field col s8">
