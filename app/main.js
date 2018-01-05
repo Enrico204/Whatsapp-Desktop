@@ -16,6 +16,7 @@
     var request = require('request');
     var pjson = require('./package.json');
     var notifier = require('node-notifier');
+    var globalShortcut = require('electron').globalShortcut;
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -806,5 +807,18 @@
 
     app.on('ready', () => {
         whatsApp.init();
+        // setting of globalShortcut
+        if(config.get("globalshortcut") == true) {
+            globalShortcut.register('CmdOrCtrl + Alt + W', function(){
+                whatsApp.window.show();
+            })   
+        }
+    });
+
+    // unregistering the globalShorcut on quit of application
+    app.on('will-quit', function(){
+        if(config.get("globalshortcut") == true) {
+            globalShortcut.unregisterAll();
+        }
     });
 })(this);
