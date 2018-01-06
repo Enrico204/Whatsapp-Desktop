@@ -810,7 +810,10 @@
         // setting of globalShortcut
         if(config.get("globalshortcut") == true) {
             globalShortcut.register('CmdOrCtrl + Alt + W', function(){
-                whatsApp.window.show();
+                if(whatsApp.window.isFocused())
+                	whatsApp.window.hide();
+                else
+                	whatsApp.window.show();
             })   
         }
     });
