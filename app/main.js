@@ -107,6 +107,7 @@
 
         init() {
             config.loadConfiguration();
+            config.saveTimeout = null;
         },
 
         loadConfiguration() {
@@ -240,14 +241,21 @@
         },
 
         saveConfiguration() {
-            log.info("Saving configuration");
-            config.set("maximized", whatsApp.window.isMaximized());
-            if (config.currentSettings == undefined || JSON.stringify(config.currentSettings) == "") {
-                // TODO: if we land here, we need to figure why and how. And fix that
-                log.error("Configuration empty! This should not happen!");
-                return;
+            if (config.saveTimeout != null) {
+                clearTimeout(config.saveTimeout);
+                config.saveTimeout = null;
             }
-            fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings), 'utf-8');
+            config.saveTimeout = setTimeout(function() {
+                log.info("Saving configuration");
+                config.set("maximized", whatsApp.window.isMaximized());
+                if (config.currentSettings == undefined || JSON.stringify(config.currentSettings) == "") {
+                    // TODO: if we land here, we need to figure why and how. And fix that
+                    log.error("Configuration empty! This should not happen!");
+                    return;
+                }
+                fileSystem.writeFileSync(app.getPath('userData') + "/settings.json", JSON.stringify(config.currentSettings), 'utf-8');
+                config.saveTimeout = null;
+            }, 2000);
         },
 
         get (key) {
@@ -564,14 +572,6 @@
                     settings.window.close();
                     settings.window = null;
                 }
-
-                // save the window position
-                // TODO: check if this triggers the issue #8 (see Github)
-                // config.set("posX", this.getBounds().x);
-                // config.set("posY", this.getBounds().y);
-                // config.set("width", this.getBounds().width);
-                // config.set("height", this.getBounds().height);
-                // config.saveConfiguration();
             });
 
             // Toggle contextmenu content when window is shown
