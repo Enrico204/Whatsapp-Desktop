@@ -24,11 +24,11 @@ before_script:
 - tar -cjf rpmbuild/SOURCES/dummy.tar.bz2 readme.md
 script:
 - yarn run build:linux
-- debuild -b -uc -us
+- debuild --no-lintian -b -uc -us
 - yarn run build:osx
 - yarn run build:win
 - yarn run build:linuxarmv7l
-- debuild -b -uc -us -aarmhf
+- debuild --no-lintian -b -uc -us -aarmhf
 - cd rpmbuild && rpmbuild --define "_topdir $(pwd)/" -bb ../whatsapp-desktop.spec
   && cd ..
 - yarn run build:linux32
@@ -36,9 +36,9 @@ script:
 - yarn run build:flatpak64
 before_deploy:
 - sudo apt-get install -y zip tar gzip
-- cd dist/ && zip -r WhatsApp-${TRAVIS_TAG}-win32-x64.zip WhatsApp-win32-x64/ && cd
+- cd dist/ && zip -qr WhatsApp-${TRAVIS_TAG}-win32-x64.zip WhatsApp-win32-x64/ && cd
   ..
-- cd dist/ && zip -r WhatsApp-${TRAVIS_TAG}-darwin-x64.zip WhatsApp-darwin-x64/ &&
+- cd dist/ && zip -qr WhatsApp-${TRAVIS_TAG}-darwin-x64.zip WhatsApp-darwin-x64/ &&
   cd ..
 - cd dist/ && tar czf WhatsApp-${TRAVIS_TAG}-linux-ia32.tar.gz WhatsApp-linux-ia32/
   && cd ..
@@ -75,10 +75,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-    file_glob: true
-    file:
-    - "${RELEASE_AMD64_PKG_FILE}"
-    - "${RELEASE_ARM_PKG_FILE}"
+    package_glob: ../*.deb
     dist: "debian/stretch"
     token:
       secure: NV4SYlKo3/jPzhqD4TMO6aU0TjmfmLpQWFXvUzHD84BS92a9LpqZTA7P/aKH1abHQgkomJA4saQo9y0QUP3CoJMsS0srePpv2KwO1SbMzHsozJ26zICnZnC2JZQBZbmgzAzHxKpiXqTVxg7Lm3ixWGdVOzQGePYJSxm7yQWitz2YyKnxzRf36gp05bb3ADNm8sp03rcLHd5Wz7aAwJ+phUlHIwCwGJllSBYhM2LnCcx7OYVRVYuOHz4/K+Dlm5v2Q8e8jn9cJuca1SROTSPkzacz9WjEwZxpo/cJIPstHbIBhkX+NA2zDMCcmQ5X10pcyNlTJMhhkrsVRb1z4GveX04U5mdKDOfNEvoDdkFUhSMmg8U9n4r+4DE3d9LRpbN6mCpbDeuZ2Owswkgfd+ZMS2a2bxMs5eW3fwt9XCKiRJX3x15twnWLZZ7CFM0bdUaZ/K1A4JTkVBm3jpaOgytQQ6TBVKzyQoRijUpvSGBi5tKDZlG5tJgYAuZM8dzdaWcL8zsECsPkUJaFyOHftWAtXe7IGP3aip3APugvKZLTptvPq+lEjZPl4XuaHbuwRnliAV/Fn6riyftuBWFEKyPyEAtS3MLcrQuxauKNu9rW2dy6JF58mYgtm6jUzuRYFR9dwNaAzOKCPNfEAyx7dTa4eaUXO9bxDUWpPs5sBD8R2u4=
@@ -88,8 +85,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-    file_glob: true
-    file: "${RELEASE_AMD64_RPM_FILE}"
+    package_glob: "${RELEASE_AMD64_RPM_FILE}"
     dist: "fedora/27"
     token:
       secure: NV4SYlKo3/jPzhqD4TMO6aU0TjmfmLpQWFXvUzHD84BS92a9LpqZTA7P/aKH1abHQgkomJA4saQo9y0QUP3CoJMsS0srePpv2KwO1SbMzHsozJ26zICnZnC2JZQBZbmgzAzHxKpiXqTVxg7Lm3ixWGdVOzQGePYJSxm7yQWitz2YyKnxzRf36gp05bb3ADNm8sp03rcLHd5Wz7aAwJ+phUlHIwCwGJllSBYhM2LnCcx7OYVRVYuOHz4/K+Dlm5v2Q8e8jn9cJuca1SROTSPkzacz9WjEwZxpo/cJIPstHbIBhkX+NA2zDMCcmQ5X10pcyNlTJMhhkrsVRb1z4GveX04U5mdKDOfNEvoDdkFUhSMmg8U9n4r+4DE3d9LRpbN6mCpbDeuZ2Owswkgfd+ZMS2a2bxMs5eW3fwt9XCKiRJX3x15twnWLZZ7CFM0bdUaZ/K1A4JTkVBm3jpaOgytQQ6TBVKzyQoRijUpvSGBi5tKDZlG5tJgYAuZM8dzdaWcL8zsECsPkUJaFyOHftWAtXe7IGP3aip3APugvKZLTptvPq+lEjZPl4XuaHbuwRnliAV/Fn6riyftuBWFEKyPyEAtS3MLcrQuxauKNu9rW2dy6JF58mYgtm6jUzuRYFR9dwNaAzOKCPNfEAyx7dTa4eaUXO9bxDUWpPs5sBD8R2u4=
