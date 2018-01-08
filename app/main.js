@@ -354,7 +354,7 @@
             // Setting up a trayicon context menu
             whatsApp.trayContextMenu = AppMenu.buildFromTemplate([
                 {label: _('Show'),
-                visible: false, // Hide this option on start
+                visible: config.get("startminimized"), // Hide this option on start
                 click: function() {
                     whatsApp.window.show();
                     whatsApp.window.setAlwaysOnTop(true);
@@ -363,7 +363,7 @@
                 }},
 
                 {label: _('Hide'),
-                visible: true, // Show this option on start
+                visible: !config.get("startminimized"), // Show this option on start
                 click: function() {
                     whatsApp.window.hide();
                 }},
@@ -814,7 +814,7 @@
                     whatsApp.window.hide();
                 else
                     whatsApp.window.show();
-            })   
+            })
         }
     });
 
