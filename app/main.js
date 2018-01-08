@@ -445,7 +445,7 @@
                     if (!err && response != undefined && response.statusCode == 200) {
                         var ghinfo = JSON.parse(body);
                         global.whatsApp.newVersion = ghinfo['tag_name'];
-                        if (ghinfo['tag_name'] != "v"+pjson.version) {
+                        if (ghinfo['tag_name'][0] == 'v' && ghinfo['tag_name'] != "v"+pjson.version) {
                             log.info("A new version is available: " + ghinfo['tag_name']);
                             var options = {
                                 title: "Whatsapp-Desktop",
