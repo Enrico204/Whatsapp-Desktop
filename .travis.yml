@@ -38,7 +38,7 @@ before_deploy:
 - sudo apt-get install -y zip tar gzip
 - cd dist/ && zip -qr WhatsApp-${TRAVIS_TAG}-win32-x64.zip WhatsApp-win32-x64/ && cd
   ..
-- cd dist/ && zip -qr WhatsApp-${TRAVIS_TAG}-darwin-x64.zip WhatsApp-darwin-x64/ &&
+- cd dist/ && zip -yqr WhatsApp-${TRAVIS_TAG}-darwin-x64.zip WhatsApp-darwin-x64/ &&
   cd ..
 - cd dist/ && tar czf WhatsApp-${TRAVIS_TAG}-linux-ia32.tar.gz WhatsApp-linux-ia32/
   && cd ..
