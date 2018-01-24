@@ -14,3 +14,4 @@ debian/whatsapp-desktop/
 debian/files
 dummy.tar.bz2
 rpmbuild/
+debian/debhelper-build-stamp

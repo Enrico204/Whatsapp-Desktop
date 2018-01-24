@@ -29,11 +29,13 @@ Unofficial WhatsApp desktop client, based on the official WhatsApp web app. Buil
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
 mkdir -p %{buildroot}/usr/share/applications/
+mkdir -p %{buildroot}/usr/share/metainfo/
 mkdir -p %{buildroot}/usr/share/icons/hicolor/128x128/apps/
 mkdir -p %{buildroot}/usr/share/icons/hicolor/64x64/apps/
 cp "%{_topdir}/../app/assets/icon/icon@2x.png" %{buildroot}/usr/share/icons/hicolor/128x128/apps/whatsapp.png
 cp "%{_topdir}/../app/assets/icon/icon.png" %{buildroot}/usr/share/icons/hicolor/64x64/apps/whatsapp.png
 cp %{_topdir}/../whatsappdesktop.desktop %{buildroot}/usr/share/applications/
+cp %{_topdir}/../it.enrico204.whatsapp-desktop.appdata.xml %{buildroot}/usr/share/metainfo/
 # copy files in builddir
 install -d -m 0755 %{buildroot}/opt/whatsapp-desktop/
 install -d -m 0755 %{buildroot}/%{_bindir}
@@ -49,6 +51,7 @@ rm -rf %{buildroot}
 /opt/whatsapp-desktop/*
 %{_bindir}/WhatsApp
 /usr/share/applications/whatsappdesktop.desktop
+/usr/share/metainfo/it.enrico204.whatsapp-desktop.appdata.xml
 /usr/share/icons/hicolor/128x128/apps/whatsapp.png
 /usr/share/icons/hicolor/64x64/apps/whatsapp.png
 

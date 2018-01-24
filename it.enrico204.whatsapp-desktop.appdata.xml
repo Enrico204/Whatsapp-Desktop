@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>it.enrico204.whatsapp-desktop.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Whatsapp-Desktop</name>
+  <summary>Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.</summary>
+  <description>
+    <p>
+        WhatsApp desktop client, based on the official WhatsApp web app. Build
+        with Electron.
+
+        This is NOT an official product. This project does not attempt to reverse
+        engineer the WhatsApp API or attempt to reimplement any part of the WhatsApp
+        client. Any communication between the user and WhatsApp servers is handled
+        by official WhatsApp Web itself; this is just a native wrapper for WhatsApp
+        Web, like a browser.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">https://camo.githubusercontent.com/25f207f8cfa91ad13a0fe303bc6fa0d0265719d6/687474703a2f2f69312d77696e2e736f667470656469612d7374617469632e636f6d2f73637265656e73686f74732f57686174734170702d4465736b746f705f312e706e67</screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/Enrico204/Whatsapp-Desktop</url>
+  <url type="bugtracker">https://github.com/Enrico204/Whatsapp-Desktop/issues</url>
+</component>
