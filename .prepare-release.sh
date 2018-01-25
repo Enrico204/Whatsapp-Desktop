@@ -10,5 +10,6 @@ editor package.json
 editor app/package.json
 editor debian/changelog
 editor whatsapp-desktop.spec
+editor it.enrico204.whatsapp-desktop.appdata.xml
 
 yarn
