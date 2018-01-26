@@ -1,6 +1,7 @@
 (function () {
 
     const {ipcRenderer} = require('electron');
+    const {remote} = require('electron');
     var updatePhoneInfoInterval = null;
 
     function updatePhoneInfo() {
@@ -39,6 +40,14 @@
         // pass in the target node, as well as the observer options
         var observer = new MutationObserver(function (mutations) {
             console.log("Mutations occurred: ", mutations.length);
+
+            if (remote.getGlobal("config").currentSettings.darkMode) {
+                var elements = document.getElementsByTagName("path");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].setAttribute('fill', 'white');
+                }
+            }
+
             var inputSearch = document.querySelector("input.input-search");
             if (inputSearch) {
                 console.log("Adding event listeners");

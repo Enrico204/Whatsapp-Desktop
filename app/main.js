@@ -163,11 +163,27 @@
                 '.image-thumb img.image-thumb-body { width: auto !important;' +
                 'height: '+ config.currentSettings.thumbSize + 'px !important;}';
 
+                var darkMode = 'html[dir] ._1GX8_ { background-color: #2E2C2B !important; }\n \
+                .message-in { background-color: #75706E !important; }\n \
+                .message, .media-caption { color: #F0F0F0; }\n \
+                .message-in .tail-container, .message-in.tail-override-right .tail-container, \
+                .message-out.tail-override-right .tail-container, .message-in.tail-override-left \
+                .tail-container { background-image: none !important; }\n \
+                .block-compose, .block-compose .input-container { background-color: #2E2C2B !important; }\n \
+                .pane-chat-header, .chat.active, .chat, .chatlist-panel-search, .pane-header.pane-list-header, \
+                .input-chatlist-search, .chatlist-panel-body, .chatlist-panel-search div label input, \
+                .chatlist-panel-search div label, #app > div > div > div._3q4NP._1Iexl > div, .message > div > span \
+                 { background-color: #2E2C2B !important;, background-image: none !important; }\n \
+                .chat-title, .header-title, .chat-body div span { color: white; }';
+
                 if (config.currentSettings.hideAvatars) {
                     this.insertCSS(noAvatar);
                 }
                 if (config.currentSettings.hidePreviews){
                     this.insertCSS(noPreview);
+                }
+                if (config.currentSettings.darkMode){
+                    this.insertCSS(darkMode);
                 }
 
                 if (config.currentSettings.thumbSize) {
