@@ -61,6 +61,7 @@
                             focusedWindow.reload();
                     }
                 },
+                {type: 'separator'},
                 {
                     label: _('Toggle Full Screen'),
                     accelerator: (function() {
@@ -75,6 +76,36 @@
                     }
                 },
                 {
+                    label: _('Dark mode'),
+                    accelerator: 'CmdOrCtrl+Shift+Alt+D',
+                    type: 'checkbox',
+                    checked: (function() {
+                        return global.config.get("darkMode");
+                    })(),
+                    click: function(item, focusedWindow) {
+                        global.config.set("darkMode", global.config.get("darkMode") != true);
+                        item.checked = global.config.get("darkMode");
+                        global.config.saveConfiguration();
+                        global.config.applyConfiguration();
+                        if (focusedWindow)
+                            focusedWindow.reload();
+                    }
+                },
+                {
+                    label: _('Quiet mode'),
+                    accelerator: 'CmdOrCtrl+Shift+Alt+Q',
+                    type: 'checkbox',
+                    checked: (function() {
+                        return global.config.get("quietMode");
+                    })(),
+                    click: function(item, focusedWindow) {
+                        global.config.set("quietMode", global.config.get("quietMode") != true);
+                        item.checked = global.config.get("quietMode");
+                        global.config.saveConfiguration();
+                    }
+                },
+                {type: 'separator'},
+                {
                     label: _('Toggle Developer Tools'),
                     accelerator: (function() {
                         if (process.platform == 'darwin')
@@ -87,6 +118,7 @@
                             focusedWindow.toggleDevTools();
                     }
                 },
+                {type: 'separator'},
                 {
                     label: _('Phone info'),
                     accelerator: (function() {

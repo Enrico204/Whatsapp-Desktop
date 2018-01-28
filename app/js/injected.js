@@ -81,6 +81,9 @@
 
     var NativeNotification = Notification;
     Notification = function(title, options) {
+        if (remote.getGlobal("config").currentSettings.quietMode) {
+            return;
+        }
     	var notification = new NativeNotification(title, options);
 
     	notification.addEventListener('click', function() {

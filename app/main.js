@@ -524,7 +524,8 @@
                     count = count ? count[1] : '';
 
                 if (parseInt(count) > 0) {
-                    if (!whatsApp.window.isFocused()) {
+                    if (!whatsApp.window.isFocused() && global.config.get("quietMode") !== true) {
+                      log.info("Flashing frame");
                       whatsApp.window.flashFrame(true);
                     }
                     var badge = NativeImage.createFromPath(app.getAppPath() + "/assets/badges/badge-" + (count > 9 ? 0 : count) +".png");
