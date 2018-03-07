@@ -31,6 +31,8 @@
         app.quit();
     }
 
+    app.setAppUserModelId("it.enrico204.whatsapp-desktop");
+
     if (process.argv.indexOf("--debug-log") >= 0) {
         log.transports.file.level = 'debug';
         log.info("Log level set from command line switch");
