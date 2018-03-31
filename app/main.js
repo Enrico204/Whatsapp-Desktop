@@ -165,7 +165,11 @@
                 '.image-thumb img.image-thumb-body { width: auto !important;' +
                 'height: '+ config.currentSettings.thumbSize + 'px !important;}';
 
-                var darkMode = 'html[dir] ._1GX8_ { background-color: #2E2C2B !important; }\n \
+                var darkMode = '#pane-side, #pane-side div div div div div div, #side header, #side header div div \
+                #side div, #side div div, #side div div button, #side div div label, #side div div input, \
+                #main footer, #main footer div, #main footer div div, #main header, #main header div div span, \
+                #main header div div div span \
+                { background-color: #2E2C2B !important; color: white; }\n \
                 .message-in { background-color: #75706E !important; }\n \
                 .message, .media-caption { color: #F0F0F0; }\n \
                 .message-in .tail-container, .message-in.tail-override-right .tail-container, \
