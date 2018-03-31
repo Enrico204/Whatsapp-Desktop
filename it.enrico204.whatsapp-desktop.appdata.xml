@@ -25,6 +25,7 @@
   <update_contact>enrico204_at_gmail.com</update_contact>
   <translation type="gettext">inkscape</translation>
   <releases>
+      <release version="v0.5.0" date="2018-03-31"/>
       <release version="v0.4.2" date="2018-01-03"/>
       <release version="v0.4.1" date="2018-01-02"/>
       <release version="v0.4.0" date="2017-12-31"/>

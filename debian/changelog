@@ -1,3 +1,10 @@
+whatsapp-desktop (0.5.0-1) unstable; urgency=low
+
+  * Bugfix
+  * Dark mode
+
+ -- Enrico <enrico204@gmail.com>  Sat, 31 Mar 2018 11:25:47 +0200
+
 whatsapp-desktop (0.4.2-1) unstable; urgency=low
 
   * Fixed build issue

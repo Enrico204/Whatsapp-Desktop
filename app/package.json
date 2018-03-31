@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "license": "GPL-3.0",
   "repository": { "type": "git", "url": "https://github.com/Enrico204/Whatsapp-Desktop.git" },
   "main": "main.js",
