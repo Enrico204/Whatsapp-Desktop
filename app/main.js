@@ -17,6 +17,7 @@
     var pjson = require('./package.json');
     var notifier = require('node-notifier');
     var globalShortcut = require('electron').globalShortcut;
+    var ContextMenu = require('electron-context-menu');
 
     const isAlreadyRunning = app.makeSingleInstance(() => {
         if (whatsApp.window) {
@@ -455,6 +456,10 @@
                   "nodeIntegration": false,
                   "preload": join(__dirname, 'js', 'injected.js')
                 }
+            });
+
+            ContextMenu({
+                window: whatsApp.window
             });
 
             whatsApp.window.loadURL('https://web.whatsapp.com');
