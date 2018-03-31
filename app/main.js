@@ -19,12 +19,35 @@
     var globalShortcut = require('electron').globalShortcut;
     var ContextMenu = require('electron-context-menu');
 
-    const isAlreadyRunning = app.makeSingleInstance(() => {
+    const isAlreadyRunning = app.makeSingleInstance((argv, workingDir) => {
         if (whatsApp.window) {
             if (whatsApp.window.isMinimized()) {
                 whatsApp.window.restore();
             }
             whatsApp.window.show();
+        }
+
+        var groupLinkOpenRequested = null;
+        if (argv.length > 1) {
+            for(var i = 0; i < argv.length; i++) {
+                if (argv[i].indexOf("https://chat.whatsapp.com") >= 0) {
+                    groupLinkOpenRequested = argv[i];
+                    log.info("Opening a group link: " + groupLinkOpenRequested);
+                    break;
+                }
+            }
+        }
+        if (groupLinkOpenRequested != null) {
+            whatsApp.window.webContents.executeJavaScript(
+                "var el = document.createElement('a');\
+                el.href = \"" + groupLinkOpenRequested + "\"; \
+                el.style.display = \"none\"; \
+                el.rel = 'noopener noreferrer'; \
+                el.id = 'newlink'; \
+                document.body.appendChild(el); \
+                setTimeout(function() { var el = document.getElementById('newlink'); el.click(); document.body.removeChild(el); }, 500); \
+                "
+            );
         }
     });
 
@@ -33,6 +56,7 @@
     }
 
     app.setAppUserModelId("it.enrico204.whatsapp-desktop");
+    app.setAsDefaultProtocolClient("whatsapp");
 
     if (process.argv.indexOf("--debug-log") >= 0) {
         log.transports.file.level = 'debug';
@@ -45,6 +69,17 @@
     }
 
     log.info("Log init, file " + app.getPath('userData') + "/log.log");
+
+    var groupLinkOpenRequested = null;
+    if (process.argv.length > 1) {
+        for(var i = 0; i < process.argv.length; i++) {
+            if (process.argv[i].indexOf("https://chat.whatsapp.com") >= 0) {
+                groupLinkOpenRequested = process.argv[i];
+                log.info("Opening a group link: " + groupLinkOpenRequested);
+                break;
+            }
+        }
+    }
 
     var supportedLocales = ['en_US', 'it_IT'];
 
@@ -465,6 +500,18 @@
             whatsApp.window.loadURL('https://web.whatsapp.com');
 
             whatsApp.window.webContents.on('did-finish-load', function() {
+                if (groupLinkOpenRequested != null) {
+                    whatsApp.window.webContents.executeJavaScript(
+                        "var el = document.createElement('a');\
+                        el.href = \"" + groupLinkOpenRequested + "\"; \
+                        el.style.display = \"none\"; \
+                        el.rel = 'noopener noreferrer'; \
+                        el.id = 'newlink'; \
+                        document.body.appendChild(el); \
+                        setTimeout(function() { var el = document.getElementById('newlink'); el.click(); document.body.removeChild(el); }, 500); \
+                        "
+                    );
+                }
                 // Checking for new version
                 var ep = "https://api.github.com/repos/Enrico204/Whatsapp-Desktop/releases/latest";
                 log.info("Checking for new versions (current version "+pjson.version+")");
