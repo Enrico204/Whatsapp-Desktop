@@ -40,6 +40,7 @@
         // pass in the target node, as well as the observer options
         var observer = new MutationObserver(function (mutations) {
             console.log("Mutations occurred: ", mutations.length);
+            document.querySelector("div[data-asset-chat-background]").classList.add("pane-chat-tile");
 
             if (remote.getGlobal("config").currentSettings.darkMode) {
                 var elements = document.getElementsByTagName("path");
