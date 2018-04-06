@@ -218,6 +218,9 @@
                  { background-color: #2E2C2B !important;, background-image: none !important; }\n \
                 .chat-title, .header-title, .chat-body div span { color: white; }';
 
+                var blurImages = "div.message-in img, div.message-out img { filter: contrast(25%) blur(8px) grayscale(75%); } \n \
+                div.message-in:hover img, div.message-out:hover img { filter: none; }";
+
                 if (config.currentSettings.hideAvatars) {
                     this.insertCSS(noAvatar);
                 }
@@ -226,6 +229,9 @@
                 }
                 if (config.currentSettings.darkMode){
                     this.insertCSS(darkMode);
+                }
+                if (config.currentSettings.blurImages) {
+                    this.insertCSS(blurImages);
                 }
 
                 if (config.currentSettings.thumbSize) {

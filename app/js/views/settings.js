@@ -41,6 +41,7 @@ var SettingsView = {
         }
 
         $("#darkMode").attr("checked", config.get("darkMode") == true);
+        $("#blurImages").attr("checked", config.get("blurImages") == true);
         $("#autoHideMenuBar").attr("checked", config.get("autoHideMenuBar") == true);
         $("#disablegpu").attr("checked", config.get("disablegpu") == true);
         $("#globalshortcut").attr("checked", config.get("globalshortcut") == true);
@@ -92,6 +93,7 @@ var SettingsView = {
         config.set("fontSize", $("#fontSize").val());
 
         config.set("darkMode", $("#darkMode").is(":checked"));
+        config.set("blurImages", $("#blurImages").is(":checked"));
         config.set("autoHideMenuBar", $("#autoHideMenuBar").is(":checked"));
         config.set("disablegpu", $("#disablegpu").is(":checked"));
         config.set("globalshortcut", $("#globalshortcut").is(":checked"));
