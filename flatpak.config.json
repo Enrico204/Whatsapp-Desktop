@@ -1,8 +1,0 @@
-{
-  "dest": "dist/",
-  "id": "it.enrico204.whatsapp-desktop",
-  "icon": "assets/lnx/Icon-512x512.png",
-  "categories": [
-    "Utility"
-  ]
-}
